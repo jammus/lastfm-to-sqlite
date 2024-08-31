@@ -52,11 +52,10 @@ def export_playlist(
     )
     api.ensure_context_created()
     data = api.fetch()
-    with click.progressbar(length=api.total_pages, label="Fetching data") as bar:
+    with click.progressbar(length=api.total, label="Fetching data") as bar:
         for idx, item in enumerate(data):
             table.upsert(item, pk="uts_timestamp")
-            bar.pos = int(idx / api.total_pages * 100)
-            bar.update(0)
+            bar.update(1)
 
 
 if __name__ == "__main__":

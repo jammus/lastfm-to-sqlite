@@ -39,6 +39,7 @@ class LastFM:
         self.context_created = False
         self.session = None
         self.total_pages = None
+        self.total = 0
 
     def __del__(self) -> None:
         if self.session:
@@ -93,6 +94,7 @@ class LastFM:
             self.params["to"] = self._convert_to_timestamp(self.end_date)
         response = self.session.get(LastFM.URL, params=self.params).json()
         self.total_pages = int(response["recenttracks"]["@attr"]["totalPages"])
+        self.total = int(response["recenttracks"]["@attr"]["total"])
         self.context_created = True
 
     def fetch(self):
