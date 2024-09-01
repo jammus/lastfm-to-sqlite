@@ -2,7 +2,7 @@ import os
 import json
 import pytest
 import datetime
-from lastfm import LastFM
+from lastfm import LastFM, process_recent_tracks_response
 
 @pytest.fixture
 def page():    
@@ -33,7 +33,7 @@ def test_ensure_context_created(api):
     assert api.ensure_context_created() == None
 
 def test_process_response(page):
-    data = LastFM.process_response(page)
+    data = process_recent_tracks_response(page)
     song = next(data)
     assert isinstance(song, dict)
     assert set(song.keys()) == {"artist", "album", "song", "uts_timestamp", "datetime"}

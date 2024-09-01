@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import click
 from sqlite_utils import Database
-from lastfm import LastFM
+from lastfm import LastFM, process_recent_tracks_response
 
 
 formats = [LastFM.DATE_FORMAT]
@@ -53,9 +53,10 @@ def export_playlist(
     api.ensure_context_created()
     data = api.fetch()
     with click.progressbar(length=api.total, label="Fetching data") as bar:
-        for idx, item in enumerate(data):
-            table.upsert(item, pk="uts_timestamp")
-            bar.update(1)
+        for idx, page in enumerate(data):
+            for recent_track in process_recent_tracks_response(page):
+                table.upsert(recent_track, pk="uts_timestamp")
+                bar.update(1)
 
 
 if __name__ == "__main__":

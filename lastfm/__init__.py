@@ -60,20 +60,6 @@ class LastFM:
             return int(date.timestamp())
         return int(datetime.datetime.strptime(date, LastFM.DATE_FORMAT).timestamp())
 
-    @staticmethod
-    def process_response(page):
-        """Yield specific k:v items of each song within page."""
-        playlist = page["recenttracks"]["track"]
-        for song in playlist:
-            date = song.get("date", "")
-            yield {
-                "artist": song["artist"]["#text"],
-                "album": song["album"]["#text"],
-                "song": song["name"],
-                "uts_timestamp": int(date["uts"]) if date else "",
-                "datetime": date["#text"] if date else "",
-            }
-
     def ensure_context_created(self):
         """Make sure session, params, and request total number of pages exist."""
         if self.context_created:
@@ -102,6 +88,20 @@ class LastFM:
         self.ensure_context_created()
         while self.params["page"] <= self.total_pages:
             response = self.session.get(LastFM.URL, params=self.params).json()
-            yield from self.process_response(response)
+            yield response
             self.params["page"] += 1
             sleep(1)
+
+
+def process_recent_tracks_response(page):
+    """Yield specific k:v items of each song within page."""
+    playlist = page["recenttracks"]["track"]
+    for song in playlist:
+        date = song.get("date", "")
+        yield {
+            "artist": song["artist"]["#text"],
+            "album": song["album"]["#text"],
+            "song": song["name"],
+            "uts_timestamp": int(date["uts"]) if date else "",
+            "datetime": date["#text"] if date else "",
+        }
