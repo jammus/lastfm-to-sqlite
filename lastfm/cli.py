@@ -2,7 +2,7 @@
 import click
 from itertools import chain
 from sqlite_utils import Database
-from lastfm import LastFM, process_recent_tracks_response
+from lastfm import LastFM, process_recent_tracks_response, process_loved_tracks_response
 
 
 formats = [LastFM.DATE_FORMAT]
@@ -45,18 +45,28 @@ def export_playlist(
     if not isinstance(database, Database):
         database = Database(database)
 
-    table = database.table(table)
+    tracks_table = database.table(table)
+    loves_table = database.table("loves")
     api = LastFM(
         api=api, username=user, first_page=first_page, 
         limit_per_page=limit_per_page, extended=extended, 
         start_date=start_date, end_date=end_date
     )
-    data = api.fetch()
+
+    data = api.fetch_recent_tracks()
     first_page, metadata = next(data)
-    with click.progressbar(length=int(metadata["total"]), label="Fetching data") as bar:
+    with click.progressbar(length=int(metadata["total"]), label="Fetching recent tracks") as bar:
         for idx, (page, _) in enumerate(chain([(first_page, metadata)], data)):
             for recent_track in process_recent_tracks_response(page):
-                table.upsert(recent_track, pk="uts_timestamp")
+                tracks_table.upsert(recent_track, pk="uts_timestamp")
+                bar.update(1)
+
+    data = api.fetch_loved_tracks()
+    first_page, metadata = next(data)
+    with click.progressbar(length=int(metadata["total"]), label="Fetching loves") as bar:
+        for idx, (page, _) in enumerate(chain([(first_page, metadata)], data)):
+            for recent_track in process_loved_tracks_response(page):
+                loves_table.upsert(recent_track, pk="uts_timestamp")
                 bar.update(1)
 
 if __name__ == "__main__":

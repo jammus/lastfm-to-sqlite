@@ -54,23 +54,41 @@ class LastFM:
             return int(date.timestamp())
         return int(datetime.datetime.strptime(date, LastFM.DATE_FORMAT).timestamp())
 
-    def fetch(self):
-        params={
-            "method": "user.getrecenttracks",
-            "user": self.username,
-            "from": self.start_date,
-            "to": self.end_date,
-            "extended": self.extended,
-            "limit": self.limit_per_page,
-            "page": self.first_page,
-            "api_key": self.api,
-            "format": "json",
-        }
+    def fetch_recent_tracks(self):
+        """Fetch user's track history given the parametrs."""
+        yield from self.fetch_all_pages("user.getrecenttracks", "recenttracks",
+                                        "track", limit=self.limit_per_page,
+                                        page=self.first_page,
+                                        params={
+                                            "user": self.username,
+                                            "from": self.start_date,
+                                            "to": self.end_date,
+                                            "extended": self.extended,
+                                        })
+
+    def fetch_loved_tracks(self):
+        """Fetch user's loved tracks given the parametrs."""
+        yield from self.fetch_all_pages("user.getlovedtracks", "lovedtracks",
+                                        "track", limit=self.limit_per_page,
+                                        page=self.first_page,
+                                        params={
+                                            "user": self.username,
+                                            "from": self.start_date,
+                                            "to": self.end_date,
+                                            "extended": self.extended,
+                                        })
+
+    def fetch_all_pages(self, method, root_name, item_name, page=1, limit=200, params=None):
         session = requests.Session()
+        params["method"] = method
+        params["page"] = page
+        params["limit"] = limit
+        params["api_key"] = self.api
+        params["format"] = "json"
         while True:
             response = session.get(LastFM.URL, params=params).json()
-            metadata = response["recenttracks"]["@attr"]
-            data = response["recenttracks"]["track"]
+            metadata = response[root_name]["@attr"]
+            data = response[root_name][item_name]
             yield data, metadata
             total_pages = int(metadata["totalPages"])
             params["page"] += 1
@@ -87,6 +105,18 @@ def process_recent_tracks_response(page):
         yield {
             "artist": song["artist"]["#text"],
             "album": song["album"]["#text"],
+            "song": song["name"],
+            "uts_timestamp": int(date["uts"]) if date else "",
+            "datetime": date["#text"] if date else "",
+        }
+
+
+def process_loved_tracks_response(page):
+    """Yield specific k:v items of each song within page."""
+    for song in page:
+        date = song.get("date", "")
+        yield {
+            "artist": song["artist"]["name"],
             "song": song["name"],
             "uts_timestamp": int(date["uts"]) if date else "",
             "datetime": date["#text"] if date else "",
