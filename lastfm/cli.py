@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import click
+from itertools import chain
 from sqlite_utils import Database
 from lastfm import LastFM, process_recent_tracks_response
 
@@ -50,14 +51,13 @@ def export_playlist(
         limit_per_page=limit_per_page, extended=extended, 
         start_date=start_date, end_date=end_date
     )
-    api.ensure_context_created()
     data = api.fetch()
-    with click.progressbar(length=api.total, label="Fetching data") as bar:
-        for idx, page in enumerate(data):
+    first_page, metadata = next(data)
+    with click.progressbar(length=int(metadata["total"]), label="Fetching data") as bar:
+        for idx, (page, _) in enumerate(chain([(first_page, metadata)], data)):
             for recent_track in process_recent_tracks_response(page):
                 table.upsert(recent_track, pk="uts_timestamp")
                 bar.update(1)
-
 
 if __name__ == "__main__":
     cli()

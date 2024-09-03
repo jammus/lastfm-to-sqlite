@@ -20,7 +20,6 @@ class LastFM:
         self,
         api: str,
         username: str,
-        method: str = "user.getrecenttracks",
         first_page: int = 1,
         limit_per_page: int = 200,
         extended: int = 0,
@@ -29,21 +28,16 @@ class LastFM:
     ):
         self.api = self._validate_apikey(api)
         self.username = username
-        self.method = method
         self.first_page = first_page
         self.limit_per_page = limit_per_page
         self.extended = extended
-        self.start_date = start_date
-        self.end_date = end_date
+        self.start_date = None
+        self.end_date = None
 
-        self.context_created = False
-        self.session = None
-        self.total_pages = None
-        self.total = 0
-
-    def __del__(self) -> None:
-        if self.session:
-            self.session.close()
+        if start_date is not None:
+            self.start_date = self._convert_to_timestamp(start_date)
+        if end_date is not None:
+            self.end_date = self._convert_to_timestamp(end_date)
 
     @staticmethod
     def _validate_apikey(api):
@@ -60,43 +54,35 @@ class LastFM:
             return int(date.timestamp())
         return int(datetime.datetime.strptime(date, LastFM.DATE_FORMAT).timestamp())
 
-    def ensure_context_created(self):
-        """Make sure session, params, and request total number of pages exist."""
-        if self.context_created:
-            return
-        self.session = requests.Session()
-        self.params = {
-            "method": self.method,
+    def fetch(self):
+        params={
+            "method": "user.getrecenttracks",
             "user": self.username,
-            "api_key": self.api,
-            "page": self.first_page,
-            "limit": self.limit_per_page,
+            "from": self.start_date,
+            "to": self.end_date,
             "extended": self.extended,
+            "limit": self.limit_per_page,
+            "page": self.first_page,
+            "api_key": self.api,
             "format": "json",
         }
-        if self.start_date is not None:
-            self.params["from"] = self._convert_to_timestamp(self.start_date)
-        if self.end_date is not None:
-            self.params["to"] = self._convert_to_timestamp(self.end_date)
-        response = self.session.get(LastFM.URL, params=self.params).json()
-        self.total_pages = int(response["recenttracks"]["@attr"]["totalPages"])
-        self.total = int(response["recenttracks"]["@attr"]["total"])
-        self.context_created = True
-
-    def fetch(self):
-        """Fetch user's track history given the parametrs."""
-        self.ensure_context_created()
-        while self.params["page"] <= self.total_pages:
-            response = self.session.get(LastFM.URL, params=self.params).json()
-            yield response
-            self.params["page"] += 1
+        session = requests.Session()
+        while True:
+            response = session.get(LastFM.URL, params=params).json()
+            metadata = response["recenttracks"]["@attr"]
+            data = response["recenttracks"]["track"]
+            yield data, metadata
+            total_pages = int(metadata["totalPages"])
+            params["page"] += 1
+            if (params["page"] > total_pages):
+                break
             sleep(1)
+        session.close()
 
 
 def process_recent_tracks_response(page):
     """Yield specific k:v items of each song within page."""
-    playlist = page["recenttracks"]["track"]
-    for song in playlist:
+    for song in page:
         date = song.get("date", "")
         yield {
             "artist": song["artist"]["#text"],
