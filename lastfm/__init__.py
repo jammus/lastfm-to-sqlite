@@ -73,9 +73,6 @@ class LastFM:
                                         page=self.first_page,
                                         params={
                                             "user": self.username,
-                                            "from": self.start_date,
-                                            "to": self.end_date,
-                                            "extended": self.extended,
                                         })
 
     def fetch_all_pages(self, method, root_name, item_name, page=1, limit=200, params=None):
