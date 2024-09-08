@@ -1,0 +1,1813 @@
+{
+  "lovedtracks": {
+    "track": [
+      {
+        "artist": {
+          "url": "https://www.last.fm/music/65daysofstatic",
+          "name": "65daysofstatic",
+          "mbid": "0cd12ab3-9628-45ef-a97b-ff18624f14a0"
+        },
+        "date": {
+          "uts": "1725597832",
+          "#text": "06 Sep 2024, 04:43"
+        },
+        "mbid": "32c305bb-b2bb-4d87-be09-db8018ee987d",
+        "url": "https://www.last.fm/music/65daysofstatic/_/SynthFlood",
+        "name": "SynthFlood",
+        "image": [
+          {
+            "size": "small",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "medium",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "large",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "extralarge",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png"
+          }
+        ],
+        "streamable": {
+          "fulltrack": "0",
+          "#text": "0"
+        }
+      },
+      {
+        "artist": {
+          "url": "https://www.last.fm/music/65daysofstatic",
+          "name": "65daysofstatic",
+          "mbid": "0cd12ab3-9628-45ef-a97b-ff18624f14a0"
+        },
+        "date": {
+          "uts": "1725594555",
+          "#text": "06 Sep 2024, 03:49"
+        },
+        "mbid": "ab03fb87-0bfa-3858-87e5-abaac06ee3b0",
+        "url": "https://www.last.fm/music/65daysofstatic/_/I+Am+Robot",
+        "name": "I Am Robot",
+        "image": [
+          {
+            "size": "small",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "medium",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "large",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "extralarge",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png"
+          }
+        ],
+        "streamable": {
+          "fulltrack": "0",
+          "#text": "0"
+        }
+      },
+      {
+        "artist": {
+          "url": "https://www.last.fm/music/Mono",
+          "name": "Mono",
+          "mbid": ""
+        },
+        "date": {
+          "uts": "1725509868",
+          "#text": "05 Sep 2024, 04:17"
+        },
+        "mbid": "07648684-1161-3dd4-8bbb-9a3b288f7f7f",
+        "url": "https://www.last.fm/music/Mono/_/Halcyon+(Beautiful+Days)",
+        "name": "Halcyon (Beautiful Days)",
+        "image": [
+          {
+            "size": "small",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "medium",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "large",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "extralarge",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png"
+          }
+        ],
+        "streamable": {
+          "fulltrack": "0",
+          "#text": "0"
+        }
+      },
+      {
+        "artist": {
+          "url": "https://www.last.fm/music/I+Am+David+Sparkle",
+          "name": "I Am David Sparkle",
+          "mbid": ""
+        },
+        "date": {
+          "uts": "1725508492",
+          "#text": "05 Sep 2024, 03:54"
+        },
+        "mbid": "aaec0c54-f312-44ca-82ce-5d00d9f40430",
+        "url": "https://www.last.fm/music/I+Am+David+Sparkle/_/Machines",
+        "name": "Machines",
+        "image": [
+          {
+            "size": "small",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "medium",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "large",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "extralarge",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png"
+          }
+        ],
+        "streamable": {
+          "fulltrack": "0",
+          "#text": "0"
+        }
+      },
+      {
+        "artist": {
+          "url": "https://www.last.fm/music/Big+Lad",
+          "name": "Big Lad",
+          "mbid": "5c346e12-7ff2-4261-a1c6-8bb4fbd9af19"
+        },
+        "date": {
+          "uts": "1725002410",
+          "#text": "30 Aug 2024, 07:20"
+        },
+        "mbid": "",
+        "url": "https://www.last.fm/music/Big+Lad/_/High+Octane+Party+Banger",
+        "name": "High Octane Party Banger",
+        "image": [
+          {
+            "size": "small",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "medium",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "large",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "extralarge",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png"
+          }
+        ],
+        "streamable": {
+          "fulltrack": "0",
+          "#text": "0"
+        }
+      },
+      {
+        "artist": {
+          "url": "https://www.last.fm/music/Dead+Neanderthals",
+          "name": "Dead Neanderthals",
+          "mbid": "54b82685-a8c5-4852-b372-b1f830ac463f"
+        },
+        "date": {
+          "uts": "1724648435",
+          "#text": "26 Aug 2024, 05:00"
+        },
+        "mbid": "",
+        "url": "https://www.last.fm/music/Dead+Neanderthals/_/IXXO",
+        "name": "IXXO",
+        "image": [
+          {
+            "size": "small",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "medium",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "large",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "extralarge",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png"
+          }
+        ],
+        "streamable": {
+          "fulltrack": "0",
+          "#text": "0"
+        }
+      },
+      {
+        "artist": {
+          "url": "https://www.last.fm/music/The+Supervoid+Choral+Ensemble",
+          "name": "The Supervoid Choral Ensemble",
+          "mbid": "813537f5-392e-4b21-ae45-b56e05888f0d"
+        },
+        "date": {
+          "uts": "1724648435",
+          "#text": "26 Aug 2024, 05:00"
+        },
+        "mbid": "1ac5bd9e-dada-4200-beab-c2bd625576dd",
+        "url": "https://www.last.fm/music/The+Supervoid+Choral+Ensemble/_/%7C",
+        "name": "|",
+        "image": [
+          {
+            "size": "small",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "medium",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "large",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "extralarge",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png"
+          }
+        ],
+        "streamable": {
+          "fulltrack": "0",
+          "#text": "0"
+        }
+      },
+      {
+        "artist": {
+          "url": "https://www.last.fm/music/Dead+Neanderthals",
+          "name": "Dead Neanderthals",
+          "mbid": "54b82685-a8c5-4852-b372-b1f830ac463f"
+        },
+        "date": {
+          "uts": "1724637844",
+          "#text": "26 Aug 2024, 02:04"
+        },
+        "mbid": "77c9763f-12ad-4a43-b3b0-57b61e03eb6c",
+        "url": "https://www.last.fm/music/Dead+Neanderthals/_/Necrology",
+        "name": "Necrology",
+        "image": [
+          {
+            "size": "small",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "medium",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "large",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "extralarge",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png"
+          }
+        ],
+        "streamable": {
+          "fulltrack": "0",
+          "#text": "0"
+        }
+      },
+      {
+        "artist": {
+          "url": "https://www.last.fm/music/Riding+the+Diplodoc",
+          "name": "Riding the Diplodoc",
+          "mbid": "95627ce6-eef3-4f3b-bff1-5c8102d2b1b5"
+        },
+        "date": {
+          "uts": "1724133560",
+          "#text": "20 Aug 2024, 05:59"
+        },
+        "mbid": "d6641fb0-d9d0-3930-b52d-a56dcbcff8e6",
+        "url": "https://www.last.fm/music/Riding+the+Diplodoc/_/And+so+i+took+it+from+Jafar",
+        "name": "And so i took it from Jafar",
+        "image": [
+          {
+            "size": "small",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "medium",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "large",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "extralarge",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png"
+          }
+        ],
+        "streamable": {
+          "fulltrack": "0",
+          "#text": "0"
+        }
+      },
+      {
+        "artist": {
+          "url": "https://www.last.fm/music/Blackbird+Interactive",
+          "name": "Blackbird Interactive",
+          "mbid": ""
+        },
+        "date": {
+          "uts": "1723691500",
+          "#text": "15 Aug 2024, 03:11"
+        },
+        "mbid": "",
+        "url": "https://www.last.fm/music/Blackbird+Interactive/_/Crows+Feet",
+        "name": "Crows Feet",
+        "image": [
+          {
+            "size": "small",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "medium",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "large",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "extralarge",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png"
+          }
+        ],
+        "streamable": {
+          "fulltrack": "0",
+          "#text": "0"
+        }
+      },
+      {
+        "artist": {
+          "url": "https://www.last.fm/music/AK%2FDK",
+          "name": "AK/DK",
+          "mbid": "13cd6f78-5b02-484c-b907-38d10ff764be"
+        },
+        "date": {
+          "uts": "1723689084",
+          "#text": "15 Aug 2024, 02:31"
+        },
+        "mbid": "80ff6dd3-67d9-429a-b99b-c74245e311ea",
+        "url": "https://www.last.fm/music/AK%2FDK/_/Morphology",
+        "name": "Morphology",
+        "image": [
+          {
+            "size": "small",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "medium",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "large",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "extralarge",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png"
+          }
+        ],
+        "streamable": {
+          "fulltrack": "0",
+          "#text": "0"
+        }
+      },
+      {
+        "artist": {
+          "url": "https://www.last.fm/music/Slipknot",
+          "name": "Slipknot",
+          "mbid": ""
+        },
+        "date": {
+          "uts": "1723689077",
+          "#text": "15 Aug 2024, 02:31"
+        },
+        "mbid": "0692129f-cfb5-4ca2-a2a5-e2c03251388f",
+        "url": "https://www.last.fm/music/Slipknot/_/Before+I+Forget",
+        "name": "Before I Forget",
+        "image": [
+          {
+            "size": "small",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "medium",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "large",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "extralarge",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png"
+          }
+        ],
+        "streamable": {
+          "fulltrack": "0",
+          "#text": "0"
+        }
+      },
+      {
+        "artist": {
+          "url": "https://www.last.fm/music/Slipknot",
+          "name": "Slipknot",
+          "mbid": ""
+        },
+        "date": {
+          "uts": "1723689075",
+          "#text": "15 Aug 2024, 02:31"
+        },
+        "mbid": "da617540-e973-4051-af08-1ce133d27318",
+        "url": "https://www.last.fm/music/Slipknot/_/Duality",
+        "name": "Duality",
+        "image": [
+          {
+            "size": "small",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "medium",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "large",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "extralarge",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png"
+          }
+        ],
+        "streamable": {
+          "fulltrack": "0",
+          "#text": "0"
+        }
+      },
+      {
+        "artist": {
+          "url": "https://www.last.fm/music/Agabas",
+          "name": "Agabas",
+          "mbid": "c0015349-755c-47b7-881f-7439246a0579"
+        },
+        "date": {
+          "uts": "1723174028",
+          "#text": "09 Aug 2024, 03:27"
+        },
+        "mbid": "",
+        "url": "https://www.last.fm/music/Agabas/_/Agabas",
+        "name": "Agabas",
+        "image": [
+          {
+            "size": "small",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "medium",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "large",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "extralarge",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png"
+          }
+        ],
+        "streamable": {
+          "fulltrack": "0",
+          "#text": "0"
+        }
+      },
+      {
+        "artist": {
+          "url": "https://www.last.fm/music/Youthmovie+Soundtrack+Strategies",
+          "name": "Youthmovie Soundtrack Strategies",
+          "mbid": "685f460c-168c-4883-9b10-1c88636a3979"
+        },
+        "date": {
+          "uts": "1722755254",
+          "#text": "04 Aug 2024, 07:07"
+        },
+        "mbid": "9b7ebadf-7d39-4179-9f66-0193f4abe619",
+        "url": "https://www.last.fm/music/Youthmovie+Soundtrack+Strategies/_/A+Little+Late+He+Staggered+Through+the+Door+and+Into+Her+Eyes",
+        "name": "A Little Late He Staggered Through the Door and Into Her Eyes",
+        "image": [
+          {
+            "size": "small",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "medium",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "large",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "extralarge",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png"
+          }
+        ],
+        "streamable": {
+          "fulltrack": "0",
+          "#text": "0"
+        }
+      },
+      {
+        "artist": {
+          "url": "https://www.last.fm/music/Youthmovie+Soundtrack+Strategies",
+          "name": "Youthmovie Soundtrack Strategies",
+          "mbid": "685f460c-168c-4883-9b10-1c88636a3979"
+        },
+        "date": {
+          "uts": "1722597045",
+          "#text": "02 Aug 2024, 11:10"
+        },
+        "mbid": "",
+        "url": "https://www.last.fm/music/Youthmovie+Soundtrack+Strategies/_/Spooks+The+Horse",
+        "name": "Spooks The Horse",
+        "image": [
+          {
+            "size": "small",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "medium",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "large",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "extralarge",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png"
+          }
+        ],
+        "streamable": {
+          "fulltrack": "0",
+          "#text": "0"
+        }
+      },
+      {
+        "artist": {
+          "url": "https://www.last.fm/music/Clown+Core",
+          "name": "Clown Core",
+          "mbid": "bf5ebc9a-2118-49ec-91b6-c43305190628"
+        },
+        "date": {
+          "uts": "1722597042",
+          "#text": "02 Aug 2024, 11:10"
+        },
+        "mbid": "0c899160-aef4-4915-8c9a-cf8efa3e0f07",
+        "url": "https://www.last.fm/music/Clown+Core/_/Computers",
+        "name": "Computers",
+        "image": [
+          {
+            "size": "small",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "medium",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "large",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "extralarge",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png"
+          }
+        ],
+        "streamable": {
+          "fulltrack": "0",
+          "#text": "0"
+        }
+      },
+      {
+        "artist": {
+          "url": "https://www.last.fm/music/MASTER+BOOT+RECORD",
+          "name": "MASTER BOOT RECORD",
+          "mbid": "604dd351-5f3a-479f-b33a-615db3b2dcfb"
+        },
+        "date": {
+          "uts": "1721381006",
+          "#text": "19 Jul 2024, 09:23"
+        },
+        "mbid": "",
+        "url": "https://www.last.fm/music/MASTER+BOOT+RECORD/_/XCOPY.EXE",
+        "name": "XCOPY.EXE",
+        "image": [
+          {
+            "size": "small",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "medium",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "large",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "extralarge",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png"
+          }
+        ],
+        "streamable": {
+          "fulltrack": "0",
+          "#text": "0"
+        }
+      },
+      {
+        "artist": {
+          "url": "https://www.last.fm/music/Dubmood",
+          "name": "Dubmood",
+          "mbid": "ae0534cf-9061-4825-96e7-7d8eba90dd9b"
+        },
+        "date": {
+          "uts": "1721367941",
+          "#text": "19 Jul 2024, 05:45"
+        },
+        "mbid": "0137b223-0065-4a04-a380-07c52bd36127",
+        "url": "https://www.last.fm/music/Dubmood/_/We+Have+Accidentally+Borrowed+Your+Votedisk+(MASTER+BOOT+RECORD+Remix)",
+        "name": "We Have Accidentally Borrowed Your Votedisk (MASTER BOOT RECORD Remix)",
+        "image": [
+          {
+            "size": "small",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "medium",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "large",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "extralarge",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png"
+          }
+        ],
+        "streamable": {
+          "fulltrack": "0",
+          "#text": "0"
+        }
+      },
+      {
+        "artist": {
+          "url": "https://www.last.fm/music/Cerberus+Shoal",
+          "name": "Cerberus Shoal",
+          "mbid": "fe598e48-59a0-4fac-8670-166e6553a947"
+        },
+        "date": {
+          "uts": "1721209701",
+          "#text": "17 Jul 2024, 09:48"
+        },
+        "mbid": "77c4d36e-9976-363e-b2d1-df6547141d0e",
+        "url": "https://www.last.fm/music/Cerberus+Shoal/_/Make+Winter+a+Driving+Song",
+        "name": "Make Winter a Driving Song",
+        "image": [
+          {
+            "size": "small",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "medium",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "large",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "extralarge",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png"
+          }
+        ],
+        "streamable": {
+          "fulltrack": "0",
+          "#text": "0"
+        }
+      },
+      {
+        "artist": {
+          "url": "https://www.last.fm/music/The+Sugarcubes",
+          "name": "The Sugarcubes",
+          "mbid": "95303251-46d5-4239-89c8-eaf0b0947a11"
+        },
+        "date": {
+          "uts": "1721180052",
+          "#text": "17 Jul 2024, 01:34"
+        },
+        "mbid": "f66dec24-f89e-462e-90c8-de4696041421",
+        "url": "https://www.last.fm/music/The+Sugarcubes/_/Birthday",
+        "name": "Birthday",
+        "image": [
+          {
+            "size": "small",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "medium",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "large",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "extralarge",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png"
+          }
+        ],
+        "streamable": {
+          "fulltrack": "0",
+          "#text": "0"
+        }
+      },
+      {
+        "artist": {
+          "url": "https://www.last.fm/music/Chappell+Roan",
+          "name": "Chappell Roan",
+          "mbid": "56a55378-f155-48de-80a5-d80104221267"
+        },
+        "date": {
+          "uts": "1720953263",
+          "#text": "14 Jul 2024, 10:34"
+        },
+        "mbid": "e619cd9d-ee35-4e37-8ee1-51b992ab95d7",
+        "url": "https://www.last.fm/music/Chappell+Roan/_/HOT+TO+GO!",
+        "name": "HOT TO GO!",
+        "image": [
+          {
+            "size": "small",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "medium",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "large",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "extralarge",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png"
+          }
+        ],
+        "streamable": {
+          "fulltrack": "0",
+          "#text": "0"
+        }
+      },
+      {
+        "artist": {
+          "url": "https://www.last.fm/music/The+Cabs",
+          "name": "The Cabs",
+          "mbid": "cba4d013-d8a4-419a-a554-b8e3a94e54eb"
+        },
+        "date": {
+          "uts": "1720600708",
+          "#text": "10 Jul 2024, 08:38"
+        },
+        "mbid": "15358423-8605-4ba1-8d5f-9a7f43ade052",
+        "url": "https://www.last.fm/music/The+Cabs/_/nicol+kills+nicolas+for+nicola",
+        "name": "nicol kills nicolas for nicola",
+        "image": [
+          {
+            "size": "small",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "medium",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "large",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "extralarge",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png"
+          }
+        ],
+        "streamable": {
+          "fulltrack": "0",
+          "#text": "0"
+        }
+      },
+      {
+        "artist": {
+          "url": "https://www.last.fm/music/The+Cabs",
+          "name": "The Cabs",
+          "mbid": "cba4d013-d8a4-419a-a554-b8e3a94e54eb"
+        },
+        "date": {
+          "uts": "1720600708",
+          "#text": "10 Jul 2024, 08:38"
+        },
+        "mbid": "",
+        "url": "https://www.last.fm/music/The+Cabs/_/kugatu+ha+sannbikaniyoru",
+        "name": "kugatu ha sannbikaniyoru",
+        "image": [
+          {
+            "size": "small",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "medium",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "large",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "extralarge",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png"
+          }
+        ],
+        "streamable": {
+          "fulltrack": "0",
+          "#text": "0"
+        }
+      },
+      {
+        "artist": {
+          "url": "https://www.last.fm/music/The+Cabs",
+          "name": "The Cabs",
+          "mbid": "cba4d013-d8a4-419a-a554-b8e3a94e54eb"
+        },
+        "date": {
+          "uts": "1720600707",
+          "#text": "10 Jul 2024, 08:38"
+        },
+        "mbid": "83c40b3f-3605-4070-83cf-9e1483e28cf5",
+        "url": "https://www.last.fm/music/The+Cabs/_/haiku+about+kdyla",
+        "name": "haiku about kdyla",
+        "image": [
+          {
+            "size": "small",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "medium",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "large",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "extralarge",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png"
+          }
+        ],
+        "streamable": {
+          "fulltrack": "0",
+          "#text": "0"
+        }
+      },
+      {
+        "artist": {
+          "url": "https://www.last.fm/music/The+Cabs",
+          "name": "The Cabs",
+          "mbid": "cba4d013-d8a4-419a-a554-b8e3a94e54eb"
+        },
+        "date": {
+          "uts": "1720600707",
+          "#text": "10 Jul 2024, 08:38"
+        },
+        "mbid": "",
+        "url": "https://www.last.fm/music/The+Cabs/_/no+future+for+us",
+        "name": "no future for us",
+        "image": [
+          {
+            "size": "small",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "medium",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "large",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "extralarge",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png"
+          }
+        ],
+        "streamable": {
+          "fulltrack": "0",
+          "#text": "0"
+        }
+      },
+      {
+        "artist": {
+          "url": "https://www.last.fm/music/The+Cabs",
+          "name": "The Cabs",
+          "mbid": "cba4d013-d8a4-419a-a554-b8e3a94e54eb"
+        },
+        "date": {
+          "uts": "1720600705",
+          "#text": "10 Jul 2024, 08:38"
+        },
+        "mbid": "",
+        "url": "https://www.last.fm/music/The+Cabs/_/nigastu+no+heitai",
+        "name": "nigastu no heitai",
+        "image": [
+          {
+            "size": "small",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "medium",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "large",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "extralarge",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png"
+          }
+        ],
+        "streamable": {
+          "fulltrack": "0",
+          "#text": "0"
+        }
+      },
+      {
+        "artist": {
+          "url": "https://www.last.fm/music/The+Cabs",
+          "name": "The Cabs",
+          "mbid": "cba4d013-d8a4-419a-a554-b8e3a94e54eb"
+        },
+        "date": {
+          "uts": "1720600704",
+          "#text": "10 Jul 2024, 08:38"
+        },
+        "mbid": "bf69f0cd-37a8-43de-a75f-f0f4c342124e",
+        "url": "https://www.last.fm/music/The+Cabs/_/For+Charles+Bronson",
+        "name": "For Charles Bronson",
+        "image": [
+          {
+            "size": "small",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "medium",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "large",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "extralarge",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png"
+          }
+        ],
+        "streamable": {
+          "fulltrack": "0",
+          "#text": "0"
+        }
+      },
+      {
+        "artist": {
+          "url": "https://www.last.fm/music/AK%2FDK",
+          "name": "AK/DK",
+          "mbid": "13cd6f78-5b02-484c-b907-38d10ff764be"
+        },
+        "date": {
+          "uts": "1720353558",
+          "#text": "07 Jul 2024, 11:59"
+        },
+        "mbid": "69bef650-66d6-43bb-a8ba-35fd731c1fd7",
+        "url": "https://www.last.fm/music/AK%2FDK/_/Maxwell%27s+Waves",
+        "name": "Maxwell's Waves",
+        "image": [
+          {
+            "size": "small",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "medium",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "large",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "extralarge",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png"
+          }
+        ],
+        "streamable": {
+          "fulltrack": "0",
+          "#text": "0"
+        }
+      },
+      {
+        "artist": {
+          "url": "https://www.last.fm/music/Townes+Van+Zandt",
+          "name": "Townes Van Zandt",
+          "mbid": "d67d1a21-6e45-4dd6-aef0-0191ba3796e0"
+        },
+        "date": {
+          "uts": "1720236587",
+          "#text": "06 Jul 2024, 03:29"
+        },
+        "mbid": "6599b5ec-9f4c-35bd-ba5f-c5600ad97fcb",
+        "url": "https://www.last.fm/music/+noredirect/Townes+Van+Zandt/_/Two+Girls+-+Live",
+        "name": "Two Girls - Live",
+        "image": [
+          {
+            "size": "small",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "medium",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "large",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "extralarge",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png"
+          }
+        ],
+        "streamable": {
+          "fulltrack": "0",
+          "#text": "0"
+        }
+      },
+      {
+        "artist": {
+          "url": "https://www.last.fm/music/Townes+Van+Zandt",
+          "name": "Townes Van Zandt",
+          "mbid": ""
+        },
+        "date": {
+          "uts": "1720236585",
+          "#text": "06 Jul 2024, 03:29"
+        },
+        "mbid": "",
+        "url": "https://www.last.fm/music/Townes+Van+Zandt/_/Fraternity+Blues+-+Live",
+        "name": "Fraternity Blues - Live",
+        "image": [
+          {
+            "size": "small",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "medium",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "large",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "extralarge",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png"
+          }
+        ],
+        "streamable": {
+          "fulltrack": "0",
+          "#text": "0"
+        }
+      },
+      {
+        "artist": {
+          "url": "https://www.last.fm/music/Clown+Core",
+          "name": "Clown Core",
+          "mbid": "bf5ebc9a-2118-49ec-91b6-c43305190628"
+        },
+        "date": {
+          "uts": "1720088079",
+          "#text": "04 Jul 2024, 10:14"
+        },
+        "mbid": "23f89e41-07b1-4bea-8c83-6346fd572e8c",
+        "url": "https://www.last.fm/music/Clown+Core/_/Two",
+        "name": "Two",
+        "image": [
+          {
+            "size": "small",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "medium",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "large",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "extralarge",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png"
+          }
+        ],
+        "streamable": {
+          "fulltrack": "0",
+          "#text": "0"
+        }
+      },
+      {
+        "artist": {
+          "url": "https://www.last.fm/music/Deafheaven",
+          "name": "Deafheaven",
+          "mbid": "f4ccf6c5-ad41-4f8f-bb9e-6e2c6ad23302"
+        },
+        "date": {
+          "uts": "1719990784",
+          "#text": "03 Jul 2024, 07:13"
+        },
+        "mbid": "63ea003f-3769-4513-81c4-26f37d83f8f0",
+        "url": "https://www.last.fm/music/Deafheaven/_/Dream+House",
+        "name": "Dream House",
+        "image": [
+          {
+            "size": "small",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "medium",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "large",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "extralarge",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png"
+          }
+        ],
+        "streamable": {
+          "fulltrack": "0",
+          "#text": "0"
+        }
+      },
+      {
+        "artist": {
+          "url": "https://www.last.fm/music/AK%2FDK",
+          "name": "AK/DK",
+          "mbid": "13cd6f78-5b02-484c-b907-38d10ff764be"
+        },
+        "date": {
+          "uts": "1719907858",
+          "#text": "02 Jul 2024, 08:10"
+        },
+        "mbid": "",
+        "url": "https://www.last.fm/music/AK%2FDK/_/Feeds",
+        "name": "Feeds",
+        "image": [
+          {
+            "size": "small",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "medium",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "large",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "extralarge",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png"
+          }
+        ],
+        "streamable": {
+          "fulltrack": "0",
+          "#text": "0"
+        }
+      },
+      {
+        "artist": {
+          "url": "https://www.last.fm/music/Carpenter+Brut",
+          "name": "Carpenter Brut",
+          "mbid": "303abdee-ffca-4685-a582-6aaaefd81b01"
+        },
+        "date": {
+          "uts": "1719814532",
+          "#text": "01 Jul 2024, 06:15"
+        },
+        "mbid": "98f4e462-ccdb-492e-9d11-d628556ec1b2",
+        "url": "https://www.last.fm/music/Carpenter+Brut/_/Sexkiller+on+the+Loose",
+        "name": "Sexkiller on the Loose",
+        "image": [
+          {
+            "size": "small",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "medium",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "large",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "extralarge",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png"
+          }
+        ],
+        "streamable": {
+          "fulltrack": "0",
+          "#text": "0"
+        }
+      },
+      {
+        "artist": {
+          "url": "https://www.last.fm/music/Carpenter+Brut",
+          "name": "Carpenter Brut",
+          "mbid": "303abdee-ffca-4685-a582-6aaaefd81b01"
+        },
+        "date": {
+          "uts": "1719813586",
+          "#text": "01 Jul 2024, 05:59"
+        },
+        "mbid": "018b493a-c999-4eb5-9075-203f3b04de25",
+        "url": "https://www.last.fm/music/Carpenter+Brut/_/Roller+Mobster",
+        "name": "Roller Mobster",
+        "image": [
+          {
+            "size": "small",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "medium",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "large",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "extralarge",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png"
+          }
+        ],
+        "streamable": {
+          "fulltrack": "0",
+          "#text": "0"
+        }
+      },
+      {
+        "artist": {
+          "url": "https://www.last.fm/music/Doddodo",
+          "name": "Doddodo",
+          "mbid": "8778c84d-bd74-408b-9f09-bb90301e4282"
+        },
+        "date": {
+          "uts": "1719561643",
+          "#text": "28 Jun 2024, 08:00"
+        },
+        "mbid": "c0d93b48-685e-4c03-9418-2ef76d063083",
+        "url": "https://www.last.fm/music/Doddodo/_/exciseise+of+mouth",
+        "name": "exciseise of mouth",
+        "image": [
+          {
+            "size": "small",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "medium",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "large",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "extralarge",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png"
+          }
+        ],
+        "streamable": {
+          "fulltrack": "0",
+          "#text": "0"
+        }
+      },
+      {
+        "artist": {
+          "url": "https://www.last.fm/music/Carpenter+Brut",
+          "name": "Carpenter Brut",
+          "mbid": "303abdee-ffca-4685-a582-6aaaefd81b01"
+        },
+        "date": {
+          "uts": "1719496580",
+          "#text": "27 Jun 2024, 13:56"
+        },
+        "mbid": "2e615924-2d75-486c-8f70-33fdd1f1440d",
+        "url": "https://www.last.fm/music/Carpenter+Brut/_/Maniac",
+        "name": "Maniac",
+        "image": [
+          {
+            "size": "small",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "medium",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "large",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "extralarge",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png"
+          }
+        ],
+        "streamable": {
+          "fulltrack": "0",
+          "#text": "0"
+        }
+      },
+      {
+        "artist": {
+          "url": "https://www.last.fm/music/Carpenter+Brut",
+          "name": "Carpenter Brut",
+          "mbid": "303abdee-ffca-4685-a582-6aaaefd81b01"
+        },
+        "date": {
+          "uts": "1719496579",
+          "#text": "27 Jun 2024, 13:56"
+        },
+        "mbid": "1a3b36fc-80fa-4ccb-b07d-bba4b8d61d12",
+        "url": "https://www.last.fm/music/Carpenter+Brut/_/Turbo+Killer",
+        "name": "Turbo Killer",
+        "image": [
+          {
+            "size": "small",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "medium",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "large",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "extralarge",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png"
+          }
+        ],
+        "streamable": {
+          "fulltrack": "0",
+          "#text": "0"
+        }
+      },
+      {
+        "artist": {
+          "url": "https://www.last.fm/music/Charli+XCX",
+          "name": "Charli XCX",
+          "mbid": "260b6184-8828-48eb-945c-bc4cb6fc34ca"
+        },
+        "date": {
+          "uts": "1719496577",
+          "#text": "27 Jun 2024, 13:56"
+        },
+        "mbid": "6f4f3e69-e428-4034-8b8f-23b97573b8d2",
+        "url": "https://www.last.fm/music/Charli+XCX/_/the+girl,+so+confusing+version+with+lorde",
+        "name": "the girl, so confusing version with lorde",
+        "image": [
+          {
+            "size": "small",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "medium",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "large",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "extralarge",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png"
+          }
+        ],
+        "streamable": {
+          "fulltrack": "0",
+          "#text": "0"
+        }
+      },
+      {
+        "artist": {
+          "url": "https://www.last.fm/music/Townes+Van+Zandt",
+          "name": "Townes Van Zandt",
+          "mbid": "d67d1a21-6e45-4dd6-aef0-0191ba3796e0"
+        },
+        "date": {
+          "uts": "1719496573",
+          "#text": "27 Jun 2024, 13:56"
+        },
+        "mbid": "",
+        "url": "https://www.last.fm/music/Townes+Van+Zandt/_/Pancho+&+Lefty+-+Live",
+        "name": "Pancho & Lefty - Live",
+        "image": [
+          {
+            "size": "small",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "medium",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "large",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "extralarge",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png"
+          }
+        ],
+        "streamable": {
+          "fulltrack": "0",
+          "#text": "0"
+        }
+      },
+      {
+        "artist": {
+          "url": "https://www.last.fm/music/Townes+Van+Zandt",
+          "name": "Townes Van Zandt",
+          "mbid": ""
+        },
+        "date": {
+          "uts": "1719496572",
+          "#text": "27 Jun 2024, 13:56"
+        },
+        "mbid": "",
+        "url": "https://www.last.fm/music/Townes+Van+Zandt/_/Mr.+Mudd+&+Mr.+Gold+-+Live",
+        "name": "Mr. Mudd & Mr. Gold - Live",
+        "image": [
+          {
+            "size": "small",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "medium",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "large",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "extralarge",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png"
+          }
+        ],
+        "streamable": {
+          "fulltrack": "0",
+          "#text": "0"
+        }
+      },
+      {
+        "artist": {
+          "url": "https://www.last.fm/music/AK%2FDK",
+          "name": "AK/DK",
+          "mbid": "13cd6f78-5b02-484c-b907-38d10ff764be"
+        },
+        "date": {
+          "uts": "1719381052",
+          "#text": "26 Jun 2024, 05:50"
+        },
+        "mbid": "4010715c-8130-40d9-af7f-837898ab8cdc",
+        "url": "https://www.last.fm/music/AK%2FDK/_/C-Beams",
+        "name": "C-Beams",
+        "image": [
+          {
+            "size": "small",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "medium",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "large",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "extralarge",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png"
+          }
+        ],
+        "streamable": {
+          "fulltrack": "0",
+          "#text": "0"
+        }
+      },
+      {
+        "artist": {
+          "url": "https://www.last.fm/music/AK%2FDK",
+          "name": "AK/DK",
+          "mbid": "13cd6f78-5b02-484c-b907-38d10ff764be"
+        },
+        "date": {
+          "uts": "1719379984",
+          "#text": "26 Jun 2024, 05:33"
+        },
+        "mbid": "2efe2a94-80cc-460a-8e88-5504b6044f9e",
+        "url": "https://www.last.fm/music/AK%2FDK/_/Random+Resonant+Arp+Disco",
+        "name": "Random Resonant Arp Disco",
+        "image": [
+          {
+            "size": "small",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "medium",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "large",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "extralarge",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png"
+          }
+        ],
+        "streamable": {
+          "fulltrack": "0",
+          "#text": "0"
+        }
+      },
+      {
+        "artist": {
+          "url": "https://www.last.fm/music/NYOS",
+          "name": "NYOS",
+          "mbid": "89301fa6-6455-4cfb-8d99-c390cb5c350a"
+        },
+        "date": {
+          "uts": "1718877784",
+          "#text": "20 Jun 2024, 10:03"
+        },
+        "mbid": "d5d094d5-1991-48d3-9a21-9c46f7b2f35f",
+        "url": "https://www.last.fm/music/NYOS/_/Mutante",
+        "name": "Mutante",
+        "image": [
+          {
+            "size": "small",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "medium",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "large",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "extralarge",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png"
+          }
+        ],
+        "streamable": {
+          "fulltrack": "0",
+          "#text": "0"
+        }
+      },
+      {
+        "artist": {
+          "url": "https://www.last.fm/music/NYOS",
+          "name": "NYOS",
+          "mbid": "89301fa6-6455-4cfb-8d99-c390cb5c350a"
+        },
+        "date": {
+          "uts": "1718874666",
+          "#text": "20 Jun 2024, 09:11"
+        },
+        "mbid": "1586c732-67ec-4840-ac8f-d756c1f4bc6c",
+        "url": "https://www.last.fm/music/NYOS/_/Urgence",
+        "name": "Urgence",
+        "image": [
+          {
+            "size": "small",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "medium",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "large",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "extralarge",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png"
+          }
+        ],
+        "streamable": {
+          "fulltrack": "0",
+          "#text": "0"
+        }
+      },
+      {
+        "artist": {
+          "url": "https://www.last.fm/music/Townes+Van+Zandt",
+          "name": "Townes Van Zandt",
+          "mbid": "d67d1a21-6e45-4dd6-aef0-0191ba3796e0"
+        },
+        "date": {
+          "uts": "1718373657",
+          "#text": "14 Jun 2024, 14:00"
+        },
+        "mbid": "0663e456-90b4-4a1f-9406-ce788e2627c6",
+        "url": "https://www.last.fm/music/Townes+Van+Zandt/_/Lungs",
+        "name": "Lungs",
+        "image": [
+          {
+            "size": "small",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "medium",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "large",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "extralarge",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png"
+          }
+        ],
+        "streamable": {
+          "fulltrack": "0",
+          "#text": "0"
+        }
+      },
+      {
+        "artist": {
+          "url": "https://www.last.fm/music/Townes+Van+Zandt",
+          "name": "Townes Van Zandt",
+          "mbid": "d67d1a21-6e45-4dd6-aef0-0191ba3796e0"
+        },
+        "date": {
+          "uts": "1718372984",
+          "#text": "14 Jun 2024, 13:49"
+        },
+        "mbid": "",
+        "url": "https://www.last.fm/music/Townes+Van+Zandt/_/Waiting+Around+To+Die",
+        "name": "Waiting Around To Die",
+        "image": [
+          {
+            "size": "small",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "medium",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "large",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "extralarge",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png"
+          }
+        ],
+        "streamable": {
+          "fulltrack": "0",
+          "#text": "0"
+        }
+      },
+      {
+        "artist": {
+          "url": "https://www.last.fm/music/La+Dispute",
+          "name": "La Dispute",
+          "mbid": "2ec89bcc-5bf9-4d2a-ac5e-44b7496d115a"
+        },
+        "date": {
+          "uts": "1718190718",
+          "#text": "12 Jun 2024, 11:11"
+        },
+        "mbid": "38c38358-26ab-40ea-9547-804d4893773c",
+        "url": "https://www.last.fm/music/La+Dispute/_/Damaged+Goods",
+        "name": "Damaged Goods",
+        "image": [
+          {
+            "size": "small",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "medium",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "large",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "extralarge",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png"
+          }
+        ],
+        "streamable": {
+          "fulltrack": "0",
+          "#text": "0"
+        }
+      },
+      {
+        "artist": {
+          "url": "https://www.last.fm/music/Cuzco",
+          "name": "Cuzco",
+          "mbid": "89c4d189-b6c9-4cff-bd0b-5389765599f6"
+        },
+        "date": {
+          "uts": "1718097082",
+          "#text": "11 Jun 2024, 09:11"
+        },
+        "mbid": "",
+        "url": "https://www.last.fm/music/Cuzco/_/We+Miss+You,+Clever+Girl",
+        "name": "We Miss You, Clever Girl",
+        "image": [
+          {
+            "size": "small",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "medium",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "large",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png"
+          },
+          {
+            "size": "extralarge",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png"
+          }
+        ],
+        "streamable": {
+          "fulltrack": "0",
+          "#text": "0"
+        }
+      }
+    ],
+    "@attr": {
+      "user": "jammus",
+      "totalPages": "16",
+      "page": "1",
+      "perPage": "50",
+      "total": "793"
+    }
+  }
+}
