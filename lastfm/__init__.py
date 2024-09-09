@@ -95,26 +95,18 @@ class LastFM:
         session.close()
 
 
-def process_recent_tracks_response(page):
+def process_tracks_response(page):
     """Yield specific k:v items of each song within page."""
     for song in page:
-        date = song.get("date", "")
-        yield {
-            "artist": song["artist"]["#text"],
-            "album": song["album"]["#text"],
-            "song": song["name"],
+        date = song.get("date", None)
+        album = song.get("album", {}).get("#text", None)
+        item = {
+            "artist": song.get("artist", {}).get("name", None) or \
+                        song.get("artist", {}).get("#text", ""),
+            "song": song.get("name", None),
             "uts_timestamp": int(date["uts"]) if date else "",
             "datetime": date["#text"] if date else "",
         }
-
-
-def process_loved_tracks_response(page):
-    """Yield specific k:v items of each song within page."""
-    for song in page:
-        date = song.get("date", "")
-        yield {
-            "artist": song["artist"]["name"],
-            "song": song["name"],
-            "uts_timestamp": int(date["uts"]) if date else "",
-            "datetime": date["#text"] if date else "",
-        }
+        if album is not None:
+            item["album"] = album
+        yield item

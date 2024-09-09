@@ -2,7 +2,7 @@ import os
 import json
 import pytest
 import datetime
-from lastfm import LastFM, process_loved_tracks_response, process_recent_tracks_response
+from lastfm import LastFM, process_tracks_response
 
 def load_json(filename):
     cwd = os.getcwd()
@@ -36,10 +36,11 @@ def test_convert_to_timestamp(api, date):
     assert isinstance(api._convert_to_timestamp(date), int)
 
 def test_process_recent_tracks_response(page):
-    data = process_recent_tracks_response(page)
+    data = process_tracks_response(page)
     song = next(data)
     assert isinstance(song, dict)
-    assert set(song.keys()) == {"artist", "album", "song", "uts_timestamp", "datetime"}
+    assert set(song.keys()) == set(["artist", "album", "song", "uts_timestamp",
+                                    "datetime"])
     assert song["artist"] == "Lera Lynn"
     assert song["song"] == "Lately (From The HBO Series \"True Detective\")"
     assert song["album"] == "True Detective (Music From the HBO Series)"
@@ -47,10 +48,11 @@ def test_process_recent_tracks_response(page):
     assert song["datetime"] == "25 Oct 2020, 10:36"
 
 def test_process_loved_tracks_response(loves_page):
-    data = process_loved_tracks_response(loves_page)
+    data = process_tracks_response(loves_page)
     love = next(data)
     assert isinstance(love, dict)
-    assert set(love.keys()) == {"artist", "song", "uts_timestamp", "datetime"}
+    assert set(love.keys()) == set(["artist", "song", "uts_timestamp",
+                                    "datetime"])
     assert love["artist"] == "65daysofstatic"
     assert love["song"] == "SynthFlood"
     assert love["uts_timestamp"] == 1725597832

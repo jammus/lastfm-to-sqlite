@@ -2,7 +2,7 @@
 import click
 from itertools import chain
 from sqlite_utils import Database
-from lastfm import LastFM, process_recent_tracks_response, process_loved_tracks_response
+from lastfm import LastFM, process_tracks_response
 
 
 formats = [LastFM.DATE_FORMAT]
@@ -57,7 +57,7 @@ def export_playlist(
     first_page, metadata = next(data)
     with click.progressbar(length=int(metadata["total"]), label="Fetching recent tracks") as bar:
         for idx, (page, _) in enumerate(chain([(first_page, metadata)], data)):
-            for recent_track in process_recent_tracks_response(page):
+            for recent_track in process_tracks_response(page):
                 tracks_table.upsert(recent_track, pk="uts_timestamp")
                 bar.update(1)
 
@@ -65,7 +65,7 @@ def export_playlist(
     first_page, metadata = next(data)
     with click.progressbar(length=int(metadata["total"]), label="Fetching loves") as bar:
         for idx, (page, _) in enumerate(chain([(first_page, metadata)], data)):
-            for recent_track in process_loved_tracks_response(page):
+            for recent_track in process_tracks_response(page):
                 loves_table.upsert(recent_track, pk="uts_timestamp")
                 bar.update(1)
 
