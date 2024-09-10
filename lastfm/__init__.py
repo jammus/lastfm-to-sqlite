@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import datetime
+from typing import List
 import requests
 from time import sleep
 
@@ -98,6 +99,8 @@ class LastFM:
 def process_tracks_response(page):
     """Yield specific k:v items of each song within page."""
     for song in page:
+        if song.get("@attr", {}).get("nowplaying"):
+            continue
         date = song.get("date", None)
         album = song.get("album", {}).get("#text", None)
         item = {

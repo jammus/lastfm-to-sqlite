@@ -11,12 +11,17 @@ def load_json(filename):
         return json.load(f)
 
 @pytest.fixture
-def recenttracks_page():    
+def recenttracks_page():
     page = load_json("sample_recent_tracks_dump.json")
     return page['recenttracks']['track']
 
 @pytest.fixture
-def loves_page():    
+def recenttracks_with_now_playing_page():
+    page = load_json("sample_recent_tracks_dump_with_nowplaying.json")
+    return page['recenttracks']['track']
+
+@pytest.fixture
+def loves_page():
     page = load_json("sample_loves_dump.json")
     return page['lovedtracks']['track']
 
@@ -57,3 +62,9 @@ def test_process_loved_tracks_response(loves_page):
     assert love["song"] == "SynthFlood"
     assert love["uts_timestamp"] == 1725597832
     assert love["datetime"] == "06 Sep 2024, 04:43"
+
+def test_skips_now_playing_tracks(recenttracks_with_now_playing_page):
+    data = process_tracks_response(recenttracks_with_now_playing_page)
+    track = next(data)
+    assert isinstance(track, dict)
+    assert track["artist"] == "Colossal Squid"
