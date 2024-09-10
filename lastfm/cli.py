@@ -57,16 +57,16 @@ def export_playlist(
     first_page, metadata = next(data)
     with click.progressbar(length=int(metadata["total"]), label="Fetching recent tracks") as bar:
         for idx, (page, _) in enumerate(chain([(first_page, metadata)], data)):
-            for recent_track in process_tracks_response(page):
-                tracks_table.upsert(recent_track, pk="uts_timestamp")
+            for track in process_tracks_response(page):
+                tracks_table.upsert(track, pk="uts_timestamp")
                 bar.update(1)
 
     data = api.fetch_loved_tracks()
     first_page, metadata = next(data)
     with click.progressbar(length=int(metadata["total"]), label="Fetching loves") as bar:
         for idx, (page, _) in enumerate(chain([(first_page, metadata)], data)):
-            for recent_track in process_tracks_response(page):
-                loves_table.upsert(recent_track, pk="uts_timestamp")
+            for love in process_tracks_response(page):
+                loves_table.upsert(love, pk="uts_timestamp")
                 bar.update(1)
 
 if __name__ == "__main__":

@@ -11,7 +11,7 @@ def load_json(filename):
         return json.load(f)
 
 @pytest.fixture
-def page():    
+def recenttracks_page():    
     page = load_json("sample_recent_tracks_dump.json")
     return page['recenttracks']['track']
 
@@ -35,8 +35,8 @@ def api(apikey, date):
 def test_convert_to_timestamp(api, date):
     assert isinstance(api._convert_to_timestamp(date), int)
 
-def test_process_recent_tracks_response(page):
-    data = process_tracks_response(page)
+def test_process_recent_tracks_response(recenttracks_page):
+    data = process_tracks_response(recenttracks_page)
     song = next(data)
     assert isinstance(song, dict)
     assert set(song.keys()) == set(["artist", "album", "song", "uts_timestamp",
