@@ -102,7 +102,6 @@ def process_tracks_response(page):
         if song.get("@attr", {}).get("nowplaying"):
             continue
         date = song.get("date", None)
-        album = song.get("album", {}).get("#text", None)
         item = {
             "artist": song.get("artist", {}).get("name", None) or \
                         song.get("artist", {}).get("#text", ""),
@@ -110,6 +109,7 @@ def process_tracks_response(page):
             "uts_timestamp": int(date["uts"]) if date else "",
             "datetime": date["#text"] if date else "",
         }
+        album = song.get("album", {}).get("#text", None)
         if album is not None:
             item["album"] = album
         yield item
