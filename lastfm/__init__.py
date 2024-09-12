@@ -2,6 +2,7 @@
 import datetime
 from typing import List
 import requests
+from sqlite_utils import Database
 from time import sleep
 
 
@@ -113,3 +114,12 @@ def process_tracks_response(page):
         if album is not None:
             item["album"] = album
         yield item
+
+
+def save_recent_track(db: Database, recent_track):
+    db["playlist"].upsert(recent_track, pk="uts_timestamp")
+
+
+def save_track(db: Database, recent_track):
+    track = { key: recent_track[key] for key in ["song", "artist"] }
+    db["tracks"].upsert(track, pk=["artist", "song"])
