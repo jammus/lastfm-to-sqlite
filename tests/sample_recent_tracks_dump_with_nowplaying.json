@@ -1,0 +1,84 @@
+{
+  "recenttracks": {
+    "track": [
+      {
+        "artist": {
+          "mbid": "efa2c11a-1a35-4b60-bc1b-66d37de88511",
+          "#text": "DJ Shadow"
+        },
+        "streamable": "0",
+        "image": [
+          {
+            "size": "small",
+            "#text": ""
+          },
+          {
+            "size": "medium",
+            "#text": ""
+          },
+          {
+            "size": "large",
+            "#text": ""
+          },
+          {
+            "size": "extralarge",
+            "#text": ""
+          }
+        ],
+        "mbid": "c3809697-2c78-4584-aaa3-a978187f0bab",
+        "album": {
+          "mbid": "",
+          "#text": ""
+        },
+        "name": "Nobody Speak",
+        "@attr": {
+          "nowplaying": "true"
+        },
+        "url": "https://www.last.fm/music/DJ+Shadow/_/Nobody+Speak"
+      },
+      {
+        "artist": {
+          "mbid": "",
+          "#text": "Colossal Squid"
+        },
+        "streamable": "0",
+        "image": [
+          {
+            "size": "small",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/34s/9dc1268ed8df298a7392455e71b9576e.jpg"
+          },
+          {
+            "size": "medium",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/64s/9dc1268ed8df298a7392455e71b9576e.jpg"
+          },
+          {
+            "size": "large",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/174s/9dc1268ed8df298a7392455e71b9576e.jpg"
+          },
+          {
+            "size": "extralarge",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/9dc1268ed8df298a7392455e71b9576e.jpg"
+          }
+        ],
+        "mbid": "",
+        "album": {
+          "mbid": "26dc1641-fd8a-4216-b0d9-8b1f9bcbf0a0",
+          "#text": "A Haunted Tongue"
+        },
+        "name": "Fewston",
+        "url": "https://www.last.fm/music/Colossal+Squid/_/Fewston",
+        "date": {
+          "uts": "1725967902",
+          "#text": "10 Sep 2024, 11:31"
+        }
+      }
+    ],
+    "@attr": {
+      "user": "jammus",
+      "totalPages": "1245",
+      "page": "1",
+      "perPage": "50",
+      "total": "62233"
+    }
+  }
+}
