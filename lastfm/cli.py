@@ -3,6 +3,7 @@ import click
 from itertools import chain
 from sqlite_utils import Database
 from lastfm import LastFM, process_tracks_response
+from lastfm.db_setup import create_all_views
 
 
 formats = [LastFM.DATE_FORMAT]
@@ -45,6 +46,10 @@ def export_playlist(
     if not isinstance(database, Database):
         database = Database(database)
 
+
+    create_all_views(database)
+
+
     tracks_table = database.table(table)
     loves_table = database.table("loves")
     api = LastFM(
@@ -68,6 +73,7 @@ def export_playlist(
             for love in process_tracks_response(page):
                 loves_table.upsert(love, pk="uts_timestamp")
                 bar.update(1)
+
 
 if __name__ == "__main__":
     cli()
