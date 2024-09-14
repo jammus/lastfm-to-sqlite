@@ -1,6 +1,13 @@
 from sqlite_utils import Database
 
 
+def create_indexes(db: Database):
+    db["playlist"].create_index(["artist"], if_not_exists=True)
+    db["playlist"].create_index(["artist", "song"], if_not_exists=True)
+    db["playlist"].create_index(["artist", "album"], if_not_exists=True)
+    db["playlist"].create_index(["uts_timestamp"], if_not_exists=True)
+
+
 def create_artist_view(db: Database):
     return db.create_view(
         "v_artists",
