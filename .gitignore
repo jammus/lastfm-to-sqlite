@@ -14,3 +14,12 @@ lastfm_dump
 lastfm_dump_whole
 **/*.ipynb_checkpoints
 **/*.vscode
+# Devenv
+.devenv*
+devenv.local.nix
+
+# direnv
+.direnv
+
+# pre-commit
+.pre-commit-config.yaml

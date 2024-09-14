@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "lastfm"
+version = "0.1.0"
+description = ""
+authors = ["jammus <jammus@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.scripts]
+cli = "lastfm.cli:cli"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+click = "^8.1.7"
+requests = "^2.32.3"
+sqlite-utils = "^3.37"
+python-dotenv = "^1.0.1"
+pytest = "^8.3.2"
+pytest-cov = "^5.0.0"
+sphinx = "^8.0.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
