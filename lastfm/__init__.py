@@ -85,9 +85,13 @@ class LastFM:
         params["api_key"] = self.api
         params["format"] = "json"
         while True:
-            response = session.get(LastFM.URL, params=params).json()
-            metadata = response[root_name]["@attr"]
-            data = response[root_name][item_name]
+            response = session.get(LastFM.URL, params=params)
+            if response.status_code != 200:
+                print(response.content)
+                response.raise_for_status()
+            content = response.json()
+            metadata = content[root_name]["@attr"]
+            data = content[root_name][item_name]
             yield data, metadata
             total_pages = int(metadata["totalPages"])
             params["page"] += 1
