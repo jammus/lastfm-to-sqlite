@@ -93,7 +93,7 @@ class LastFM:
             params["page"] += 1
             if (params["page"] > total_pages):
                 break
-            sleep(1)
+            sleep(0.25)
         session.close()
 
 
