@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="dark">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.colors.min.css">
+    <title>Last.fm Data Explorer</title>
+  </head>
+  <body>
+    <main class="container">
+      {% set start_timestamp = start_of_year(year | int) %}
+      {% set end_timestamp = end_of_year(year | int) %}
+      <h1>Yearly report ({{ year }})</h1>
+      {%
+      set top_artists = sql("
+        select
+              artist, count(1) as listens, discovered,
+              (discovered >= cast(:start as integer)) as new
+          from
+            playlist as p
+          join
+            v_artist_details as v on p.artist = v.name
+          where
+            uts_timestamp >= :start and
+            uts_timestamp < :end 
+          group by p.artist
+          order by listens desc
+          limit 20
+        ", {"start": start_timestamp, "end": end_timestamp})
+      %}
+      {%
+      set top_albums = sql("
+        select
+              p.artist, name, count(1) as listens, discovered,
+              (discovered >= cast(:start as integer)) as new
+          from
+            playlist as p
+          join
+            v_album_details as v on p.album = v.name
+                                    and p.artist = v.artist
+          where
+            uts_timestamp >= :start and
+            uts_timestamp < :end 
+          group by p.artist, p.album
+          order by listens desc
+          limit 20
+        ", {"start": start_timestamp, "end": end_timestamp})
+      %}
+      {%
+      set top_tracks = sql("
+        select
+              p.artist, name, count(1) as listens, discovered,
+              (discovered >= cast(:start as integer)) as new
+          from
+            playlist as p
+          join
+            v_track_details as v on p.song = v.name
+                                    and p.artist = v.artist
+          where
+            uts_timestamp >= :start and
+            uts_timestamp < :end 
+          group by p.artist, p.song
+          order by listens desc
+          limit 20
+        ", {"start": start_timestamp, "end": end_timestamp})
+      %}
+      <div class="grid">
+        <div>    
+          <h2>Top Artists</h2>
+          <ol>
+            {% for artist in top_artists %}
+              <li>
+                {{ artist.artist }}
+                {% if artist.new %}
+                <sup class="pico-color-red-500">New discovery</sup>
+                {% endif %}
+                ({{ artist.listens }})
+              </li>
+            {% endfor %}
+          </ol>
+        </div>
+        <div>
+          <h2>Top Ablums</h2>
+          <ol>
+            {% for album in top_albums %}
+            <li>
+              {{ album.name }} - {{ album.artist }}
+              {% if album.new %}
+                <sup class="pico-color-red-500">New discovery</sup>
+              {% endif %}
+            ({{ album.listens }})</li>
+            {% endfor %}
+          </ol>
+        </div>
+        <div>
+          <h2>Top Tracks</h2>
+          <ol>
+            {% for track in top_tracks %}
+            <li>
+              {{ track.name }} - {{ track.artist }}
+              {% if track.new %}
+                <sup class="pico-color-red-500">New discovery</sup>
+              {% endif %}
+            ({{ track.listens }})</li>
+            {% endfor %}
+          </ol>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

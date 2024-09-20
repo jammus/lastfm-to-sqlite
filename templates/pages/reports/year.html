@@ -1,0 +1,2 @@
+{% set year = current_date().year %}
+{{ custom_redirect("/reports/year/" + (year | string())) }}
