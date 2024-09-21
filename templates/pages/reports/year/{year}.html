@@ -108,6 +108,47 @@
           </ol>
         </div>
       </div>
+      {%
+      set bftp_artists = sql("
+      select *, (first_listen_this_period - previous_listen) as since from (
+      select p1.artist, max(p1.uts_timestamp) as previous_listen, first_listen_this_period
+        from
+          playlist as p1
+        join (
+          select
+                artist, min(p2.uts_timestamp) as first_listen_this_period
+            from
+              playlist as p2
+            where
+              uts_timestamp >= :start and
+              uts_timestamp < :end 
+            group by
+              artist
+          ) as this_p on p1.artist = this_p.artist
+          where
+          p1.uts_timestamp < :start
+          group by
+          p1.artist
+        )
+        where since >= (6 * 30 * 24 * 60 * 60)
+        order by since desc
+        limit 20
+        ", {"start": start_timestamp, "end": end_timestamp})
+      %}
+      <div class="grid">
+        <div>    
+          <h2>Blasts from the past</h2>
+          <ol>
+            {% for artist in bftp_artists %}
+              <li>
+                {{ artist.artist }}
+                <sup class="pico-color-yellow-300">
+                {{ years(artist.since) }} years
+                </sup>
+              </li>
+            {% endfor %}
+          </ol>
+        </div>
     </main>
   </body>
 </html>
