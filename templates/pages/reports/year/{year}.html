@@ -10,62 +10,12 @@
   </head>
   <body>
     <main class="container">
+      <h1>Yearly report ({{ year }})</h1>
       {% set start_timestamp = start_of_year(year | int) %}
       {% set end_timestamp = end_of_year(year | int) %}
-      <h1>Yearly report ({{ year }})</h1>
-      {%
-      set top_artists = sql("
-        select
-              artist, count(1) as listens, discovered,
-              (discovered >= cast(:start as integer)) as new
-          from
-            playlist as p
-          join
-            v_artist_details as v on p.artist = v.name
-          where
-            uts_timestamp >= :start and
-            uts_timestamp < :end 
-          group by p.artist
-          order by listens desc
-          limit 20
-        ", {"start": start_timestamp, "end": end_timestamp})
-      %}
-      {%
-      set top_albums = sql("
-        select
-              p.artist, name, count(1) as listens, discovered,
-              (discovered >= cast(:start as integer)) as new
-          from
-            playlist as p
-          join
-            v_album_details as v on p.album = v.name
-                                    and p.artist = v.artist
-          where
-            uts_timestamp >= :start and
-            uts_timestamp < :end 
-          group by p.artist, p.album
-          order by listens desc
-          limit 20
-        ", {"start": start_timestamp, "end": end_timestamp})
-      %}
-      {%
-      set top_tracks = sql("
-        select
-              p.artist, name, count(1) as listens, discovered,
-              (discovered >= cast(:start as integer)) as new
-          from
-            playlist as p
-          join
-            v_track_details as v on p.song = v.name
-                                    and p.artist = v.artist
-          where
-            uts_timestamp >= :start and
-            uts_timestamp < :end 
-          group by p.artist, p.song
-          order by listens desc
-          limit 20
-        ", {"start": start_timestamp, "end": end_timestamp})
-      %}
+      {% set top_artists = fetch_top_artists(start_timestamp, end_timestamp) %}
+      {% set top_albums = fetch_top_albums(start_timestamp, end_timestamp) %}
+      {% set top_tracks = fetch_top_tracks(start_timestamp, end_timestamp) %}
       <div class="grid">
         <div>    
           <h2>Top Artists</h2>
@@ -108,42 +58,12 @@
           </ol>
         </div>
       </div>
-      {%
-      set bftp_artists = sql("
-      select *, (first_listen_this_period - previous_listen) as since from (
-      select p1.artist, count(1) as past_listens, max(p1.uts_timestamp) as previous_listen, current_listens, first_listen_this_period
-        from
-          playlist as p1
-        join (
-          select
-                artist, count(1) as current_listens, min(p2.uts_timestamp) as first_listen_this_period
-            from
-              playlist as p2
-            where
-              uts_timestamp >= :start and
-              uts_timestamp < :end 
-            group by
-              artist
-          ) as this_p on p1.artist = this_p.artist
-          where
-            p1.uts_timestamp < :start
-          and
-            current_listens > 5
-          group by
-          p1.artist
-        )
-        where since >= (365 * 24 * 60 * 60)
-          and
-            past_listens > 5
-        order by since desc
-        limit 20
-        ", {"start": start_timestamp, "end": end_timestamp})
-      %}
+      {% set blast_artists = fetch_blast_artists(start_timestamp, end_timestamp) %}
       <div class="grid">
         <div>    
           <h2>Blasted from the past(ed)</h2>
           <ol>
-            {% for artist in bftp_artists %}
+            {% for artist in blast_artists %}
               <li>
                 {{ artist.artist }}
                 ({{ artist.current_listens }})
