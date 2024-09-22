@@ -132,6 +132,32 @@ def fetch_blast_artists(datasette: Datasette):
     return fetch
 
 
+def fetch_loves(datasette: Datasette):
+    async def fetch(start_timestamp: int, end_timestamp:int):
+        db = datasette.get_database()
+        query = """
+            select
+              p.artist, p.song as name, count(1) as listens
+            from
+              playlist as p
+            join
+              loves as l on l.artist = p.artist and l.song = p.song 
+            where
+              l.uts_timestamp >= :start and l.uts_timestamp < :end and
+              p.uts_timestamp >= :start and p.uts_timestamp < :end
+            group by
+              p.artist, p.song
+            order by
+              listens desc
+            limit 20
+        """
+        return (await db.execute(
+            query,
+            {"start": start_timestamp, "end": end_timestamp})
+        ).rows
+    return fetch
+
+
 @hookimpl
 def extra_template_vars(datasette):
     return {
@@ -139,4 +165,5 @@ def extra_template_vars(datasette):
         "fetch_top_albums": fetch_top_albums(datasette),
         "fetch_top_tracks": fetch_top_tracks(datasette),
         "fetch_blast_artists": fetch_blast_artists(datasette),
+        "fetch_loves": fetch_loves(datasette),
     }

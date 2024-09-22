@@ -16,6 +16,8 @@
       {% set top_artists = fetch_top_artists(start_timestamp, end_timestamp) %}
       {% set top_albums = fetch_top_albums(start_timestamp, end_timestamp) %}
       {% set top_tracks = fetch_top_tracks(start_timestamp, end_timestamp) %}
+      {% set blast_artists = fetch_blast_artists(start_timestamp, end_timestamp) %}
+      {% set loves = fetch_loves(start_timestamp, end_timestamp) %}
       <div class="grid">
         <div>    
           <h2>Top Artists</h2>
@@ -58,7 +60,6 @@
           </ol>
         </div>
       </div>
-      {% set blast_artists = fetch_blast_artists(start_timestamp, end_timestamp) %}
       <div class="grid">
         <div>    
           <h2>Blasted from the past(ed)</h2>
@@ -70,6 +71,17 @@
                 <sup class="pico-color-yellow-300">
                   {{ years(artist.since) }} years
                 </sup>
+              </li>
+            {% endfor %}
+          </ol>
+        </div>
+        <div>    
+          <h2>This Year's Loves</h2>
+          <ol>
+            {% for track in loves %}
+              <li>
+                {{ track.name }} - {{ track.artist }}
+                ({{ track.listens }})
               </li>
             {% endfor %}
           </ol>
