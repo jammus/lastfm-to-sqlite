@@ -8,7 +8,7 @@ def create_indexes(db: Database):
     db["playlist"].create_index(["uts_timestamp"], if_not_exists=True)
 
 
-def create_artist_view(db: Database):
+def create_artist_table(db: Database):
     db["artist_details"].create({
         "name": str,
         "discovered": int,
@@ -16,7 +16,7 @@ def create_artist_view(db: Database):
     }, pk="name", if_not_exists=True)
 
 
-def create_track_view(db: Database):
+def create_track_table(db: Database):
     db["track_details"].create({
         "name": str,
         "artist": str,
@@ -25,7 +25,7 @@ def create_track_view(db: Database):
     }, pk=["name", "artist"], if_not_exists=True)
 
 
-def create_album_view(db: Database):
+def create_album_table(db: Database):
     db["album_details"].create({
         "name": str,
         "artist": str,
@@ -34,7 +34,7 @@ def create_album_view(db: Database):
     }, pk=["name", "artist"], if_not_exists=True)
 
 
-def create_all_views(db: Database):
-    create_artist_view(db)
-    create_track_view(db)
-    create_album_view(db)
+def create_all_tables(db: Database):
+    create_artist_table(db)
+    create_track_table(db)
+    create_album_table(db)

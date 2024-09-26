@@ -2,17 +2,17 @@ import pytest
 from sqlite_utils import Database
 
 from lastfm import save_recent_track, save_track
-from lastfm.db_setup import (create_album_view,
-                             create_artist_view,
-                             create_track_view)
+from lastfm.db_setup import (create_album_table,
+                             create_artist_table,
+                             create_track_table)
 
 
 @pytest.fixture
 def db():
     database = Database(memory=True)
-    create_artist_view(database)
-    create_track_view(database)
-    create_album_view(database)
+    create_artist_table(database)
+    create_track_table(database)
+    create_album_table(database)
     return database
 
 @pytest.fixture
@@ -117,7 +117,7 @@ def test_saving_the_same_recent_track_twice_only_creates_one_record(db: Database
     assert len(tracks) == 1
 
 
-def test_artist_detail_view_records_first_listen(db: Database, recent_tracks):
+def test_artist_table_records_first_listen(db: Database, recent_tracks):
     for recent_track in recent_tracks:
         save_recent_track(db, recent_track)
 
@@ -129,7 +129,7 @@ def test_artist_detail_view_records_first_listen(db: Database, recent_tracks):
     assert artist["discovered"] == 1724599832
 
 
-def test_artist_detail_view_records_most_recent_listen(db: Database, recent_tracks):
+def test_artist_table_records_most_recent_listen(db: Database, recent_tracks):
     for recent_track in recent_tracks:
         save_recent_track(db, recent_track)
 
@@ -141,7 +141,7 @@ def test_artist_detail_view_records_most_recent_listen(db: Database, recent_trac
     assert artist["last_listened"] == 1726597832
 
 
-def test_track_detail_view_records_first_and_last_listen(db: Database,
+def test_track_table_records_first_and_last_listen(db: Database,
                                                          recent_tracks):
     for recent_track in recent_tracks:
         save_recent_track(db, recent_track)
@@ -155,7 +155,7 @@ def test_track_detail_view_records_first_and_last_listen(db: Database,
     assert track["last_listened"] == 1725599832
 
 
-def test_album_detail_view_records_first_and_last_listen(db: Database,
+def test_album_table_records_first_and_last_listen(db: Database,
                                                          recent_tracks):
     for recent_track in recent_tracks:
         save_recent_track(db, recent_track)
