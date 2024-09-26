@@ -84,11 +84,16 @@ class LastFM:
         params["limit"] = limit
         params["api_key"] = self.api
         params["format"] = "json"
+        failures = 0
         while True:
+            sleep(0.25)
             response = session.get(LastFM.URL, params=params)
             if response.status_code != 200:
-                print(response.content)
-                response.raise_for_status()
+                if failures > 5:
+                    print(response.content)
+                    response.raise_for_status()
+                failures += 1
+                continue
             content = response.json()
             metadata = content[root_name]["@attr"]
             data = content[root_name][item_name]
@@ -97,7 +102,7 @@ class LastFM:
             params["page"] += 1
             if (params["page"] > total_pages):
                 break
-            sleep(0.25)
+            failures = 0
         session.close()
 
 
