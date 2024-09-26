@@ -18,6 +18,7 @@
       {% set top_tracks = fetch_top_tracks(start_timestamp, end_timestamp) %}
       {% set blast_artists = fetch_blast_artists(start_timestamp, end_timestamp) %}
       {% set loves = fetch_loves(start_timestamp, end_timestamp) %}
+      {% set most_loved = fetch_most_loved(start_timestamp, end_timestamp) %}
       <div class="grid">
         <div>    
           <h2>Top Artists</h2>
@@ -62,21 +63,41 @@
       </div>
       <div class="grid">
         <div>    
-          <h2>Blasted from the past(ed)</h2>
-          <ol>
-            {% for artist in blast_artists %}
+          <h2>Rediscovered</h2>
+          {% if blast_artists %}
+            {% set top_blast = blast_artists[0] %}
+            <ol>
               <li>
-                {{ artist.artist }}
-                ({{ artist.current_listens }})
-                <sup class="pico-color-yellow-300">
-                  {{ years(artist.since) }} years
-                </sup>
+                <p>{{top_blast.artist }}
+                ({{ top_blast.current_listens }})</p>
+                <p>
+                  You listened to {{ top_blast.artist }} {{ top_blast.current_listens }} times.
+                  You last listened to them {{ years(top_blast.since) }} years ago!
+                </p>
               </li>
-            {% endfor %}
-          </ol>
+              {% for artist in blast_artists[1:] %}
+                <li>
+                  {{ artist.artist }}
+                  ({{ artist.current_listens }})
+                  <sup class="pico-color-yellow-300">
+                    {{ years(artist.since) }} years
+                  </sup>
+                </li>
+              {% endfor %}
+            </ol>
+          {% else %}
+            <p>No big rediscoveries this time<p>
+          {% endif %}
         </div>
         <div>    
           <h2>This Year's Loves</h2>
+          <h3>Most loved artist</h3>
+          {% for artist in most_loved %}
+            <p>You loved {{ artist.loves }} tracks by {{ artist.name }} this
+            year.</p>
+          {% endfor %}
+
+          <h3>Loved charts</h3>
           <ol>
             {% for track in loves %}
               <li>

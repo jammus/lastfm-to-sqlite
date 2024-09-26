@@ -2,7 +2,7 @@
 import click
 from itertools import chain
 from sqlite_utils import Database
-from lastfm import LastFM, process_tracks_response
+from lastfm import LastFM, process_tracks_response, save_recent_track
 from lastfm.db_setup import create_indexes, create_all_views
 
 
@@ -46,6 +46,8 @@ def export_playlist(
     if not isinstance(database, Database):
         database = Database(database)
 
+    create_all_views(database)
+
 
     tracks_table = database.table(table)
     loves_table = database.table("loves")
@@ -60,7 +62,7 @@ def export_playlist(
     with click.progressbar(length=int(metadata["total"]), label="Fetching recent tracks") as bar:
         for idx, (page, _) in enumerate(chain([(first_page, metadata)], data)):
             for track in process_tracks_response(page):
-                tracks_table.upsert(track, pk="uts_timestamp")
+                save_recent_track(database, track)
                 bar.update(1)
 
     data = api.fetch_loved_tracks()
@@ -72,8 +74,6 @@ def export_playlist(
                 bar.update(1)
 
     create_indexes(database)
-    create_all_views(database)
-
 
 if __name__ == "__main__":
     cli()

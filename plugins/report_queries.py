@@ -12,7 +12,7 @@ def fetch_top_artists(datasette: Datasette):
             from
               playlist as p
             join
-              v_artist_details as v on p.artist = v.name
+              artist_details as v on p.artist = v.name
             where
               uts_timestamp >= :start and
               uts_timestamp < :end 
@@ -39,7 +39,7 @@ def fetch_top_albums(datasette: Datasette):
             from
               playlist as p
             join
-              v_album_details as v on p.album = v.name
+              album_details as v on p.album = v.name
               and p.artist = v.artist
             where
               uts_timestamp >= :start and
@@ -67,7 +67,7 @@ def fetch_top_tracks(datasette: Datasette):
             from
               playlist as p
             join
-              v_track_details as v on p.song = v.name
+              track_details as v on p.song = v.name
                                       and p.artist = v.artist
             where
               uts_timestamp >= :start and
@@ -158,6 +158,29 @@ def fetch_loves(datasette: Datasette):
     return fetch
 
 
+def fetch_most_loved(datasette: Datasette):
+    async def fetch(start_timestamp: int, end_timestamp:int):
+        db = datasette.get_database()
+        query = """
+            select
+              l.artist as name, count(1) as loves
+            from
+              loves as l
+            where
+              l.uts_timestamp >= :start and l.uts_timestamp < :end
+            group by
+              l.artist
+            order by
+              loves desc
+            limit 1
+        """
+        return (await db.execute(
+            query,
+            {"start": start_timestamp, "end": end_timestamp})
+        ).rows
+    return fetch
+
+
 @hookimpl
 def extra_template_vars(datasette):
     return {
@@ -166,4 +189,5 @@ def extra_template_vars(datasette):
         "fetch_top_tracks": fetch_top_tracks(datasette),
         "fetch_blast_artists": fetch_blast_artists(datasette),
         "fetch_loves": fetch_loves(datasette),
+        "fetch_most_loved": fetch_most_loved(datasette),
     }

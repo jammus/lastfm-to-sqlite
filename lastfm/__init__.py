@@ -122,6 +122,31 @@ def process_tracks_response(page):
 
 def save_recent_track(db: Database, recent_track):
     db["playlist"].upsert(recent_track, pk="uts_timestamp")
+    db.execute(
+        "insert into artist_details (name, discovered, last_listened)"
+        "values (:artist, :uts_timestamp, :uts_timestamp)"
+            "on conflict(name)"
+            "do update set discovered = min(:uts_timestamp, discovered),"
+                          "last_listened = max(:uts_timestamp, last_listened)",
+        recent_track
+    )
+    db.execute(
+        "insert into track_details (name, artist, discovered, last_listened)"
+        "values (:song, :artist, :uts_timestamp, :uts_timestamp)"
+            "on conflict(name, artist)"
+            "do update set discovered = min(:uts_timestamp, discovered),"
+                          "last_listened = max(:uts_timestamp, last_listened)",
+        recent_track
+    )
+    if recent_track.get("album", None):
+        db.execute(
+            "insert into album_details (name, artist, discovered, last_listened)"
+            "values (:album, :artist, :uts_timestamp, :uts_timestamp)"
+                "on conflict(name, artist)"
+                "do update set discovered = min(:uts_timestamp, discovered),"
+                              "last_listened = max(:uts_timestamp, last_listened)",
+            recent_track
+    )
 
 
 def save_track(db: Database, recent_track):
