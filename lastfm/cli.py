@@ -26,7 +26,6 @@ def cli():
 @click.option("--user", type=click.STRING, required=True)
 @click.option("--first_page", type=click.INT, default=1)
 @click.option("--limit_per_page", type=click.INT, default=200)
-@click.option("--extended", type=click.INT, default=0)
 @click.option("--start_date", type=click.DateTime(formats))
 @click.option("--end_date", type=click.DateTime(formats))
 def export_playlist(
@@ -36,7 +35,6 @@ def export_playlist(
     user, 
     first_page=None, 
     limit_per_page=None,
-    extended=None,
     start_date=None,
     end_date=None
 ):
@@ -52,7 +50,7 @@ def export_playlist(
     loves_table = database.table("loves")
     api = LastFM(
         api=api, username=user, first_page=first_page, 
-        limit_per_page=limit_per_page, extended=extended, 
+        limit_per_page=limit_per_page,
         start_date=start_date, end_date=end_date
     )
 

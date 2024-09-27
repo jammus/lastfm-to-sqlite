@@ -24,7 +24,6 @@ class LastFM:
         username: str,
         first_page: int = 1,
         limit_per_page: int = 200,
-        extended: int = 0,
         start_date=None,
         end_date=None,
     ):
@@ -32,7 +31,6 @@ class LastFM:
         self.username = username
         self.first_page = first_page
         self.limit_per_page = limit_per_page
-        self.extended = extended
         self.start_date = None
         self.end_date = None
 
@@ -65,7 +63,7 @@ class LastFM:
                                             "user": self.username,
                                             "from": self.start_date,
                                             "to": self.end_date,
-                                            "extended": self.extended,
+                                            "extended": 1,
                                         })
 
     def fetch_loved_tracks(self):
