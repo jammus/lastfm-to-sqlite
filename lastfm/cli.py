@@ -22,7 +22,6 @@ def cli():
     type=click.Path(exists=False, file_okay=True, dir_okay=False, allow_dash=False),
     required=True,
 )
-@click.option("-t", "--table", default="playlist", type=click.STRING)
 @click.option("--user", type=click.STRING, required=True)
 @click.option("--first_page", type=click.INT, default=1)
 @click.option("--limit_per_page", type=click.INT, default=200)
@@ -31,7 +30,6 @@ def cli():
 def export_playlist(
     api,
     database, 
-    table, 
     user, 
     first_page=None, 
     limit_per_page=None,
@@ -45,7 +43,6 @@ def export_playlist(
         database = Database(database)
 
     create_all_tables(database)
-
 
     loves_table = database.table("loves")
     api = LastFM(
