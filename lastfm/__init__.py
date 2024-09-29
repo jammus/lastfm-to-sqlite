@@ -21,15 +21,11 @@ class LastFM:
         self,
         api: str,
         username: str,
-        first_page: int = 1,
-        limit_per_page: int = 200,
         start_date=None,
         end_date=None,
     ):
         self.api = self._validate_apikey(api)
         self.username = username
-        self.first_page = first_page
-        self.limit_per_page = limit_per_page
         self.start_date = None
         self.end_date = None
 
