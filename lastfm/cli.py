@@ -52,17 +52,17 @@ def export_playlist(
     )
 
     data = api.fetch_recent_tracks()
-    first_page, metadata = next(data)
-    with click.progressbar(length=int(metadata["total"]), label="Fetching recent tracks") as bar:
-        for idx, (page, _) in enumerate(chain([(first_page, metadata)], data)):
+    with click.progressbar(length=1, label="Fetching recent tracks") as bar:
+        for _, (page, metadata) in enumerate(data):
+            bar.length = int(metadata["total"])
             for track in process_tracks_response(page):
                 save_recent_track(database, track)
                 bar.update(1)
 
     data = api.fetch_loved_tracks()
-    first_page, metadata = next(data)
-    with click.progressbar(length=int(metadata["total"]), label="Fetching loves") as bar:
-        for idx, (page, _) in enumerate(chain([(first_page, metadata)], data)):
+    with click.progressbar(length=0, label="Fetching loves") as bar:
+        for _, (page, metadata) in enumerate(data):
+            bar.length = int(metadata["total"])
             for love in process_tracks_response(page):
                 loves_table.upsert(love, pk="uts_timestamp")
                 bar.update(1)

@@ -15,6 +15,7 @@ def db():
     create_album_table(database)
     return database
 
+
 @pytest.fixture
 def recent_tracks():
     return [{
