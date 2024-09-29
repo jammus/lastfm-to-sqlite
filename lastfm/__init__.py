@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 import datetime
-from typing import List
 import requests
 from sqlite_utils import Database
 from time import sleep
@@ -77,22 +76,12 @@ class LastFM:
 
     def fetch_all_pages(self, method, root_name, item_name, page=1, limit=200, params=None):
         session = requests.Session()
-        params["method"] = method
         params["page"] = page
         params["limit"] = limit
         params["api_key"] = self.api
-        params["format"] = "json"
-        failures = 0
         while True:
             sleep(0.25)
-            response = session.get(LastFM.URL, params=params)
-            if response.status_code != 200:
-                if failures > 5:
-                    print(response.content)
-                    response.raise_for_status()
-                failures += 1
-                continue
-            content = response.json()
+            content = fetch_page(session, method, params)
             metadata = content[root_name]["@attr"]
             data = content[root_name][item_name]
             yield data, metadata
@@ -100,8 +89,23 @@ class LastFM:
             params["page"] += 1
             if (params["page"] > total_pages):
                 break
-            failures = 0
         session.close()
+
+
+def fetch_page(session, method, params=None):
+    params = params or {}
+    default_params = {
+        "method": method,
+        "format": "json",
+    }
+    tries = 0
+    while True:
+        tries += 1
+        response = session.get(LastFM.URL, params=(params | default_params))
+        if response.status_code == 200 or tries >= 5:
+            break
+    response.raise_for_status()
+    return response.json()
 
 
 def process_tracks_response(page):
