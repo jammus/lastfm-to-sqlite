@@ -89,7 +89,26 @@ def test_fetches_all_pages():
                            body=response_body)
     session = requests.session()
 
-    data = fetch_pages(session, "user.getrecenttracks", "recenttracks", "track")
+    data = list(fetch_pages(session, "user.getrecenttracks", "recenttracks",
+                            "track"))
 
-    list(data)
     assert len(httpretty.latest_requests()) == 7
+
+
+@httprettified
+def test_works_with_loved_tracks():
+    response_body = load_file("sample_loves_dump.json")
+    httpretty.register_uri(httpretty.GET, "http://ws.audioscrobbler.com/2.0",
+                           body=response_body)
+    session = requests.session()
+
+    data = list(fetch_pages(session, "user.getlovedtracks", "lovedtracks",
+                            "track"))
+
+    last_request = httpretty.last_request()
+    assert last_request.querystring["method"][0] == "user.getlovedtracks"
+    assert len(httpretty.latest_requests()) == 16
+
+    loves, metadata = data[0]
+    assert loves[0].get("name") == "SynthFlood"
+    assert metadata["total"] == "793"
