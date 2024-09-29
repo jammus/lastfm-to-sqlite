@@ -56,8 +56,7 @@ class LastFM:
     def fetch_recent_tracks(self):
         """Fetch user's track history given the parametrs."""
         yield from self.fetch_all_pages("user.getrecenttracks", "recenttracks",
-                                        "track", limit=self.limit_per_page,
-                                        page=self.first_page,
+                                        "track",
                                         params={
                                             "user": self.username,
                                             "from": self.start_date,
@@ -68,28 +67,33 @@ class LastFM:
     def fetch_loved_tracks(self):
         """Fetch user's loved tracks given the parametrs."""
         yield from self.fetch_all_pages("user.getlovedtracks", "lovedtracks",
-                                        "track", limit=self.limit_per_page,
-                                        page=self.first_page,
+                                        "track",
                                         params={
                                             "user": self.username,
                                         })
 
-    def fetch_all_pages(self, method, root_name, item_name, page=1, limit=200, params=None):
+    def fetch_all_pages(self, method, root_name, item_name, params=None):
         session = requests.Session()
-        params["page"] = page
-        params["limit"] = limit
         params["api_key"] = self.api
-        while True:
-            sleep(0.25)
-            content = fetch_page(session, method, params)
-            metadata = content[root_name]["@attr"]
-            data = content[root_name][item_name]
-            yield data, metadata
-            total_pages = int(metadata["totalPages"])
-            params["page"] += 1
-            if (params["page"] > total_pages):
-                break
+        yield from fetch_pages(session, method, root_name, item_name, params,
+                               wait=0.25)
         session.close()
+
+
+def fetch_pages(session, method, root_name, item_name, params=None, wait=0):
+    page = 1
+    params = params or {}
+    while True:
+        sleep(wait)
+        content = fetch_page(session, method, { "page": page, "limit": 200 } | params)
+        root = content.get(root_name, {})
+        metadata = root.get("@attr", {})
+        data = root.get(item_name, None)
+        yield data, metadata
+        total_pages = int(metadata["totalPages"])
+        page += 1
+        if (page > total_pages):
+            break
 
 
 def fetch_page(session, method, params=None):
