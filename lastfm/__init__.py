@@ -51,8 +51,7 @@ class LastFM:
 
     def fetch_recent_tracks(self):
         """Fetch user's track history given the parametrs."""
-        yield from self.fetch_all_pages("user.getrecenttracks", "recenttracks",
-                                        "track",
+        yield from self.fetch_all_pages("user.getrecenttracks",
                                         params={
                                             "user": self.username,
                                             "from": self.start_date,
@@ -62,27 +61,27 @@ class LastFM:
 
     def fetch_loved_tracks(self):
         """Fetch user's loved tracks given the parametrs."""
-        yield from self.fetch_all_pages("user.getlovedtracks", "lovedtracks",
-                                        "track",
+        yield from self.fetch_all_pages("user.getlovedtracks",
                                         params={
                                             "user": self.username,
                                         })
 
-    def fetch_all_pages(self, method, root_name, item_name, params=None):
+    def fetch_all_pages(self, method, params=None):
         session = requests.Session()
         params["api_key"] = self.api
-        yield from fetch_pages(session, method, root_name, item_name, params,
-                               wait=0.25)
+        yield from fetch_pages(session, method, params, wait=0.25)
         session.close()
 
 
-def fetch_pages(session, method, root_name, item_name, params=None, wait=0):
+def fetch_pages(session, method, params=None, wait=0):
     page = 1
     params = params or {}
     while True:
         sleep(wait)
         content = fetch_page(session, method, { "page": page, "limit": 200 } | params)
+        root_name = next(iter(content.keys()), "")
         root = content.get(root_name, {})
+        item_name = next((key for key in root.keys() if key != "@attr"), "")
         metadata = root.get("@attr", {})
         data = root.get(item_name, None)
         yield data, metadata
