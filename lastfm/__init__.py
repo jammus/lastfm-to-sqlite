@@ -165,8 +165,3 @@ def save_album_listen_date(db, recent_track):
                               "last_listened = max(:uts_timestamp, last_listened)",
             recent_track
     )
-
-
-def save_track(db: Database, recent_track):
-    track = { key: recent_track[key] for key in ["song", "artist"] }
-    db["tracks"].upsert(track, pk=["artist", "song"])

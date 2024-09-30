@@ -1,7 +1,7 @@
 import pytest
 from sqlite_utils import Database
 
-from lastfm import save_recent_track, save_track
+from lastfm import save_recent_track
 from lastfm.db_setup import (create_album_table,
                              create_artist_table,
                              create_track_table)
