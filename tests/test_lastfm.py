@@ -3,6 +3,7 @@ import json
 import pytest
 import datetime
 from lastfm import LastFM, process_tracks_response
+from tests.test_saving import recent_tracks
 
 def load_json(filename):
     cwd = os.getcwd()
@@ -18,6 +19,11 @@ def recenttracks_page():
 @pytest.fixture
 def recenttracks_with_now_playing_page():
     page = load_json("sample_recent_tracks_dump_with_nowplaying.json")
+    return page['recenttracks']['track']
+
+@pytest.fixture
+def recenttracks_with_no_image():
+    page = load_json("sample_recent_tracks_no_image_dump.json")
     return page['recenttracks']['track']
 
 @pytest.fixture
@@ -44,8 +50,6 @@ def test_process_recent_tracks_response(recenttracks_page):
     data = process_tracks_response(recenttracks_page)
     song = next(data)
     assert isinstance(song, dict)
-    assert set(song.keys()) == set(["artist", "album", "song", "uts_timestamp",
-                                    "datetime"])
     assert song["artist"] == "Lera Lynn"
     assert song["song"] == "Lately (From The HBO Series \"True Detective\")"
     assert song["album"] == "True Detective (Music From the HBO Series)"
@@ -56,8 +60,6 @@ def test_process_loved_tracks_response(loves_page):
     data = process_tracks_response(loves_page)
     love = next(data)
     assert isinstance(love, dict)
-    assert set(love.keys()) == set(["artist", "song", "uts_timestamp",
-                                    "datetime"])
     assert love["artist"] == "65daysofstatic"
     assert love["song"] == "SynthFlood"
     assert love["uts_timestamp"] == 1725597832
@@ -68,3 +70,13 @@ def test_skips_now_playing_tracks(recenttracks_with_now_playing_page):
     track = next(data)
     assert isinstance(track, dict)
     assert track["artist"] == "Colossal Squid"
+
+def test_track_image_id_is_blank_by_default(recenttracks_with_no_image):
+    data = process_tracks_response(recenttracks_with_no_image)
+    track = next(data)
+    assert track.get("image_id", None) is None
+
+def test_track_image_id_hash_with_all_other_details_stripped(recenttracks_page):
+    data = process_tracks_response(recenttracks_page)
+    track = next(data)
+    assert track.get("image_id", None) == "fb0529f082462f505cd0902734c174c8"

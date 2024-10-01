@@ -1,0 +1,31 @@
+{
+    "recenttracks": {
+        "@attr": {
+            "page": "1",
+            "total": "111578",
+            "user": "Way4Music",
+            "perPage": "200",
+            "totalPages": "7"
+        },
+        "track": [
+            {
+                "artist": {
+                    "mbid": "",
+                    "#text": "Lera Lynn"
+                },
+                "album": {
+                    "mbid": "",
+                    "#text": "True Detective (Music From the HBO Series)"
+                },
+                "streamable": "0",
+                "date": {
+                    "uts": "1603622207",
+                    "#text": "25 Oct 2020, 10:36"
+                },
+                "url": "https://www.last.fm/music/Lera+Lynn/_/Lately+(From+The+HBO+Series+%22True+Detective%22)",
+                "name": "Lately (From The HBO Series \"True Detective\")",
+                "mbid": ""
+            }
+        ]
+    }
+}

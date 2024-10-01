@@ -23,6 +23,7 @@ def recent_tracks():
         "song": "SynthFlood",
         "album": "Utopian Frequencies",
         "uts_timestamp": 1726597832,
+        "image_id": "abcdefg",
     }, {
         "artist": "65daysofstatic",    # First 65dos listen
         "song": "The Fall of Math",
@@ -154,6 +155,16 @@ def test_track_table_records_first_and_last_listen(db: Database,
 
     assert track["discovered"] == 1725499832
     assert track["last_listened"] == 1725599832
+
+
+def test_saving_track_records_image_id(db: Database, recent_tracks):
+    recent_track = recent_tracks[0]
+    save_recent_track(db, recent_track)
+    [track] = list(db.query(
+        "select * from track_details where name = :track and artist = :artist",
+        { "artist": recent_track["artist"], "track": recent_track["song"]}
+    ))
+    assert track.get("image_id", "") == "abcdefg"
 
 
 def test_album_table_records_first_and_last_listen(db: Database,

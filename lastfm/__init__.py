@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import datetime
 import requests
+import re
 from sqlite_utils import Database
 from time import sleep
 
@@ -113,12 +114,16 @@ def process_tracks_response(page):
         if song.get("@attr", {}).get("nowplaying"):
             continue
         date = song.get("date", None)
+        images = song.get("image", [])
+        image = images[0].get("#text", "") if images else ""
+        match = re.search(r"https?://.*/(?P<id>[^/.]*)\.", image)
         item = {
             "artist": song.get("artist", {}).get("name", None) or \
                         song.get("artist", {}).get("#text", ""),
             "song": song.get("name", None),
             "uts_timestamp": int(date["uts"]) if date else "",
             "datetime": date["#text"] if date else "",
+            "image_id": match.group("id") if match else None,
         }
         album = song.get("album", {}).get("#text", None)
         if album is not None:
@@ -127,11 +132,20 @@ def process_tracks_response(page):
 
 
 def save_recent_track(db: Database, recent_track):
-    db["playlist"].upsert(recent_track, pk="uts_timestamp")
+    scrobble_columns = ("artist", "song", "album", "uts_timestamp", "datetime")
+    db["playlist"].upsert(
+            { k:v for k,v in recent_track.items() if k in scrobble_columns },
+            pk="uts_timestamp")
     save_artist_listen_date(db, recent_track)
     save_track_listen_date(db, recent_track)
+    save_track_details(db, recent_track)
     save_album_listen_date(db, recent_track)
 
+def save_love(db: Database, love):
+    love_column = ("artist", "song", "uts_timestamp", "datetime")
+    db["loves"].upsert(
+            { k:v for k,v in love.items() if k in love_column },
+            pk="uts_timestamp")
 
 def save_artist_listen_date(db, recent_track):
     db.execute(
@@ -153,6 +167,17 @@ def save_track_listen_date(db, recent_track):
                           "last_listened = max(:uts_timestamp, last_listened)",
         recent_track
     )
+
+
+def save_track_details(db, recent_track):
+    if recent_track.get("image_id", None):
+        db.execute(
+            "insert into track_details (name, artist, image_id)"
+            "values (:song, :artist, :image_id)"
+                "on conflict(name, artist)"
+                "do update set image_id = :image_id",
+            recent_track
+        )
 
 
 def save_album_listen_date(db, recent_track):

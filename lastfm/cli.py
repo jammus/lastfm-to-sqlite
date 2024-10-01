@@ -2,7 +2,7 @@
 import click
 from itertools import chain
 from sqlite_utils import Database
-from lastfm import LastFM, process_tracks_response, save_recent_track
+from lastfm import LastFM, process_tracks_response, save_love, save_recent_track
 from lastfm.db_setup import create_indexes, create_all_tables
 
 
@@ -40,7 +40,6 @@ def export_playlist(
 
     create_all_tables(database)
 
-    loves_table = database.table("loves")
     api = LastFM(
         api=api, username=user,
         start_date=start_date, end_date=end_date
@@ -59,7 +58,7 @@ def export_playlist(
         for _, (page, metadata) in enumerate(data):
             bar.length = int(metadata["total"])
             for love in process_tracks_response(page):
-                loves_table.upsert(love, pk="uts_timestamp")
+                save_love(database, love)
                 bar.update(1)
 
     create_indexes(database)
