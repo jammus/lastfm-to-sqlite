@@ -48,15 +48,20 @@
         </div>
         <div>
           <h2>Top Tracks</h2>
-          <ol>
+          <ol class="top-tracks">
             {% for track in top_tracks %}
-            <li>
-              <img src="{{ image_url(track.image_id) }}" />
-              {{ track.name }} - {{ track.artist }}
-              {% if track.new %}
-                <sup class="pico-color-red-500">New discovery</sup>
-              {% endif %}
-            ({{ track.listens }})</li>
+            <li class="top-track">
+              <img src="{{ image_url(track, size="avatar300s") }}" />
+              <div class="top-track-cover">
+                <div class="top-track-details">
+                  {{ track.name }} - {{ track.artist }}
+                  {% if track.new %}
+                    <sup class="pico-color-red-500">New discovery</sup>
+                  {% endif %}
+                  ({{ track.listens }})
+                </div>
+              </div>
+            </li>
             {% endfor %}
           </ol>
         </div>
