@@ -51,15 +51,14 @@
           <ol class="top-tracks">
             {% for track in top_tracks %}
             <li class="top-track">
+              {% if track.new %}
+                <div class="discovery">New discovery</div>
+              {% endif %}
               <img src="{{ image_url(track, size="avatar300s") }}" />
-              <div class="top-track-cover">
-                <div class="top-track-details">
-                  {{ track.name }} - {{ track.artist }}
-                  {% if track.new %}
-                    <sup class="pico-color-red-500">New discovery</sup>
-                  {% endif %}
-                  ({{ track.listens }})
-                </div>
+              <div class="top-track-details">
+                <div class="track">{{ track.name }}</div>
+                <div class="artist">{{ track.artist }}</div>
+                <div class="scrobbles">{{ track.listens }} scrobbles</div>
               </div>
             </li>
             {% endfor %}
