@@ -1,69 +1,82 @@
 @use "pico";
 @use "colors" as *;
-@use "colors/utilities";
 
-.top-tracks {
+.chart {
   li {
     list-style: none;
   }
   padding: 0;
 }
 
-.top-track {
+.chart-item {
   display: grid;
   grid-template:
-    [box-start] "tagline actions" [box-end] /
+    [box-start] "position tag" "details details" [box-end] /
     [box-start] 1fr auto [box-end];
 }
 
-.top-track > *,
-.top-track::before {
+.chart-item > *,
+.chart-item::before {
   grid-area: box;
 }
 
-.discovery {
-  place-self: start;
+.chart-item {
+  .discovery {
+    grid-area: tag;
+    place-self: end;
+  }
+
+  .position {
+    grid-area: position;
+    place-self: start;
+  }
+
+  .position {
+    background: $azure-500;
+    padding: 6px;
+    color: white;
+  }
+
+  .scrobbles {
+    font-size: 0.75rem;
+  }
+
+  .artist {
+    font-size: 0.9rem;
+  }
+
+  .name {
+    font-weight: bold;
+  }
+
+  .discovery {
+    background: $red-500;
+    padding: 6px;
+    color: white;
+  }
 }
 
-.top-track-details {
+.chart-item-details {
   place-self: end;
 }
 
-.top-track::before {
+.chart-item::before {
   content: "";
   position: relative;
   background: black;
-  opacity: 0.4;
+  opacity: 0.45;
   z-index: -1;
 }
 
-.top-track img {
+.chart-item img {
   position: relative;
   inline-size: 100%;
   height: auto;
   z-index: -2;
 }
 
-.discovery {
-  background: $red-500;
-  padding: 6px;
-  color: white;
-}
-
-.top-track-details {
+.chart-item-details {
   padding: 6px;
   width: 100%;
   color: $grey-50;
-}
-
-.scrobbles {
-  font-size: 0.75rem;
-}
-
-.artist {
-  font-size: 0.9rem;
-}
-
-.track {
-  font-weight: bold;
 }
