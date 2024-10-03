@@ -24,17 +24,23 @@
   .discovery {
     grid-area: tag;
     place-self: end;
+
+    background: $red-500;
+    padding: 6px;
+    color: white;
   }
 
   .position {
     grid-area: position;
     place-self: start;
-  }
 
-  .position {
     background: $azure-500;
     padding: 6px;
     color: white;
+
+    .love-chart & {
+      background: $pink-350;
+    }
   }
 
   .scrobbles {
@@ -47,12 +53,6 @@
 
   .name {
     font-weight: bold;
-  }
-
-  .discovery {
-    background: $red-500;
-    padding: 6px;
-    color: white;
   }
 }
 

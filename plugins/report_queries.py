@@ -137,11 +137,13 @@ def fetch_loves(datasette: Datasette):
         db = datasette.get_database()
         query = """
             select
-              p.artist, p.song as name, count(1) as listens
+              p.artist, t.image_id, p.song as name, count(1) as listens
             from
               playlist as p
             join
               loves as l on l.artist = p.artist and l.song = p.song 
+            join
+              track_details as t on t.artist = p.artist and t.name = l.song
             where
               l.uts_timestamp >= :start and l.uts_timestamp < :end and
               p.uts_timestamp >= :start and p.uts_timestamp < :end

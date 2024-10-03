@@ -2793,15 +2793,19 @@ textarea,
 .chart-item .discovery {
   grid-area: tag;
   place-self: end;
+  background: #d93526;
+  padding: 6px;
+  color: white;
 }
 .chart-item .position {
   grid-area: position;
   place-self: start;
-}
-.chart-item .position {
   background: #017fc0;
   padding: 6px;
   color: white;
+}
+.love-chart .chart-item .position {
+  background: #f7708e;
 }
 .chart-item .scrobbles {
   font-size: 0.75rem;
@@ -2811,11 +2815,6 @@ textarea,
 }
 .chart-item .name {
   font-weight: bold;
-}
-.chart-item .discovery {
-  background: #d93526;
-  padding: 6px;
-  color: white;
 }
 
 .chart-item-details {

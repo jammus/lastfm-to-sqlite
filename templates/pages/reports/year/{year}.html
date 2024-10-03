@@ -94,6 +94,7 @@
             <p>No big rediscoveries this time<p>
           {% endif %}
         </div>
+        <div></div>
         <div>    
           <h2>This Year's Loves</h2>
           <h3>Most loved artist</h3>
@@ -103,11 +104,19 @@
           {% endfor %}
 
           <h3>Loved charts</h3>
-          <ol>
+          <ol class="chart love-chart">
             {% for track in loves %}
-              <li>
-                {{ track.name }} - {{ track.artist }}
-                ({{ track.listens }})
+              <li class="chart-item">
+                <div class="position">#{{ loop.index }}</div>
+                {% if track.new %}
+                  <div class="discovery">New discovery</div>
+                {% endif %}
+                <img src="{{ image_url(track, size="avatar300s") }}" />
+                <div class="chart-item-details">
+                  <div class="name">{{ track.name }}</div>
+                  <div class="artist">{{ track.artist }}</div>
+                  <div class="scrobbles">{{ track.listens }} scrobbles</div>
+                </div>
               </li>
             {% endfor %}
           </ol>
