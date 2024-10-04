@@ -2795,7 +2795,7 @@ textarea,
   place-self: end;
   background: #d93526;
   padding: 6px;
-  color: white;
+  color: #f1f1f1;
 }
 .chart-item .position {
   grid-area: position;
