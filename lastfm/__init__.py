@@ -76,7 +76,8 @@ class LastFM:
 
 def fetch_artist(session, name, params=None):
     params = params or {}
-    response = fetch_page(session, "artist.getinfo", params={"artist": name} | params)
+    response = fetch_page(session, "artist.getinfo",
+                          params={"artist": name, "autocorrect": "0"} | params)
     artist = response.get("artist", {})
     return {
         "name": artist.get("name", ""),

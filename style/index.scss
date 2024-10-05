@@ -30,6 +30,15 @@
     color: $grey-50;
   }
 
+  .years-since {
+    grid-area: tag;
+    place-self: end;
+
+    background: $amber-300;
+    padding: 6px;
+    color: $grey-50;
+  }
+
   .position {
     grid-area: position;
     place-self: start;
@@ -38,8 +47,16 @@
     padding: 6px;
     color: white;
 
+    .artist-chart & {
+      background: $amber-300;
+    }
+
     .love-chart & {
       background: $pink-350;
+    }
+
+    .rediscoveries-chart & {
+      background: $violet-600;
     }
   }
 

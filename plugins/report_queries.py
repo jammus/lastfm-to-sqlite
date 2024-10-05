@@ -7,7 +7,7 @@ def fetch_top_artists(datasette: Datasette):
         db = datasette.get_database()
         query = """
             select
-              artist, count(1) as listens, discovered,
+              v.name, v.image_id, count(1) as listens, discovered,
               (discovered >= cast(:start as integer)) as new
             from
               playlist as p
@@ -93,7 +93,7 @@ def fetch_blast_artists(datasette: Datasette):
             *, (first_listen_this_period - previous_listen) as since
           from (
             select
-              p1.artist, count(1) as past_listens,
+              v.name, v.image_id, count(1) as past_listens,
               max(p1.uts_timestamp) as previous_listen, current_listens,
               first_listen_this_period
             from
@@ -111,6 +111,8 @@ def fetch_blast_artists(datasette: Datasette):
                   artist
               ) as this_p
               on p1.artist = this_p.artist
+            join 
+              artist_details as v on v.name = p1.artist
             where
               p1.uts_timestamp < :start
             and

@@ -2797,6 +2797,13 @@ textarea,
   padding: 6px;
   color: #f1f1f1;
 }
+.chart-item .years-since {
+  grid-area: tag;
+  place-self: end;
+  background: #d8a100;
+  padding: 6px;
+  color: #f1f1f1;
+}
 .chart-item .position {
   grid-area: position;
   place-self: start;
@@ -2804,8 +2811,14 @@ textarea,
   padding: 6px;
   color: white;
 }
+.artist-chart .chart-item .position {
+  background: #d8a100;
+}
 .love-chart .chart-item .position {
   background: #f7708e;
+}
+.rediscoveries-chart .chart-item .position {
+  background: #7540bf;
 }
 .chart-item .scrobbles {
   font-size: 0.75rem;

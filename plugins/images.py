@@ -5,7 +5,8 @@ BASE_URL = "https://lastfm.freetls.fastly.net/i/u/"
 
 
 def image_url(item, size="_"):
-    return BASE_URL + size + "/" + item["image_id"] + ".webp"
+    image_id = item["image_id"] or "2a96cbd8b46e442fc41c2b86b821562f"
+    return BASE_URL + size + "/" + image_id + ".webp"
 
 
 @hookimpl

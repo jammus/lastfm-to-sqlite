@@ -30,6 +30,16 @@ def test_requests_details_for_supplied_artist_name():
 
 
 @httprettified
+def test_does_not_autocorrect():
+    httpretty.register_uri(httpretty.GET, "http://ws.audioscrobbler.com/2.0")
+    session = requests.session()
+
+    fetch_artist(session, "El Huervo")
+
+    assert httpretty.last_request().querystring["autocorrect"][0] == "0"
+
+
+@httprettified
 def test_send_supplied_params():
     httpretty.register_uri(httpretty.GET, "http://ws.audioscrobbler.com/2.0")
     session = requests.session()

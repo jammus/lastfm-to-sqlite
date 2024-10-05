@@ -21,15 +21,19 @@
       <div class="grid">
         <div>    
           <h2>Top Artists</h2>
-          <ol>
+          <ol class="chart artist-chart">
             {% for artist in top_artists %}
-              <li>
-                {{ artist.artist }}
-                {% if artist.new %}
-                <sup class="pico-color-red-500">New discovery</sup>
-                {% endif %}
-                ({{ artist.listens }})
-              </li>
+            <li class="chart-item">
+              <div class="position">#{{ loop.index }}</div>
+              {% if artist.new %}
+                <div class="discovery">New discovery</div>
+              {% endif %}
+              <img src="{{ image_url(artist, size="avatar300s") }}" />
+              <div class="chart-item-details">
+                <div class="name">{{ artist.name }}</div>
+                <div class="scrobbles">{{ artist.listens }} scrobbles</div>
+              </div>
+            </li>
             {% endfor %}
           </ol>
         </div>
@@ -70,24 +74,17 @@
         <div>    
           <h2>Rediscovered</h2>
           {% if blast_artists %}
-            {% set top_blast = blast_artists[0] %}
-            <ol>
-              <li>
-                <p>{{top_blast.artist }}
-                ({{ top_blast.current_listens }})</p>
-                <p>
-                  You listened to {{ top_blast.artist }} {{ top_blast.current_listens }} times.
-                  You last listened to them {{ years(top_blast.since) }} years ago!
-                </p>
+            <ol class="chart rediscoveries-chart">
+              {% for artist in blast_artists %}
+              <li class="chart-item">
+                <div class="position">#{{ loop.index }}</div>
+                <div class="years-since" data-tooltip="You rediscovered {{artist.name}} after {{ years(artist.since) }} years">{{ years(artist.since) }} years</div>
+                <img src="{{ image_url(artist, size="avatar300s") }}" />
+                <div class="chart-item-details">
+                  <div class="name">{{ artist.name }}</div>
+                  <div class="scrobbles">{{ artist.current_listens }} scrobbles</div>
+                </div>
               </li>
-              {% for artist in blast_artists[1:] %}
-                <li>
-                  {{ artist.artist }}
-                  ({{ artist.current_listens }})
-                  <sup class="pico-color-yellow-300">
-                    {{ years(artist.since) }} years
-                  </sup>
-                </li>
               {% endfor %}
             </ol>
           {% else %}
