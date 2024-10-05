@@ -177,9 +177,14 @@ def save_artist_listen_date(db: Database, artist_listen):
 
 
 def save_artist_details(db: Database, artist_details, timestamp):
-    db["artist_details"].upsert(artist_details | {"last_updated": timestamp,
-                                                  "id": artist_details["name"].lower()},
-                                pk="id")
+    print({ "timestamp": timestamp, "image_id": None, "url": None } | artist_details)
+    db.execute((
+        "insert into artist_details (id, name, image_id, url, last_updated)"
+        "values (lower(:name), :name, :image_id, :url, :timestamp)"
+            "on conflict(id)"
+            "do update set image_id = ifnull(:image_id, image_id), url = :url, last_updated = :timestamp"),
+               { "timestamp": timestamp, "image_id": None, "url": None } | artist_details
+    )
 
 
 def fetch_artists_to_update(db: Database, cutoff=99999999999, limit=None):

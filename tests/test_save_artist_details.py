@@ -47,6 +47,24 @@ def test_saves_artist_with_id_as_lowered_name(db):
     assert artist["id"] == "try science"
 
 
+def test_does_not_overwrite_artist_names(db):
+    # This is to work around the Last.fm API returning artist names with casing
+    # that does not match the website. user.getrecenttracks seems to be a
+    # better source, and because we're writing from there first we can keep the
+    # first spelling encountered
+
+    save_artist_details(db, {"name": "NYOS"}, timestamp=2345678901)
+    save_artist_details(db, {"name": "Nyos"}, timestamp=3456789012)
+
+    [artist] = list(db.query(
+        "select * from artist_details where id = :id",
+        { "id": "nyos" }
+    ))
+
+    assert artist["name"] == "NYOS"
+    assert artist["last_updated"] == 3456789012
+
+
 def test_last_updated_date_is_set_to_supplied_timestamp_on_save(db):
     save_artist_details(db, {"name": "65daysofstatic"}, timestamp=2345678901)
 
