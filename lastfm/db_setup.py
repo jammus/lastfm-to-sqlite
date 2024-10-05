@@ -1,3 +1,4 @@
+from typing import no_type_check
 from sqlite_utils import Database
 
 
@@ -33,6 +34,18 @@ def create_artist_table(db: Database):
         "discovered": int,
         "last_listened": int,
     }, pk="name", if_not_exists=True)
+    try:
+        db["artist_details"].add_column("last_updated", int, not_null_default=0)
+    except:
+        pass  # Assume exists
+    try:
+        db["artist_details"].add_column("image_id", str)
+    except:
+        pass  # Assume exists
+    try:
+        db["artist_details"].add_column("url", str)
+    except:
+        pass  # Assume exists
 
 
 def create_track_table(db: Database):

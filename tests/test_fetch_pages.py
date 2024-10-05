@@ -1,16 +1,9 @@
-import os
 import httpretty
 from httpretty import httprettified
 import requests
 
 from lastfm import fetch_pages
-
-
-def load_file(filename):
-    cwd = os.getcwd()
-    path = os.path.join(cwd, "tests", filename)
-    with open(path, "r", encoding="utf-8") as f:
-        return f.read()
+from tests.helpers import load_file
 
 
 @httprettified

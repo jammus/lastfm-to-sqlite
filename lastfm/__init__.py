@@ -74,6 +74,17 @@ class LastFM:
         session.close()
 
 
+def fetch_artist(session, name, params=None):
+    params = params or {}
+    response = fetch_page(session, "artist.getinfo", params={"artist": name} | params)
+    artist = response.get("artist", {})
+    return {
+        "name": artist.get("name", ""),
+        "url": artist.get("url", ""),
+        "image_id": extract_image_id(artist)
+    }
+
+
 def fetch_pages(session, method, params=None, wait=0):
     page = 1
     params = params or {}
@@ -114,16 +125,13 @@ def process_tracks_response(page):
         if song.get("@attr", {}).get("nowplaying"):
             continue
         date = song.get("date", None)
-        images = song.get("image", [])
-        image = images[0].get("#text", "") if images else ""
-        match = re.search(r"https?://.*/(?P<id>[^/.]*)\.", image)
         item = {
             "artist": song.get("artist", {}).get("name", None) or \
                         song.get("artist", {}).get("#text", ""),
             "song": song.get("name", None),
             "uts_timestamp": int(date["uts"]) if date else "",
             "datetime": date["#text"] if date else "",
-            "image_id": match.group("id") if match else None,
+            "image_id": extract_image_id(song)
         }
         album = song.get("album", {}).get("#text", None)
         if album is not None:
@@ -131,30 +139,59 @@ def process_tracks_response(page):
         yield item
 
 
+def extract_image_id(item):
+    images = item.get("image", [])
+    image = images[0].get("#text", "") if images else ""
+    match = re.search(r"https?://.*/(?P<id>[^/.]*)\.", image)
+    return match.group("id") if match else None
+
+
 def save_recent_track(db: Database, recent_track):
     scrobble_columns = ("artist", "song", "album", "uts_timestamp", "datetime")
     db["playlist"].upsert(
-            { k:v for k,v in recent_track.items() if k in scrobble_columns },
+            { k: v for k, v in recent_track.items() if k in scrobble_columns },
             pk="uts_timestamp")
     save_artist_listen_date(db, recent_track)
     save_track_listen_date(db, recent_track)
     save_track_details(db, recent_track)
     save_album_listen_date(db, recent_track)
 
+
 def save_love(db: Database, love):
     love_column = ("artist", "song", "uts_timestamp", "datetime")
     db["loves"].upsert(
-            { k:v for k,v in love.items() if k in love_column },
+            { k: v for k, v in love.items() if k in love_column },
             pk="uts_timestamp")
 
-def save_artist_listen_date(db, recent_track):
+
+def save_artist_listen_date(db: Database, artist_listen):
     db.execute(
         "insert into artist_details (name, discovered, last_listened)"
         "values (:artist, :uts_timestamp, :uts_timestamp)"
             "on conflict(name)"
             "do update set discovered = min(:uts_timestamp, discovered),"
                           "last_listened = max(:uts_timestamp, last_listened)",
-        recent_track
+        artist_listen
+    )
+
+
+def save_artist_details(db: Database, artist_details, timestamp):
+    db["artist_details"].upsert(artist_details | {"last_updated": timestamp}, pk="name")
+
+
+def fetch_artists_to_update(db: Database, cutoff=99999999999, limit=None):
+    query = (
+        "select * from artist_details "
+            "where last_updated < :cutoff "
+            "order by (last_updated - last_listened) asc"
+    )
+
+    if limit:
+        query += " limit :limit"
+
+    return db.query(
+        query,
+        { "cutoff": cutoff, "limit": limit }
     )
 
 
@@ -169,7 +206,7 @@ def save_track_listen_date(db, recent_track):
     )
 
 
-def save_track_details(db, recent_track):
+def save_track_details(db: Database, recent_track):
     if recent_track.get("image_id", None):
         db.execute(
             "insert into track_details (name, artist, image_id)"
@@ -180,7 +217,7 @@ def save_track_details(db, recent_track):
         )
 
 
-def save_album_listen_date(db, recent_track):
+def save_album_listen_date(db: Database, recent_track):
     if recent_track.get("album", None):
         db.execute(
             "insert into album_details (name, artist, discovered, last_listened)"

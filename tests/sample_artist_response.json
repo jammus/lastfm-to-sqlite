@@ -1,0 +1,228 @@
+{
+  "artist": {
+    "name": "Melt-Banana",
+    "url": "https://www.last.fm/music/Melt-Banana",
+    "image": [
+      {
+        "#text": "https://lastfm.freetls.fastly.net/i/u/34s/d93fb932f7a34434bed332cbeb1b3ae6.jpg",
+        "size": "small"
+      },
+      {
+        "#text": "https://lastfm.freetls.fastly.net/i/u/64s/d93fb932f7a34434bed332cbeb1b3ae6.jpg",
+        "size": "medium"
+      },
+      {
+        "#text": "https://lastfm.freetls.fastly.net/i/u/174s/d93fb932f7a34434bed332cbeb1b3ae6.jpg",
+        "size": "large"
+      },
+      {
+        "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/d93fb932f7a34434bed332cbeb1b3ae6.jpg",
+        "size": "extralarge"
+      },
+      {
+        "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/d93fb932f7a34434bed332cbeb1b3ae6.jpg",
+        "size": "mega"
+      },
+      {
+        "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/d93fb932f7a34434bed332cbeb1b3ae6.jpg",
+        "size": ""
+      }
+    ],
+    "streamable": "0",
+    "ontour": "0",
+    "stats": {
+      "listeners": "266953",
+      "playcount": "8102623"
+    },
+    "similar": {
+      "artist": [
+        {
+          "name": "Lightning Bolt",
+          "url": "https://www.last.fm/music/Lightning+Bolt",
+          "image": [
+            {
+              "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
+              "size": "small"
+            },
+            {
+              "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
+              "size": "medium"
+            },
+            {
+              "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
+              "size": "large"
+            },
+            {
+              "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+              "size": "extralarge"
+            },
+            {
+              "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+              "size": "mega"
+            },
+            {
+              "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+              "size": ""
+            }
+          ]
+        },
+        {
+          "name": "Otoboke Beaver",
+          "url": "https://www.last.fm/music/Otoboke+Beaver",
+          "image": [
+            {
+              "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
+              "size": "small"
+            },
+            {
+              "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
+              "size": "medium"
+            },
+            {
+              "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
+              "size": "large"
+            },
+            {
+              "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+              "size": "extralarge"
+            },
+            {
+              "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+              "size": "mega"
+            },
+            {
+              "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+              "size": ""
+            }
+          ]
+        },
+        {
+          "name": "ミドリ",
+          "url": "https://www.last.fm/music/%E3%83%9F%E3%83%89%E3%83%AA",
+          "image": [
+            {
+              "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
+              "size": "small"
+            },
+            {
+              "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
+              "size": "medium"
+            },
+            {
+              "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
+              "size": "large"
+            },
+            {
+              "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+              "size": "extralarge"
+            },
+            {
+              "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+              "size": "mega"
+            },
+            {
+              "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+              "size": ""
+            }
+          ]
+        },
+        {
+          "name": "Hella",
+          "url": "https://www.last.fm/music/Hella",
+          "image": [
+            {
+              "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
+              "size": "small"
+            },
+            {
+              "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
+              "size": "medium"
+            },
+            {
+              "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
+              "size": "large"
+            },
+            {
+              "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+              "size": "extralarge"
+            },
+            {
+              "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+              "size": "mega"
+            },
+            {
+              "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+              "size": ""
+            }
+          ]
+        },
+        {
+          "name": "Boredoms",
+          "url": "https://www.last.fm/music/Boredoms",
+          "image": [
+            {
+              "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
+              "size": "small"
+            },
+            {
+              "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
+              "size": "medium"
+            },
+            {
+              "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
+              "size": "large"
+            },
+            {
+              "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+              "size": "extralarge"
+            },
+            {
+              "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+              "size": "mega"
+            },
+            {
+              "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+              "size": ""
+            }
+          ]
+        }
+      ]
+    },
+    "tags": {
+      "tag": [
+        {
+          "name": "noise rock",
+          "url": "https://www.last.fm/tag/noise+rock"
+        },
+        {
+          "name": "noise",
+          "url": "https://www.last.fm/tag/noise"
+        },
+        {
+          "name": "experimental",
+          "url": "https://www.last.fm/tag/experimental"
+        },
+        {
+          "name": "japanese",
+          "url": "https://www.last.fm/tag/japanese"
+        },
+        {
+          "name": "noisecore",
+          "url": "https://www.last.fm/tag/noisecore"
+        }
+      ]
+    },
+    "bio": {
+      "links": {
+        "link": {
+          "#text": "",
+          "rel": "original",
+          "href": "https://last.fm/music/Melt-Banana/+wiki"
+        }
+      },
+      "published": "05 Feb 2006, 19:36",
+      "summary": "Melt-Banana is a Japanese noise rock group founded in 1992 by friends attending Tokyo University of Foreign Language. Their hyperactive music palette draws influences from experimental rock, grindcore, no wave, psychedelic, hardcore punk, and post-punk.  \n\nMelt-Banana has released 9 full-length albums, (Including a re-release of a very early improvised and studio tracks, and a compilation of EPs) and 23 EPs (a number of which are splits with other bands). <a href=\"https://www.last.fm/music/Melt-Banana\">Read more on Last.fm</a>",
+      "content": "Melt-Banana is a Japanese noise rock group founded in 1992 by friends attending Tokyo University of Foreign Language. Their hyperactive music palette draws influences from experimental rock, grindcore, no wave, psychedelic, hardcore punk, and post-punk.  \n\nMelt-Banana has released 9 full-length albums, (Including a re-release of a very early improvised and studio tracks, and a compilation of EPs) and 23 EPs (a number of which are splits with other bands). In 1997 they created their own recording company, A-Zap, and re-issued all of their previously released albums, except Scratch or Stitch, which can be found on the noise rock record label Skin Graft Records. One month later Sudoh quit, and the band has had different drummers helping for tours and recordings since. They do massive U.S. tours yearly, do frequent European tours, and do smaller Japanese tours (traveling in Japan is quite expensive). \n\nMelt-Banana's music falls under what many call \"noise rock\" or \"noisecore.\" Both terms refer to music that blends rock, noise music, and other genres. Agata overlaps two different guitar riffs most of the time, and also belts out a seemingly spontaneously chosen selection of sound effects (or selected randomly by a computer program or even selecting snippets of tape from a black bag, but this is unlikely), almost all made through his guitar and large amount of effects pedals. Yasuko O. belts out high-pitched screams and raps, and her delivery has been described as a rabid poodle on speed. Rika MM's bass lines aren't subdued like in most bands, but are given as much overt influence as Agata's guitar work. The sounds from the bass provide a distinct dimension to the music not found in many other bands. The drums are usually quite straightforward (however, in their recent albums, they have become more complex), especially on the faster songs, where they beat almost straight through with set cymbal crashes, providing an insane amount of energy to the songs. The band describes their recent music (especially Teeny Shiny and Cell-Scape) as pop. Essentially, it could be argued that Melt Banana's output, (with special attention brought to their more recent songs) are more reminiscent of quirkier indie pop bands, with definite melodies hiding beneath the distortion, effects and sheer speed. \n\nLive performances are where Melt Banana wins many of their devotees. While many critics perceive Melt Banana's recordings to be inaccessible, their sound translates much better live. Yasuko starts every show by yelling \"We are Melt Banana from Tokyo, Japan!\" Her rapid-fire delivery and Agata's frenetic guitar riffs infuse crowds with energy. Attendees often mosh or otherwise move in a frenzy during performances. Many diehard fans leave shows dripping of sweat. Yasuko O. often wears colorful and/or metallic costumes, while Rika MM' often wears just black. Both wear very high platform boots, on which Rika MM' often bounces, a la Krist Novoselic. Agata usually wears a surgical mask affixed to his face, sometimes with duct tape.\n\nCurrent members:\n\nYasuko Onuki - vocal, writing;\nIchirou Agata - guitar, effects;\nRika Hamamoto - bass guitar.\n\nAfter Sudoh left the band, many drummers have been in a steady rotation, including Dave Witte of Discordance Axis, Municipal Waste and Burnt by the Sun.\n\nFormer members:\n\nToshiaki Sudoh - drums;\nOshima Watchma - drums (currently Coaltar of the Deepers).\n\nDiscography:\n\nhttp://en.wikipedia.org/wiki/Melt-Banana_discography <a href=\"https://www.last.fm/music/Melt-Banana\">Read more on Last.fm</a>. User-contributed text is available under the Creative Commons By-SA License; additional terms may apply."
+    }
+  }
+}

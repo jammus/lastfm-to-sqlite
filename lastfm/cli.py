@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 import click
+import requests
+import datetime
 from itertools import chain
 from sqlite_utils import Database
-from lastfm import LastFM, process_tracks_response, save_love, save_recent_track
+from lastfm import LastFM, fetch_artist, fetch_artists_to_update, process_tracks_response, save_artist_details, save_love, save_recent_track
 from lastfm.db_setup import create_indexes, create_all_tables
 
 
@@ -46,7 +48,7 @@ def export_playlist(
     )
 
     data = api.fetch_recent_tracks()
-    with click.progressbar(length=1, label="Fetching recent tracks") as bar:
+    with click.progressbar(length=0, label="Fetching recent tracks") as bar:
         for _, (page, metadata) in enumerate(data):
             bar.length = int(metadata["total"])
             for track in process_tracks_response(page):
@@ -60,6 +62,18 @@ def export_playlist(
             for love in process_tracks_response(page):
                 save_love(database, love)
                 bar.update(1)
+
+    session = requests.Session()
+    artists = fetch_artists_to_update(database, limit=1000)
+    with click.progressbar(length=1000, label="Fetching artists") as bar:
+        for _, artist in enumerate(artists):
+            artist_details = fetch_artist(session, artist["name"], params={
+                "api_key": api.api,
+                "user": api.username,
+            })
+            save_artist_details(database, artist_details,
+                                timestamp=int(datetime.datetime.now().timestamp()))
+            bar.update(1)
 
     create_indexes(database)
 
