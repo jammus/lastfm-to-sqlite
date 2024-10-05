@@ -167,9 +167,9 @@ def save_love(db: Database, love):
 
 def save_artist_listen_date(db: Database, artist_listen):
     db.execute(
-        "insert into artist_details (name, discovered, last_listened)"
-        "values (:artist, :uts_timestamp, :uts_timestamp)"
-            "on conflict(name)"
+        "insert into artist_details (id, name, discovered, last_listened)"
+        "values (lower(:artist), :artist, :uts_timestamp, :uts_timestamp)"
+            "on conflict(id)"
             "do update set discovered = min(:uts_timestamp, discovered),"
                           "last_listened = max(:uts_timestamp, last_listened)",
         artist_listen
@@ -177,7 +177,9 @@ def save_artist_listen_date(db: Database, artist_listen):
 
 
 def save_artist_details(db: Database, artist_details, timestamp):
-    db["artist_details"].upsert(artist_details | {"last_updated": timestamp}, pk="name")
+    db["artist_details"].upsert(artist_details | {"last_updated": timestamp,
+                                                  "id": artist_details["name"].lower()},
+                                pk="id")
 
 
 def fetch_artists_to_update(db: Database, cutoff=99999999999, limit=None):

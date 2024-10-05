@@ -12,7 +12,7 @@ def fetch_top_artists(datasette: Datasette):
             from
               playlist as p
             join
-              artist_details as v on p.artist = v.name
+              artist_details as v on lower(p.artist) = v.id
             where
               uts_timestamp >= :start and
               uts_timestamp < :end 
@@ -112,7 +112,7 @@ def fetch_blast_artists(datasette: Datasette):
               ) as this_p
               on p1.artist = this_p.artist
             join 
-              artist_details as v on v.name = p1.artist
+              artist_details as v on v.id = lower(p1.artist)
             where
               p1.uts_timestamp < :start
             and

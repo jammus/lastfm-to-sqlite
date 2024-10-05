@@ -30,23 +30,14 @@ def create_loves_table(db: Database):
 
 def create_artist_table(db: Database):
     db["artist_details"].create({
+        "id": str,
         "name": str,
         "discovered": int,
         "last_listened": int,
-    }, pk="name", if_not_exists=True)
-    try:
-        db["artist_details"].add_column("last_updated", int, not_null_default=0)
-    except:
-        pass  # Assume exists
-    try:
-        db["artist_details"].add_column("image_id", str)
-    except:
-        pass  # Assume exists
-    try:
-        db["artist_details"].add_column("url", str)
-    except:
-        pass  # Assume exists
-
+        "last_updated": int,
+        "image_id": str,
+        "url": str,
+        }, pk="id", not_null={"last_updated"}, defaults={"last_updated": 0}, if_not_exists=True)
 
 def create_track_table(db: Database):
     db["track_details"].create({

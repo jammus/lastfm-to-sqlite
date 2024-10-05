@@ -27,6 +27,26 @@ def test_last_updated_date_defaults_to_zero(db):
     assert artist["last_updated"] == 0
 
 
+def test_saves_artist_with_id_as_lowered_name(db):
+    save_artist_details(db, {"name": "The Cabs"}, timestamp=2345678901)
+
+    [artist] = list(db.query(
+        "select * from artist_details where name = :artist",
+        { "artist": "The Cabs" }
+    ))
+
+    assert artist["id"] == "the cabs"
+
+    save_artist_details(db, {"name": "Try Science"}, timestamp=3456789012)
+
+    [artist] = list(db.query(
+        "select * from artist_details where name = :artist",
+        { "artist": "Try Science" }
+    ))
+
+    assert artist["id"] == "try science"
+
+
 def test_last_updated_date_is_set_to_supplied_timestamp_on_save(db):
     save_artist_details(db, {"name": "65daysofstatic"}, timestamp=2345678901)
 
