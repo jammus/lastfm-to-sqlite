@@ -177,7 +177,6 @@ def save_artist_listen_date(db: Database, artist_listen):
 
 
 def save_artist_details(db: Database, artist_details, timestamp):
-    print({ "timestamp": timestamp, "image_id": None, "url": None } | artist_details)
     db.execute((
         "insert into artist_details (id, name, image_id, url, last_updated)"
         "values (lower(:name), :name, :image_id, :url, :timestamp)"
