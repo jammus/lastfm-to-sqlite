@@ -2,17 +2,25 @@ import httpretty
 from httpretty import httprettified
 import requests
 
-from lastfm import fetch_pages
+from lastfm import ApiClient, fetch_pages
 from tests.helpers import load_file
+
+
+def api_client() -> ApiClient:
+    return {
+        "base_url": "http://ws.audioscrobbler.com/2.0",
+        "api_key": "abcdefg",
+        "username": "jammus",
+        "session": requests.Session(),
+    }
 
 
 @httprettified
 def test_fetches_from_lastfm_api():
     httpretty.register_uri(httpretty.GET, "http://ws.audioscrobbler.com/2.0",
                            body="{}")
-    session = requests.session()
 
-    next(fetch_pages(session, "user.getrecenttracks"))
+    next(fetch_pages(api_client(), "user.getrecenttracks"))
 
     last_request = httpretty.last_request()
     assert last_request.querystring["method"][0] == "user.getrecenttracks"
@@ -24,9 +32,7 @@ def test_fetches_from_lastfm_api():
 def test_fetches_first_page_of_200_items_by_default():
     httpretty.register_uri(httpretty.GET, "http://ws.audioscrobbler.com/2.0",
                            body="{}")
-    session = requests.session()
-
-    next(fetch_pages(session, "user.getrecenttracks"))
+    next(fetch_pages(api_client(), "user.getrecenttracks"))
 
     assert httpretty.last_request().querystring["page"][0] == "1"
     assert httpretty.last_request().querystring["limit"][0] == "200"
@@ -36,9 +42,7 @@ def test_fetches_first_page_of_200_items_by_default():
 def test_sends_through_all_other_parameters():
     httpretty.register_uri(httpretty.GET, "http://ws.audioscrobbler.com/2.0",
                            body="{}")
-    session = requests.session()
-
-    next(fetch_pages(session, "user.getrecenttracks", {"user": "jammus", "extended": "1"}))
+    next(fetch_pages(api_client(), "user.getrecenttracks", {"user": "jammus", "extended": "1"}))
 
     assert httpretty.last_request().querystring["user"][0] == "jammus"
     assert httpretty.last_request().querystring["extended"][0] == "1"
@@ -49,9 +53,8 @@ def test_returns_parsed_json_under_specified_root_item_name():
     response_body = load_file("sample_recent_tracks_single_page_dump.json")
     httpretty.register_uri(httpretty.GET, "http://ws.audioscrobbler.com/2.0",
                            body=response_body)
-    session = requests.session()
 
-    response, _ = next(fetch_pages(session, "user.getrecenttracks"))
+    response, _ = next(fetch_pages(api_client(), "user.getrecenttracks"))
 
     assert len(response) == 200
     assert response[0].get("name") == "Lately (From The HBO Series \"True Detective\")"
@@ -62,9 +65,8 @@ def test_returns_attr_block_as_additional_metadata():
     response_body = load_file("sample_recent_tracks_single_page_dump.json")
     httpretty.register_uri(httpretty.GET, "http://ws.audioscrobbler.com/2.0",
                            body=response_body)
-    session = requests.session()
 
-    _, metadata = next(fetch_pages(session, "user.getrecenttracks"))
+    _, metadata = next(fetch_pages(api_client(), "user.getrecenttracks"))
 
     assert metadata == {
         "page": "1",
@@ -80,9 +82,8 @@ def test_fetches_all_pages():
     response_body = load_file("sample_recent_tracks_dump.json")
     httpretty.register_uri(httpretty.GET, "http://ws.audioscrobbler.com/2.0",
                            body=response_body)
-    session = requests.session()
 
-    data = list(fetch_pages(session, "user.getrecenttracks"))
+    data = list(fetch_pages(api_client(), "user.getrecenttracks"))
 
     assert len(httpretty.latest_requests()) == 7
 
@@ -92,9 +93,8 @@ def test_works_with_loved_tracks():
     response_body = load_file("sample_loves_dump.json")
     httpretty.register_uri(httpretty.GET, "http://ws.audioscrobbler.com/2.0",
                            body=response_body)
-    session = requests.session()
 
-    data = list(fetch_pages(session, "user.getlovedtracks"))
+    data = list(fetch_pages(api_client(), "user.getlovedtracks"))
 
     last_request = httpretty.last_request()
     assert last_request.querystring["method"][0] == "user.getlovedtracks"

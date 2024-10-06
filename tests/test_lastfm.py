@@ -39,12 +39,8 @@ def date():
 def apikey():
     return "342ec3b62b2501514199059eed07c75a"
 
-@pytest.fixture
-def api(apikey, date):
-    return LastFM(api=apikey, username="way4Music", start_date=date)
-
-def test_convert_to_timestamp(api, date):
-    assert isinstance(api._convert_to_timestamp(date), int)
+def test_convert_to_timestamp(date):
+    assert isinstance(LastFM.convert_to_timestamp(date), int)
 
 def test_process_recent_tracks_response(recenttracks_page):
     data = process_tracks_response(recenttracks_page)

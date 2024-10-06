@@ -42,9 +42,17 @@ def export_playlist(
 
     create_all_tables(database)
 
+    client: ApiClient = {
+        "base_url": "https://ws.audioscrobbler.com/2.0",
+        "api_key": api,
+        "username": user,
+        "session": requests.Session(),
+    }
+
     api = LastFM(
-        api=api, username=user,
-        start_date=start_date, end_date=end_date
+        client=client,
+        start_date=start_date,
+        end_date=end_date
     )
 
     data = api.fetch_recent_tracks()
@@ -63,14 +71,10 @@ def export_playlist(
                 save_love(database, love)
                 bar.update(1)
 
-    session = requests.Session()
     artists = fetch_artists_to_update(database, limit=1000)
     with click.progressbar(length=1000, label="Fetching artists") as bar:
         for _, artist in enumerate(artists):
-            artist_details = fetch_artist(session, artist["name"], params={
-                "api_key": api.api,
-                "user": api.username,
-            })
+            artist_details = fetch_artist(api.client, artist["name"])
             save_artist_details(database, artist_details,
                                 timestamp=int(datetime.datetime.now().timestamp()))
             bar.update(1)

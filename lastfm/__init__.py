@@ -1,49 +1,41 @@
 # -*- coding: utf-8 -*-
 import datetime
+from typing import TypedDict
 import requests
 import re
 from sqlite_utils import Database
 from time import sleep
 
 
-class APIError(Exception):
-    """APIError is raised when provided key is invalid
-    (should be 32 alphanum characters long)."""
-    pass
+class ApiClient(TypedDict):
+    base_url: str
+    api_key: str
+    session: requests.Session
+    username: str
 
 
 class LastFM:
     """Base LastFM class."""
 
-    URL = "http://ws.audioscrobbler.com/2.0"
     DATE_FORMAT = "%Y-%m-%d"
 
     def __init__(
         self,
-        api: str,
-        username: str,
+        client: ApiClient,
         start_date=None,
         end_date=None,
     ):
-        self.api = self._validate_apikey(api)
-        self.username = username
+        self.client = client
         self.start_date = None
         self.end_date = None
 
         if start_date is not None:
-            self.start_date = self._convert_to_timestamp(start_date)
+            self.start_date = self.convert_to_timestamp(start_date)
         if end_date is not None:
-            self.end_date = self._convert_to_timestamp(end_date)
+            self.end_date = self.convert_to_timestamp(end_date)
 
     @staticmethod
-    def _validate_apikey(api):
-        """Ensure apikey is valid."""
-        if api.isalnum() and len(api) == 32:
-            return api
-        raise APIError("API key should be 32 alphanum char. long.")
-
-    @staticmethod
-    def _convert_to_timestamp(date):
+    def convert_to_timestamp(date):
         """Convert human-readable `date` - either `datetime.date` or `str` - to
         Unix Timestamp."""
         if isinstance(date, datetime.date):
@@ -52,31 +44,22 @@ class LastFM:
 
     def fetch_recent_tracks(self):
         """Fetch user's track history given the parametrs."""
-        yield from self.fetch_all_pages("user.getrecenttracks",
-                                        params={
-                                            "user": self.username,
-                                            "from": self.start_date,
-                                            "to": self.end_date,
-                                            "extended": 1,
-                                        })
+        yield from fetch_pages(self.client,
+                               "user.getrecenttracks",
+                               params={
+                                 "from": self.start_date,
+                                 "to": self.end_date,
+                                 "extended": 1,
+                               })
 
     def fetch_loved_tracks(self):
         """Fetch user's loved tracks given the parametrs."""
-        yield from self.fetch_all_pages("user.getlovedtracks",
-                                        params={
-                                            "user": self.username,
-                                        })
-
-    def fetch_all_pages(self, method, params=None):
-        session = requests.Session()
-        params["api_key"] = self.api
-        yield from fetch_pages(session, method, params, wait=0.25)
-        session.close()
+        yield from fetch_pages(self.client, "user.getlovedtracks")
 
 
-def fetch_artist(session, name, params=None):
+def fetch_artist(client: ApiClient, name, params=None):
     params = params or {}
-    response = fetch_page(session, "artist.getinfo",
+    response = fetch_page(client, "artist.getinfo",
                           params={"artist": name, "autocorrect": "0"} | params)
     artist = response.get("artist", {})
     return {
@@ -86,12 +69,12 @@ def fetch_artist(session, name, params=None):
     }
 
 
-def fetch_pages(session, method, params=None, wait=0):
+def fetch_pages(client: ApiClient, method, params=None, wait=0):
     page = 1
     params = params or {}
     while True:
         sleep(wait)
-        content = fetch_page(session, method, { "page": page, "limit": 200 } | params)
+        content = fetch_page(client, method, { "page": page, "limit": 200 } | params)
         root_name = next(iter(content.keys()), "")
         root = content.get(root_name, {})
         item_name = next((key for key in root.keys() if key != "@attr"), "")
@@ -104,16 +87,19 @@ def fetch_pages(session, method, params=None, wait=0):
             break
 
 
-def fetch_page(session, method, params=None):
+def fetch_page(client: ApiClient, method, params=None):
     params = params or {}
     default_params = {
+        "api_key": client["api_key"],
         "method": method,
+        "user": client["username"],
+        "extended": 1,
         "format": "json",
     }
     tries = 0
     while True:
         tries += 1
-        response = session.get(LastFM.URL, params=(params | default_params))
+        response = client["session"].get(client["base_url"], params=(params | default_params))
         if response.status_code == 200 or tries >= 5:
             break
     response.raise_for_status()
@@ -177,13 +163,14 @@ def save_artist_listen_date(db: Database, artist_listen):
 
 
 def save_artist_details(db: Database, artist_details, timestamp):
-    db.execute((
-        "insert into artist_details (id, name, image_id, url, last_updated)"
-        "values (lower(:name), :name, :image_id, :url, :timestamp)"
-            "on conflict(id)"
-            "do update set image_id = ifnull(:image_id, image_id), url = :url, last_updated = :timestamp"),
-               { "timestamp": timestamp, "image_id": None, "url": None } | artist_details
-    )
+    with db.conn:
+        db.execute((
+            "insert into artist_details (id, name, image_id, url, last_updated)"
+            "values (lower(:name), :name, :image_id, :url, :timestamp)"
+                "on conflict(id)"
+                "do update set image_id = ifnull(:image_id, image_id), url = :url, last_updated = :timestamp"),
+                   { "timestamp": timestamp, "image_id": None, "url": None } | artist_details
+        )
 
 
 def fetch_artists_to_update(db: Database, cutoff=99999999999, limit=None):
