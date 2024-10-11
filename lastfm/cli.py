@@ -4,11 +4,11 @@ import requests
 import datetime
 from itertools import chain
 from sqlite_utils import Database
-from lastfm import LastFM, fetch_artist, fetch_artists_to_update, process_tracks_response, save_artist_details, save_love, save_recent_track
+from lastfm import DATE_FORMAT, LastFM, fetch_artist, fetch_artists_to_update, fetch_loved_tracks, process_tracks_response, save_artist_details, save_love, save_recent_track
 from lastfm.db_setup import create_indexes, create_all_tables
 
 
-formats = [LastFM.DATE_FORMAT]
+formats = [ DATE_FORMAT ]
 
 
 @click.group()
@@ -63,13 +63,12 @@ def export_playlist(
                 save_recent_track(database, track)
                 bar.update(1)
 
-    data = api.fetch_loved_tracks()
+    loves = fetch_loved_tracks(client)
     with click.progressbar(length=0, label="Fetching loves") as bar:
-        for _, (page, metadata) in enumerate(data):
+        for _, (love, metadata) in enumerate(loves):
             bar.length = int(metadata["total"])
-            for love in process_tracks_response(page):
-                save_love(database, love)
-                bar.update(1)
+            save_love(database, love)
+            bar.update(1)
 
     artists = fetch_artists_to_update(database, limit=1000)
     with click.progressbar(length=1000, label="Fetching artists") as bar:

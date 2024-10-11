@@ -17,7 +17,6 @@ class ApiClient(TypedDict):
 class LastFM:
     """Base LastFM class."""
 
-    DATE_FORMAT = "%Y-%m-%d"
 
     def __init__(
         self,
@@ -26,21 +25,9 @@ class LastFM:
         end_date=None,
     ):
         self.client = client
-        self.start_date = None
-        self.end_date = None
 
-        if start_date is not None:
-            self.start_date = self.convert_to_timestamp(start_date)
-        if end_date is not None:
-            self.end_date = self.convert_to_timestamp(end_date)
-
-    @staticmethod
-    def convert_to_timestamp(date):
-        """Convert human-readable `date` - either `datetime.date` or `str` - to
-        Unix Timestamp."""
-        if isinstance(date, datetime.date):
-            return int(date.timestamp())
-        return int(datetime.datetime.strptime(date, LastFM.DATE_FORMAT).timestamp())
+        self.start_date = convert_to_timestamp(start_date)
+        self.end_date = convert_to_timestamp(end_date)
 
     def fetch_recent_tracks(self):
         """Fetch user's track history given the parametrs."""
@@ -52,9 +39,23 @@ class LastFM:
                                  "extended": 1,
                                })
 
-    def fetch_loved_tracks(self):
-        """Fetch user's loved tracks given the parametrs."""
-        yield from fetch_pages(self.client, "user.getlovedtracks")
+
+def fetch_loved_tracks(client: ApiClient):
+    data = fetch_pages(client, "user.getlovedtracks")
+    for _, (loves, metadata) in enumerate(data):
+        for love in process_tracks_response(loves):
+            yield love, metadata
+
+
+DATE_FORMAT = "%Y-%m-%d"
+def convert_to_timestamp(date):
+    """Convert human-readable `date` - either `datetime.date` or `str` - to
+    Unix Timestamp."""
+    if date is None:
+        return None
+    if isinstance(date, datetime.date):
+        return int(date.timestamp())
+    return int(datetime.datetime.strptime(date, DATE_FORMAT).timestamp())
 
 
 def fetch_artist(client: ApiClient, name, params=None):
@@ -81,7 +82,7 @@ def fetch_pages(client: ApiClient, method, params=None, wait=0):
         metadata = root.get("@attr", {})
         data = root.get(item_name, None)
         yield data, metadata
-        total_pages = int(metadata["totalPages"])
+        total_pages = int(metadata.get("totalPages", 0))
         page += 1
         if (page > total_pages):
             break
@@ -108,6 +109,8 @@ def fetch_page(client: ApiClient, method, params=None):
 
 def process_tracks_response(page):
     """Yield specific k:v items of each song within page."""
+    if not page:
+        yield None
     for song in page:
         if song.get("@attr", {}).get("nowplaying"):
             continue

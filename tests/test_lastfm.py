@@ -2,8 +2,7 @@ import os
 import json
 import pytest
 import datetime
-from lastfm import LastFM, process_tracks_response
-from tests.test_saving import recent_tracks
+from lastfm import DATE_FORMAT, LastFM, convert_to_timestamp, process_tracks_response
 
 def load_json(filename):
     cwd = os.getcwd()
@@ -33,14 +32,17 @@ def loves_page():
 
 @pytest.fixture
 def date():
-    return datetime.datetime.today().strftime(LastFM.DATE_FORMAT)
+    return datetime.datetime.today().strftime(DATE_FORMAT)
 
 @pytest.fixture
 def apikey():
     return "342ec3b62b2501514199059eed07c75a"
 
 def test_convert_to_timestamp(date):
-    assert isinstance(LastFM.convert_to_timestamp(date), int)
+    assert isinstance(convert_to_timestamp(date), int)
+
+def test_covert_to_timestamp_returns_none_when_date_is_missing():
+    assert convert_to_timestamp(None) is None
 
 def test_process_recent_tracks_response(recenttracks_page):
     data = process_tracks_response(recenttracks_page)
