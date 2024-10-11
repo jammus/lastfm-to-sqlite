@@ -1,19 +1,9 @@
 import pytest
 import httpretty
 from httpretty import httprettified
-import requests
 
-from lastfm import ApiClient, fetch_page
-
-
-def api_client() -> ApiClient:
-    return {
-        "base_url": "http://ws.audioscrobbler.com/2.0",
-        "api_key": "abcdefg",
-        "username": "jammus",
-        "session": requests.Session(),
-    }
-
+from lastfm import fetch_page
+from tests.helpers import api_client
 
 @httprettified
 def test_makes_request_to_lastfm_api():

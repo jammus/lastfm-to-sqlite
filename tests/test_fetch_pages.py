@@ -1,18 +1,8 @@
 import httpretty
 from httpretty import httprettified
-import requests
 
-from lastfm import ApiClient, fetch_pages
-from tests.helpers import load_file
-
-
-def api_client() -> ApiClient:
-    return {
-        "base_url": "http://ws.audioscrobbler.com/2.0",
-        "api_key": "abcdefg",
-        "username": "jammus",
-        "session": requests.Session(),
-    }
+from lastfm import fetch_pages
+from tests.helpers import api_client, load_file
 
 
 @httprettified
