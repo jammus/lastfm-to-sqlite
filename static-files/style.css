@@ -2782,7 +2782,81 @@ textarea,
 
 .chart-item {
   display: grid;
+  grid-template-areas: "position tag details";
+  background: #202632;
+  grid-template-columns: [box-start] 15% 15% [box-end] auto;
+  grid-template-rows: [box-start] auto [box-end];
+}
+.chart-item .discovery,
+.chart-item .years-since,
+.chart-item .position {
+  font-size: 0.75rem;
+  z-index: 2;
+}
+.chart-item::before {
+  content: "";
+  position: relative;
+  background: black;
+  opacity: 0.45;
+  z-index: 1;
+}
+.chart-item .discovery,
+.chart-item .years-since {
+  grid-area: tag;
+  place-self: end;
+  align-self: baseline;
+  text-wrap: nowrap;
+}
+.chart-item .discovery .long,
+.chart-item .years-since .long {
+  display: none;
+}
+.chart-item .discovery .short,
+.chart-item .years-since .short {
+  display: inline;
+}
+.chart-item .name,
+.chart-item .artist {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+}
+.chart-item .name {
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
+}
+.chart-item .artist {
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+}
+
+.chart-item:first-child {
+  display: grid;
+  background: none;
   grid-template: [box-start] "position tag" "details details" [box-end]/[box-start] 1fr auto [box-end];
+}
+.chart-item:first-child .discovery,
+.chart-item:first-child .years-since,
+.chart-item:first-child .position {
+  font-size: 1rem;
+}
+.chart-item:first-child .discovery,
+.chart-item:first-child .years-since {
+  place-self: baseline;
+}
+.chart-item:first-child .discovery .long,
+.chart-item:first-child .years-since .long {
+  display: inline;
+}
+.chart-item:first-child .discovery .short,
+.chart-item:first-child .years-since .short {
+  display: none;
+}
+.chart-item:first-child::before {
+  z-index: -1;
+}
+.chart-item:first-child img {
+  z-index: -2;
 }
 
 .chart-item > *,
@@ -2791,15 +2865,11 @@ textarea,
 }
 
 .chart-item .discovery {
-  grid-area: tag;
-  place-self: end;
   background: #d93526;
   padding: 6px;
   color: #f1f1f1;
 }
 .chart-item .years-since {
-  grid-area: tag;
-  place-self: end;
   background: #d8a100;
   padding: 6px;
   color: #f1f1f1;
@@ -2831,22 +2901,14 @@ textarea,
 }
 
 .chart-item-details {
+  grid-area: details;
   place-self: end;
-}
-
-.chart-item::before {
-  content: "";
-  position: relative;
-  background: black;
-  opacity: 0.45;
-  z-index: -1;
 }
 
 .chart-item img {
   position: relative;
   inline-size: 100%;
   height: auto;
-  z-index: -2;
 }
 
 .chart-item-details {

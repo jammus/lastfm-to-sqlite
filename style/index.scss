@@ -10,9 +10,94 @@
 
 .chart-item {
   display: grid;
+  grid-template-areas: "position tag details";
+  background: $slate-850;
+  grid-template-columns: [box-start] 15% 15% [box-end] auto;
+  grid-template-rows: [box-start] auto [box-end];
+
+  .discovery,
+  .years-since,
+  .position {
+    font-size: 0.75rem;
+    z-index: 2;
+  }
+
+  &::before {
+    content: "";
+    position: relative;
+    background: black;
+    opacity: 0.45;
+    z-index: 1;
+  }
+
+  .discovery,
+  .years-since {
+    grid-area: tag;
+    place-self: end;
+    align-self: baseline;
+    text-wrap: nowrap;
+
+    .long {
+      display: none;
+    }
+
+    .short {
+      display: inline;
+    }
+  }
+
+  .name,
+  .artist {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+  }
+
+  .name {
+    line-clamp: 2;
+    -webkit-line-clamp: 2;
+  }
+
+  .artist {
+    line-clamp: 1;
+    -webkit-line-clamp: 1;
+  }
+}
+
+.chart-item:first-child {
+  display: grid;
+  background: none;
+
   grid-template:
     [box-start] "position tag" "details details" [box-end] /
     [box-start] 1fr auto [box-end];
+
+  .discovery,
+  .years-since,
+  .position {
+    font-size: 1rem;
+  }
+
+  .discovery,
+  .years-since {
+    place-self: baseline;
+
+    .long {
+      display: inline;
+    }
+
+    .short {
+      display: none;
+    }
+  }
+
+  &::before {
+    z-index: -1;
+  }
+
+  img {
+    z-index: -2;
+  }
 }
 
 .chart-item > *,
@@ -22,18 +107,12 @@
 
 .chart-item {
   .discovery {
-    grid-area: tag;
-    place-self: end;
-
     background: $red-500;
     padding: 6px;
     color: $grey-50;
   }
 
   .years-since {
-    grid-area: tag;
-    place-self: end;
-
     background: $amber-300;
     padding: 6px;
     color: $grey-50;
@@ -74,22 +153,14 @@
 }
 
 .chart-item-details {
+  grid-area: details;
   place-self: end;
-}
-
-.chart-item::before {
-  content: "";
-  position: relative;
-  background: black;
-  opacity: 0.45;
-  z-index: -1;
 }
 
 .chart-item img {
   position: relative;
   inline-size: 100%;
   height: auto;
-  z-index: -2;
 }
 
 .chart-item-details {

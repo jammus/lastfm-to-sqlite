@@ -26,7 +26,10 @@
             <li class="chart-item">
               <div class="position">#{{ loop.index }}</div>
               {% if artist.new %}
-                <div class="discovery">New discovery</div>
+                <div class="discovery">
+                  <span class="long">New discovery</span>
+                  <span class="short">New</span>
+                </div>
               {% endif %}
               <img src="{{ image_url(artist, size="avatar300s") }}" />
               <div class="chart-item-details">
@@ -57,7 +60,10 @@
             <li class="chart-item">
               <div class="position">#{{ loop.index }}</div>
               {% if track.new %}
-                <div class="discovery">New discovery</div>
+                <div class="discovery">
+                  <span class="long">New discovery</span>
+                  <span class="short">New</span>
+                </div>
               {% endif %}
               <img src="{{ image_url(track, size="avatar300s") }}" />
               <div class="chart-item-details">
@@ -78,7 +84,10 @@
               {% for artist in blast_artists %}
               <li class="chart-item">
                 <div class="position">#{{ loop.index }}</div>
-                <div class="years-since" data-tooltip="You rediscovered {{artist.name}} after {{ years(artist.since) }} years">{{ years(artist.since) }} years</div>
+                <div class="years-since" data-tooltip="You rediscovered {{artist.name}} after {{ years(artist.since) }} years">
+                  <span class="long">{{ years(artist.since) }} years</span>
+                  <span class="short">{{ years(artist.since) }} yrs</span>
+                </div>
                 <img src="{{ image_url(artist, size="avatar300s") }}" />
                 <div class="chart-item-details">
                   <div class="name">{{ artist.name }}</div>
@@ -106,7 +115,10 @@
               <li class="chart-item">
                 <div class="position">#{{ loop.index }}</div>
                 {% if track.new %}
-                  <div class="discovery">New discovery</div>
+                  <div class="discovery">
+                    <span class="long">New discovery</span>
+                    <span class="short">New</span>
+                  </div>
                 {% endif %}
                 <img src="{{ image_url(track, size="avatar300s") }}" />
                 <div class="chart-item-details">
