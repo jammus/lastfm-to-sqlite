@@ -39,6 +39,7 @@ def create_artist_table(db: Database):
         "url": str,
         }, pk="id", not_null={"last_updated"}, defaults={"last_updated": 0}, if_not_exists=True)
 
+
 def create_track_table(db: Database):
     db["track_details"].create({
         "name": str,
@@ -54,11 +55,16 @@ def create_track_table(db: Database):
 
 def create_album_table(db: Database):
     db["album_details"].create({
+        "id": str,
+        "artist_id": str,
         "name": str,
         "artist": str,
+        "image_id": str,
+        "url": str,
         "discovered": int,
         "last_listened": int,
-    }, pk=["name", "artist"], if_not_exists=True)
+        "last_updated": int,
+    }, pk=["id", "artist_id"], if_not_exists=True)
 
 
 def create_all_tables(db: Database):

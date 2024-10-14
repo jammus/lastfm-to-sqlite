@@ -70,6 +70,20 @@ def fetch_artist(client: ApiClient, name, params=None):
     }
 
 
+def fetch_album(client: ApiClient, name: str, artist: str):
+    response = fetch_page(client, "album.getinfo",
+                          params={"album": name,
+                                  "artist": artist,
+                                  "autocorrect": 0})
+    album = response.get("album", {})
+    return {
+        "name": album.get("name", ""),
+        "artist": album.get("artist", ""),
+        "url": album.get("url", ""),
+        "image_id": extract_image_id(album)
+    }
+
+
 def fetch_pages(client: ApiClient, method, params=None, wait=0):
     page = 1
     params = params or {}
@@ -165,15 +179,37 @@ def save_artist_listen_date(db: Database, artist_listen):
     )
 
 
-def save_artist_details(db: Database, artist_details, timestamp):
+def save_artist_details(db: Database, artist_details, timestamp=None):
     with db.conn:
         db.execute((
             "insert into artist_details (id, name, image_id, url, last_updated)"
             "values (lower(:name), :name, :image_id, :url, :timestamp)"
                 "on conflict(id)"
-                "do update set image_id = ifnull(:image_id, image_id), url = :url, last_updated = :timestamp"),
+             "do update set image_id ="
+                 "case when ifnull(:image_id, '') = '' then "
+                     "image_id else :image_id end,"
+                 "url ="
+                 "case when ifnull(:url, '') = '' then "
+                     "url else :url end,"
+                 "last_updated = :timestamp"),
                    { "timestamp": timestamp, "image_id": None, "url": None } | artist_details
         )
+
+
+def save_album_details(db: Database, album_details, timestamp=None):
+    with db.conn:
+        db.execute(
+            ("insert into album_details (id, artist_id, name, artist, image_id, url, last_updated)"
+             "values (lower(:name), lower(:artist), :name, :artist, :image_id, :url, :timestamp)"
+             "on conflict(id, artist_id)"
+             "do update set image_id ="
+                 "case when ifnull(:image_id, '') = '' then "
+                     "image_id else :image_id end,"
+                 "url ="
+                 "case when ifnull(:url, '') = '' then "
+                     "url else :url end,"
+                 "last_updated = :timestamp"),
+            { "image_id": None, "url": None, "timestamp": timestamp } | album_details)
 
 
 def fetch_artists_to_update(db: Database, cutoff=99999999999, limit=None):
@@ -217,9 +253,9 @@ def save_track_details(db: Database, recent_track):
 def save_album_listen_date(db: Database, recent_track):
     if recent_track.get("album", None):
         db.execute(
-            "insert into album_details (name, artist, discovered, last_listened)"
-            "values (:album, :artist, :uts_timestamp, :uts_timestamp)"
-                "on conflict(name, artist)"
+            "insert into album_details (id, artist_id, name, artist, discovered, last_listened)"
+            "values (lower(:album), lower(:artist), :album, :artist, :uts_timestamp, :uts_timestamp)"
+                "on conflict(id, artist_id)"
                 "do update set discovered = min(:uts_timestamp, discovered),"
                               "last_listened = max(:uts_timestamp, last_listened)",
             recent_track

@@ -1,8 +1,9 @@
 import pytest
 from sqlite_utils import Database
 
-from lastfm import fetch_artists_to_update, save_artist_details, save_artist_listen_date
+from lastfm import save_artist_details, save_artist_listen_date
 from lastfm.db_setup import create_artist_table
+
 
 @pytest.fixture
 def db():
@@ -50,7 +51,7 @@ def test_saves_artist_with_id_as_lowered_name(db):
 def test_does_not_overwrite_artist_names(db):
     # This is to work around the Last.fm API returning artist names with casing
     # that does not match the website. user.getrecenttracks seems to be a
-    # better source, and because we're writing from there first we can keep the
+    # better source, and because we're writing from there first, we can keep the
     # first spelling encountered
 
     save_artist_details(db, {"name": "NYOS"}, timestamp=2345678901)
