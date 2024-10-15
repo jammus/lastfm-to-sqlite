@@ -107,7 +107,7 @@
 
 .chart-item {
   .discovery {
-    background: $red-500;
+    background: $red-550;
     padding: 6px;
     color: $grey-50;
   }
@@ -122,12 +122,16 @@
     grid-area: position;
     place-self: start;
 
-    background: $azure-500;
+    background: $azure-550;
     padding: 6px;
     color: white;
 
     .artist-chart & {
-      background: $amber-300;
+      background: $amber-350;
+    }
+
+    .album-chart & {
+      background: $green-550;
     }
 
     .love-chart & {
@@ -140,11 +144,11 @@
   }
 
   .scrobbles {
-    font-size: 0.75rem;
+    font-size: 85%;
   }
 
   .artist {
-    font-size: 0.9rem;
+    font-size: 90%;
   }
 
   .name {
@@ -155,6 +159,7 @@
 .chart-item-details {
   grid-area: details;
   place-self: end;
+  font-size: 90%;
 }
 
 .chart-item img {
@@ -164,7 +169,7 @@
 }
 
 .chart-item-details {
-  padding: 6px;
+  padding: 6px 12px;
   width: 100%;
   color: $grey-50;
 }

@@ -2865,7 +2865,7 @@ textarea,
 }
 
 .chart-item .discovery {
-  background: #d93526;
+  background: #c52f21;
   padding: 6px;
   color: #f1f1f1;
 }
@@ -2877,12 +2877,15 @@ textarea,
 .chart-item .position {
   grid-area: position;
   place-self: start;
-  background: #017fc0;
+  background: #0172ad;
   padding: 6px;
   color: white;
 }
 .artist-chart .chart-item .position {
-  background: #d8a100;
+  background: #c79400;
+}
+.album-chart .chart-item .position {
+  background: #33790f;
 }
 .love-chart .chart-item .position {
   background: #f7708e;
@@ -2891,10 +2894,10 @@ textarea,
   background: #7540bf;
 }
 .chart-item .scrobbles {
-  font-size: 0.75rem;
+  font-size: 85%;
 }
 .chart-item .artist {
-  font-size: 0.9rem;
+  font-size: 90%;
 }
 .chart-item .name {
   font-weight: bold;
@@ -2903,6 +2906,7 @@ textarea,
 .chart-item-details {
   grid-area: details;
   place-self: end;
+  font-size: 90%;
 }
 
 .chart-item img {
@@ -2912,7 +2916,7 @@ textarea,
 }
 
 .chart-item-details {
-  padding: 6px;
+  padding: 6px 12px;
   width: 100%;
   color: #f1f1f1;
 }
