@@ -34,7 +34,7 @@ def fetch_top_albums(datasette: Datasette):
         db = datasette.get_database()
         query = """
             select
-              p.artist, name, count(1) as listens, discovered,
+              p.artist, p.album as name, image_id, count(1) as listens, discovered,
               (discovered >= cast(:start as integer)) as new
             from
               playlist as p

@@ -42,14 +42,23 @@
         </div>
         <div>
           <h2>Top Ablums</h2>
-          <ol>
+          <ol class="chart album-chart">
             {% for album in top_albums %}
-            <li>
-              {{ album.name }} - {{ album.artist }}
+            <li class="chart-item">
+              <div class="position">#{{ loop.index }}</div>
               {% if album.new %}
-                <sup class="pico-color-red-500">New discovery</sup>
+                <div class="discovery">
+                  <span class="long">New discovery</span>
+                  <span class="short">New</span>
+                </div>
               {% endif %}
-            ({{ album.listens }})</li>
+              <img src="{{ image_url(album, size="avatar300s") }}" />
+              <div class="chart-item-details">
+                <div class="name">{{ album.name }}</div>
+                <div class="artist">{{ album.artist }}</div>
+                <div class="scrobbles">{{ album.listens }} scrobbles</div>
+              </div>
+            </li>
             {% endfor %}
           </ol>
         </div>

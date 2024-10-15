@@ -64,7 +64,10 @@ def create_album_table(db: Database):
         "discovered": int,
         "last_listened": int,
         "last_updated": int,
-    }, pk=["id", "artist_id"], if_not_exists=True)
+    }, pk=["id", "artist_id"],
+       not_null={"last_updated"},
+       defaults={"last_updated": 0},
+       if_not_exists=True)
 
 
 def create_all_tables(db: Database):

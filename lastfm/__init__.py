@@ -179,7 +179,7 @@ def save_artist_listen_date(db: Database, artist_listen):
     )
 
 
-def save_artist_details(db: Database, artist_details, timestamp=None):
+def save_artist_details(db: Database, artist_details, timestamp=0):
     with db.conn:
         db.execute((
             "insert into artist_details (id, name, image_id, url, last_updated)"
@@ -196,7 +196,7 @@ def save_artist_details(db: Database, artist_details, timestamp=None):
         )
 
 
-def save_album_details(db: Database, album_details, timestamp=None):
+def save_album_details(db: Database, album_details, timestamp=0):
     with db.conn:
         db.execute(
             ("insert into album_details (id, artist_id, name, artist, image_id, url, last_updated)"
@@ -215,6 +215,22 @@ def save_album_details(db: Database, album_details, timestamp=None):
 def fetch_artists_to_update(db: Database, cutoff=99999999999, limit=None):
     query = (
         "select * from artist_details "
+            "where last_updated < :cutoff "
+            "order by (last_updated - last_listened) asc"
+    )
+
+    if limit:
+        query += " limit :limit"
+
+    return db.query(
+        query,
+        { "cutoff": cutoff, "limit": limit }
+    )
+
+
+def fetch_albums_to_update(db: Database, cutoff=99999999999, limit=None):
+    query = (
+        "select * from album_details "
             "where last_updated < :cutoff "
             "order by (last_updated - last_listened) asc"
     )
@@ -252,11 +268,12 @@ def save_track_details(db: Database, recent_track):
 
 def save_album_listen_date(db: Database, recent_track):
     if recent_track.get("album", None):
-        db.execute(
-            "insert into album_details (id, artist_id, name, artist, discovered, last_listened)"
-            "values (lower(:album), lower(:artist), :album, :artist, :uts_timestamp, :uts_timestamp)"
-                "on conflict(id, artist_id)"
-                "do update set discovered = min(:uts_timestamp, discovered),"
-                              "last_listened = max(:uts_timestamp, last_listened)",
-            recent_track
+        with db.conn:
+            db.execute(
+                "insert into album_details (id, artist_id, name, artist, discovered, last_listened)"
+                "values (lower(:album), lower(:artist), :album, :artist, :uts_timestamp, :uts_timestamp)"
+                    "on conflict(id, artist_id)"
+                    "do update set discovered = min(:uts_timestamp, discovered),"
+                                  "last_listened = max(:uts_timestamp, last_listened)",
+                recent_track
     )
