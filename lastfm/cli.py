@@ -4,7 +4,7 @@ import requests
 import datetime
 from itertools import chain
 from sqlite_utils import Database
-from lastfm import DATE_FORMAT, LastFM, fetch_album, fetch_albums_to_update, fetch_artist, fetch_artists_to_update, fetch_loved_tracks, process_tracks_response, save_album_details, save_artist_details, save_love, save_recent_track
+from lastfm import DATE_FORMAT, LastFM, fetch_album, fetch_albums_to_update, fetch_artist, fetch_artists_to_update, fetch_loved_tracks, process_tracks_response, save_album_details, save_artist_details, save_artist_tags, save_love, save_recent_track
 from lastfm.db_setup import create_indexes, create_all_tables
 
 
@@ -41,6 +41,7 @@ def export_playlist(
         database = Database(database)
 
     create_all_tables(database)
+    create_indexes(database)
 
     client: ApiClient = {
         "base_url": "https://ws.audioscrobbler.com/2.0",
@@ -76,6 +77,7 @@ def export_playlist(
             artist_details = fetch_artist(api.client, artist["name"])
             save_artist_details(database, artist_details,
                                 timestamp=int(datetime.datetime.now().timestamp()))
+            save_artist_tags(database, artist["name"], artist_details["tags"])
             bar.update(1)
 
     albums = fetch_albums_to_update(database, limit=1000)
@@ -85,8 +87,6 @@ def export_playlist(
             save_album_details(database, album_details,
                                 timestamp=int(datetime.datetime.now().timestamp()))
             bar.update(1)
-
-    create_indexes(database)
 
 if __name__ == "__main__":
     cli()

@@ -66,7 +66,10 @@ def fetch_artist(client: ApiClient, name, params=None):
     return {
         "name": artist.get("name", ""),
         "url": artist.get("url", ""),
-        "image_id": extract_image_id(artist)
+        "image_id": extract_image_id(artist),
+        "tags": artist.get("tags", {}).get("tag", []),
+        "summary": artist.get("bio", {}).get("summary"),
+        "wiki": artist.get("bio", {}).get("content"),
     }
 
 
@@ -80,7 +83,7 @@ def fetch_album(client: ApiClient, name: str, artist: str):
         "name": album.get("name", ""),
         "artist": album.get("artist", ""),
         "url": album.get("url", ""),
-        "image_id": extract_image_id(album)
+        "image_id": extract_image_id(album),
     }
 
 
@@ -179,21 +182,37 @@ def save_artist_listen_date(db: Database, artist_listen):
     )
 
 
+EMPTY_ARTIST = { "image_id": None, "url": None, "wiki": None, "summary": None }
 def save_artist_details(db: Database, artist_details, timestamp=0):
     with db.conn:
         db.execute((
-            "insert into artist_details (id, name, image_id, url, last_updated)"
-            "values (lower(:name), :name, :image_id, :url, :timestamp)"
+            "insert into artist_details (id, name, image_id, url, wiki,"
+                                        "summary, last_updated)"
+            "values (lower(:name), :name, :image_id, :url, :wiki,"
+                    ":summary, :timestamp)"
                 "on conflict(id)"
              "do update set image_id ="
                  "case when ifnull(:image_id, '') = '' then "
                      "image_id else :image_id end,"
                  "url ="
-                 "case when ifnull(:url, '') = '' then "
-                     "url else :url end,"
+                     "case when ifnull(:url, '') = '' then "
+                         "url else :url end,"
+                 "wiki ="
+                     "case when ifnull(:wiki, '') = '' then "
+                         "wiki else :wiki end,"
+                 "summary ="
+                     "case when ifnull(:summary, '') = '' then "
+                         "summary else :summary end,"
                  "last_updated = :timestamp"),
-                   { "timestamp": timestamp, "image_id": None, "url": None } | artist_details
+                   EMPTY_ARTIST | { "timestamp": timestamp} | artist_details
         )
+
+
+def save_artist_tags(db: Database, artist: str, tags):
+    for tag in tags:
+        db["artist_tags"].upsert(
+                tag | { "id": artist.lower(), "name": tag["name"].lower() },
+                pk=["id", "name"])
 
 
 def save_album_details(db: Database, album_details, timestamp=0):

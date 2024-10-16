@@ -1,3 +1,4 @@
+import json
 import httpretty
 from httpretty import httprettified
 
@@ -68,3 +69,39 @@ def test_extracts_image_id():
     artist = fetch_artist(api_client(), "Melt-Banana")
 
     assert artist["image_id"] == "d93fb932f7a34434bed332cbeb1b3ae6"
+
+
+@httprettified
+def test_extracts_tags():
+    response_body = load_file("sample_artist_response.json")
+    httpretty.register_uri(httpretty.GET, "http://ws.audioscrobbler.com/2.0",
+                            body=response_body)
+
+    artist = fetch_artist(api_client(), "Melt-Banana")
+
+    tags = artist["tags"]
+    assert len(tags) == 5
+    assert tags[0]["name"] == "noise rock"
+    assert tags[0]["url"] == "https://www.last.fm/tag/noise+rock"
+    assert tags[1]["name"] == "noise"
+    assert tags[1]["url"] == "https://www.last.fm/tag/noise"
+    assert tags[4]["name"] == "noisecore"
+    assert tags[4]["url"] == "https://www.last.fm/tag/noisecore"
+
+
+@httprettified
+def test_extracts_wiki_content_and_summary():
+    httpretty.register_uri(httpretty.GET, "http://ws.audioscrobbler.com/2.0",
+                            body=json.dumps({
+                                "artist": {
+                                    "bio": {
+                                        "summary": "Wiki summary",
+                                        "content": "Full wiki",
+                                    }
+                                }
+                            }))
+
+    artist = fetch_artist(api_client(), "Melt-Banana")
+
+    assert artist["summary"] == "Wiki summary"
+    assert artist["wiki"] == "Full wiki"
