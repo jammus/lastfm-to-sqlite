@@ -121,10 +121,10 @@ def fetch_blast_artists(datasette: Datasette):
             p1.artist
           )
           where
-            since >= (365 * 24 * 60 * 60)
+            since >= (365 * 24 * 60 * 60 * 2)
             and past_listens > 5
           order by
-            since desc
+            (current_listens * since * since) desc
           limit 20
         """
         return (await db.execute(
