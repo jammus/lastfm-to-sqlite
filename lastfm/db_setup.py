@@ -10,34 +10,43 @@ def create_indexes(db: Database):
 
 
 def create_scrobbles_table(db: Database):
-    db["playlist"].create({
-        "artist": str,
-        "song": str,
-        "album": str,
-        "uts_timestamp": int,
-        "datetime": str
-    }, pk="uts_timestamp", if_not_exists=True)
+    db["playlist"].create(
+        {
+            "artist": str,
+            "song": str,
+            "album": str,
+            "uts_timestamp": int,
+            "datetime": str,
+        },
+        pk="uts_timestamp",
+        if_not_exists=True,
+    )
 
 
 def create_loves_table(db: Database):
-    db["loves"].create({
-        "artist": str,
-        "song": str,
-        "uts_timestamp": int,
-        "datetime": str
-    }, pk="uts_timestamp", if_not_exists=True)
+    db["loves"].create(
+        {"artist": str, "song": str, "uts_timestamp": int, "datetime": str},
+        pk="uts_timestamp",
+        if_not_exists=True,
+    )
 
 
 def create_artist_table(db: Database):
-    db["artist_details"].create({
-        "id": str,
-        "name": str,
-        "discovered": int,
-        "last_listened": int,
-        "last_updated": int,
-        "image_id": str,
-        "url": str,
-        }, pk="id", not_null={"last_updated"}, defaults={"last_updated": 0}, if_not_exists=True)
+    db["artist_details"].create(
+        {
+            "id": str,
+            "name": str,
+            "discovered": int,
+            "last_listened": int,
+            "last_updated": int,
+            "image_id": str,
+            "url": str,
+        },
+        pk="id",
+        not_null={"last_updated"},
+        defaults={"last_updated": 0},
+        if_not_exists=True,
+    )
     try:
         db["artist_details"].add_column("wiki", str)
         db["artist_details"].add_column("summary", str)
@@ -46,21 +55,28 @@ def create_artist_table(db: Database):
 
 
 def create_artist_tags_table(db: Database):
-    db["artist_tags"].create({
-        "id": str,
-        "name": str,
-        "url": str,
-    }, pk=["id", "name"], if_not_exists=True)
-
+    db["artist_tags"].create(
+        {
+            "id": str,
+            "name": str,
+            "url": str,
+        },
+        pk=["id", "name"],
+        if_not_exists=True,
+    )
 
 
 def create_track_table(db: Database):
-    db["track_details"].create({
-        "name": str,
-        "artist": str,
-        "discovered": int,
-        "last_listened": int,
-    }, pk=["name", "artist"], if_not_exists=True)
+    db["track_details"].create(
+        {
+            "name": str,
+            "artist": str,
+            "discovered": int,
+            "last_listened": int,
+        },
+        pk=["name", "artist"],
+        if_not_exists=True,
+    )
     try:
         db["track_details"].add_column("image_id", str)
     except:
@@ -68,20 +84,23 @@ def create_track_table(db: Database):
 
 
 def create_album_table(db: Database):
-    db["album_details"].create({
-        "id": str,
-        "artist_id": str,
-        "name": str,
-        "artist": str,
-        "image_id": str,
-        "url": str,
-        "discovered": int,
-        "last_listened": int,
-        "last_updated": int,
-    }, pk=["id", "artist_id"],
-       not_null={"last_updated"},
-       defaults={"last_updated": 0},
-       if_not_exists=True)
+    db["album_details"].create(
+        {
+            "id": str,
+            "artist_id": str,
+            "name": str,
+            "artist": str,
+            "image_id": str,
+            "url": str,
+            "discovered": int,
+            "last_listened": int,
+            "last_updated": int,
+        },
+        pk=["id", "artist_id"],
+        not_null={"last_updated"},
+        defaults={"last_updated": 0},
+        if_not_exists=True,
+    )
 
 
 def create_all_tables(db: Database):

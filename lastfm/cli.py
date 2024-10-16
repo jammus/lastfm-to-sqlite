@@ -4,11 +4,25 @@ import requests
 import datetime
 from itertools import chain
 from sqlite_utils import Database
-from lastfm import DATE_FORMAT, LastFM, fetch_album, fetch_albums_to_update, fetch_artist, fetch_artists_to_update, fetch_loved_tracks, process_tracks_response, save_album_details, save_artist_details, save_artist_tags, save_love, save_recent_track
+from lastfm import (
+    DATE_FORMAT,
+    LastFM,
+    fetch_album,
+    fetch_albums_to_update,
+    fetch_artist,
+    fetch_artists_to_update,
+    fetch_loved_tracks,
+    process_tracks_response,
+    save_album_details,
+    save_artist_details,
+    save_artist_tags,
+    save_love,
+    save_recent_track,
+)
 from lastfm.db_setup import create_indexes, create_all_tables
 
 
-formats = [ DATE_FORMAT ]
+formats = [DATE_FORMAT]
 
 
 @click.group()
@@ -27,16 +41,10 @@ def cli():
 @click.option("--user", type=click.STRING, required=True)
 @click.option("--start_date", type=click.DateTime(formats))
 @click.option("--end_date", type=click.DateTime(formats))
-def export_playlist(
-    api,
-    database, 
-    user, 
-    start_date=None,
-    end_date=None
-):
+def export_playlist(api, database, user, start_date=None, end_date=None):
     """
     Export user's lastfm playlist
-    """        
+    """
     if not isinstance(database, Database):
         database = Database(database)
 
@@ -50,11 +58,7 @@ def export_playlist(
         "session": requests.Session(),
     }
 
-    api = LastFM(
-        client=client,
-        start_date=start_date,
-        end_date=end_date
-    )
+    api = LastFM(client=client, start_date=start_date, end_date=end_date)
 
     data = api.fetch_recent_tracks()
     with click.progressbar(length=0, label="Fetching recent tracks") as bar:
@@ -75,8 +79,11 @@ def export_playlist(
     with click.progressbar(length=1000, label="Fetching artists") as bar:
         for _, artist in enumerate(artists):
             artist_details = fetch_artist(api.client, artist["name"])
-            save_artist_details(database, artist_details,
-                                timestamp=int(datetime.datetime.now().timestamp()))
+            save_artist_details(
+                database,
+                artist_details,
+                timestamp=int(datetime.datetime.now().timestamp()),
+            )
             save_artist_tags(database, artist["name"], artist_details["tags"])
             bar.update(1)
 
@@ -84,9 +91,13 @@ def export_playlist(
     with click.progressbar(length=1000, label="Fetching albums") as bar:
         for _, album in enumerate(albums):
             album_details = fetch_album(api.client, album["name"], album["artist"])
-            save_album_details(database, album_details,
-                                timestamp=int(datetime.datetime.now().timestamp()))
+            save_album_details(
+                database,
+                album_details,
+                timestamp=int(datetime.datetime.now().timestamp()),
+            )
             bar.update(1)
+
 
 if __name__ == "__main__":
     cli()

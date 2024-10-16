@@ -7,8 +7,7 @@ from tests.helpers import api_client, load_file
 
 @httprettified
 def test_requests_details_from_user_loved_tracks():
-    httpretty.register_uri(httpretty.GET, "http://ws.audioscrobbler.com/2.0",
-                           body="{}")
+    httpretty.register_uri(httpretty.GET, "http://ws.audioscrobbler.com/2.0", body="{}")
 
     next(fetch_loved_tracks(api_client()))
 
@@ -18,8 +17,9 @@ def test_requests_details_from_user_loved_tracks():
 @httprettified
 def test_returns_loves_in_standard_track_format():
     response_body = load_file("sample_loves_dump.json")
-    httpretty.register_uri(httpretty.GET, "http://ws.audioscrobbler.com/2.0",
-                           body=response_body)
+    httpretty.register_uri(
+        httpretty.GET, "http://ws.audioscrobbler.com/2.0", body=response_body
+    )
 
     love, _ = next(fetch_loved_tracks(api_client()))
 
@@ -31,8 +31,9 @@ def test_returns_loves_in_standard_track_format():
 @httprettified
 def test_returns_loves_metadata():
     response_body = load_file("sample_loves_dump.json")
-    httpretty.register_uri(httpretty.GET, "http://ws.audioscrobbler.com/2.0",
-                           body=response_body)
+    httpretty.register_uri(
+        httpretty.GET, "http://ws.audioscrobbler.com/2.0", body=response_body
+    )
 
     _, metadata = next(fetch_loved_tracks(api_client()))
 

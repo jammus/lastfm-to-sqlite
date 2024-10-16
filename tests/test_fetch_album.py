@@ -24,6 +24,7 @@ def test_requests_details_for_supplied_album_artist_pair():
     assert querystring["album"][0] == "Do Not Lay Waste To Homes..."
     assert querystring["artist"][0] == "El Huervo"
 
+
 @httprettified
 def test_does_not_autocorrect():
     httpretty.register_uri(httpretty.GET, "http://ws.audioscrobbler.com/2.0")
@@ -32,13 +33,17 @@ def test_does_not_autocorrect():
 
     assert httpretty.last_request().querystring["autocorrect"][0] == "0"
 
+
 @httprettified
 def test_returns_album_details():
     response = load_file("sample_album_response.json")
-    httpretty.register_uri(httpretty.GET, "http://ws.audioscrobbler.com/2.0",
-                           body=response)
+    httpretty.register_uri(
+        httpretty.GET, "http://ws.audioscrobbler.com/2.0", body=response
+    )
 
-    album = fetch_album(api_client(), "Do Not Lay Waste To Homes...", artist="El Huervo")
+    album = fetch_album(
+        api_client(), "Do Not Lay Waste To Homes...", artist="El Huervo"
+    )
 
     assert album["name"] == "Fetch"
     assert album["artist"] == "Melt-Banana"

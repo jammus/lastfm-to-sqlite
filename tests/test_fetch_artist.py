@@ -41,8 +41,9 @@ def test_does_not_autocorrect():
 def test_send_supplied_params():
     httpretty.register_uri(httpretty.GET, "http://ws.audioscrobbler.com/2.0")
 
-    fetch_artist(api_client(), "El Huervo", params={"api_key": "abcdefg", "user":
-                                               "jammus"})
+    fetch_artist(
+        api_client(), "El Huervo", params={"api_key": "abcdefg", "user": "jammus"}
+    )
 
     assert httpretty.last_request().querystring["api_key"][0] == "abcdefg"
     assert httpretty.last_request().querystring["user"][0] == "jammus"
@@ -51,8 +52,9 @@ def test_send_supplied_params():
 @httprettified
 def test_returns_basic_artist_details():
     response_body = load_file("sample_artist_response.json")
-    httpretty.register_uri(httpretty.GET, "http://ws.audioscrobbler.com/2.0",
-                            body=response_body)
+    httpretty.register_uri(
+        httpretty.GET, "http://ws.audioscrobbler.com/2.0", body=response_body
+    )
 
     artist = fetch_artist(api_client(), "Melt-Banana")
 
@@ -63,8 +65,9 @@ def test_returns_basic_artist_details():
 @httprettified
 def test_extracts_image_id():
     response_body = load_file("sample_artist_response.json")
-    httpretty.register_uri(httpretty.GET, "http://ws.audioscrobbler.com/2.0",
-                            body=response_body)
+    httpretty.register_uri(
+        httpretty.GET, "http://ws.audioscrobbler.com/2.0", body=response_body
+    )
 
     artist = fetch_artist(api_client(), "Melt-Banana")
 
@@ -74,8 +77,9 @@ def test_extracts_image_id():
 @httprettified
 def test_extracts_tags():
     response_body = load_file("sample_artist_response.json")
-    httpretty.register_uri(httpretty.GET, "http://ws.audioscrobbler.com/2.0",
-                            body=response_body)
+    httpretty.register_uri(
+        httpretty.GET, "http://ws.audioscrobbler.com/2.0", body=response_body
+    )
 
     artist = fetch_artist(api_client(), "Melt-Banana")
 
@@ -91,15 +95,20 @@ def test_extracts_tags():
 
 @httprettified
 def test_extracts_wiki_content_and_summary():
-    httpretty.register_uri(httpretty.GET, "http://ws.audioscrobbler.com/2.0",
-                            body=json.dumps({
-                                "artist": {
-                                    "bio": {
-                                        "summary": "Wiki summary",
-                                        "content": "Full wiki",
-                                    }
-                                }
-                            }))
+    httpretty.register_uri(
+        httpretty.GET,
+        "http://ws.audioscrobbler.com/2.0",
+        body=json.dumps(
+            {
+                "artist": {
+                    "bio": {
+                        "summary": "Wiki summary",
+                        "content": "Full wiki",
+                    }
+                }
+            }
+        ),
+    )
 
     artist = fetch_artist(api_client(), "Melt-Banana")
 

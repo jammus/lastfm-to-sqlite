@@ -5,6 +5,7 @@ from httpretty import httprettified
 from lastfm import fetch_page
 from tests.helpers import api_client
 
+
 @httprettified
 def test_makes_request_to_lastfm_api():
     httpretty.register_uri(httpretty.GET, "http://ws.audioscrobbler.com/2.0")
@@ -65,7 +66,7 @@ def test_requested_format_is_always_json():
 def test_sends_all_provided_params():
     httpretty.register_uri(httpretty.GET, "http://ws.audioscrobbler.com/2.0")
 
-    fetch_page(api_client(), "user.getrecenttracks", { "page": 20, "user": "jammus" })
+    fetch_page(api_client(), "user.getrecenttracks", {"page": 20, "user": "jammus"})
 
     assert httpretty.last_request().querystring["page"][0] == "20"
     assert httpretty.last_request().querystring["user"][0] == "jammus"
@@ -73,29 +74,34 @@ def test_sends_all_provided_params():
 
 @httprettified
 def test_returns_parsed_json_response():
-    httpretty.register_uri(httpretty.GET, "http://ws.audioscrobbler.com/2.0",
-                           body="{\"success\": true}")
+    httpretty.register_uri(
+        httpretty.GET, "http://ws.audioscrobbler.com/2.0", body='{"success": true}'
+    )
 
-    response = fetch_page(api_client(), "user.getrecenttracks", { "page": 20, "user": "jammus" })
+    response = fetch_page(
+        api_client(), "user.getrecenttracks", {"page": 20, "user": "jammus"}
+    )
 
     assert response["success"] is True
 
 
 @httprettified
 def test_raises_on_failure():
-    httpretty.register_uri(httpretty.GET, "http://ws.audioscrobbler.com/2.0",
-                           status=500)
+    httpretty.register_uri(
+        httpretty.GET, "http://ws.audioscrobbler.com/2.0", status=500
+    )
     with pytest.raises(Exception):
-        fetch_page(api_client(), "user.getrecenttracks", { "page": 20, "user": "jammus" })
+        fetch_page(api_client(), "user.getrecenttracks", {"page": 20, "user": "jammus"})
 
     assert len(httpretty.latest_requests()) == 5
 
 
 @httprettified
 def test_retries_failed_requests_5_times():
-    httpretty.register_uri(httpretty.GET, "http://ws.audioscrobbler.com/2.0",
-                           status=500)
+    httpretty.register_uri(
+        httpretty.GET, "http://ws.audioscrobbler.com/2.0", status=500
+    )
     with pytest.raises(Exception):
-        fetch_page(api_client(), "user.getrecenttracks", { "page": 20, "user": "jammus" })
+        fetch_page(api_client(), "user.getrecenttracks", {"page": 20, "user": "jammus"})
 
     assert len(httpretty.latest_requests()) == 5
