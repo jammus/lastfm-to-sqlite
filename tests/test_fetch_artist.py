@@ -114,3 +114,51 @@ def test_extracts_wiki_content_and_summary():
 
     assert artist["summary"] == "Wiki summary"
     assert artist["wiki"] == "Full wiki"
+
+
+@httprettified
+def test_similar_artists_is_empty_by_default():
+    httpretty.register_uri(
+        httpretty.GET,
+        "http://ws.audioscrobbler.com/2.0",
+        body=json.dumps(
+            {
+                "artist": {
+                }
+            }
+        ),
+    )
+
+    artist = fetch_artist(api_client(), "Melt-Banana")
+
+    assert artist["similar"] == []
+
+
+@httprettified
+def test_extracts_similar_artists():
+    response_body = load_file("sample_artist_response.json")
+    httpretty.register_uri(
+        httpretty.GET, "http://ws.audioscrobbler.com/2.0", body=response_body
+    )
+
+    artist = fetch_artist(api_client(), "Melt-Banana")
+
+    assert len(artist["similar"]) == 5
+    assert artist["similar"][0]["name"] == "Lightning Bolt"
+    assert artist["similar"][0]["url"] == "https://www.last.fm/music/Lightning+Bolt"
+    assert artist["similar"][4]["name"] == "Boredoms"
+    assert artist["similar"][4]["url"] == "https://www.last.fm/music/Boredoms"
+
+
+@httprettified
+def test_ignores_images_from_similar_artists():
+    # They're always default so we don't want to accidentally ingest them
+    response_body = load_file("sample_artist_response.json")
+    httpretty.register_uri(
+        httpretty.GET, "http://ws.audioscrobbler.com/2.0", body=response_body
+    )
+
+    artist = fetch_artist(api_client(), "Melt-Banana")
+
+    assert len(artist["similar"]) == 5
+    assert artist["similar"][0].get("image", None) is None

@@ -74,7 +74,15 @@ def fetch_artist(client: ApiClient, name, params=None):
         "tags": artist.get("tags", {}).get("tag", []),
         "summary": artist.get("bio", {}).get("summary"),
         "wiki": artist.get("bio", {}).get("content"),
+        "similar": extract_similar_artists(artist),
     }
+
+
+def extract_similar_artists(artist):
+    artists = artist.get("similar", {}).get("artist", [])
+    for artist in artists:
+        artist["image"] = None
+    return artists
 
 
 def fetch_album(client: ApiClient, name: str, artist: str):
@@ -306,3 +314,15 @@ def save_album_listen_date(db: Database, recent_track):
                 "          last_listened = max(:uts_timestamp, last_listened)",
                 recent_track,
             )
+
+
+def save_similar_artists(db: Database, artist: str, similar_artists):
+    for idx, similar in enumerate(similar_artists):
+        db["similar_artists"].upsert(
+            {
+                "id": artist.lower(),
+                "similar_id": similar["name"].lower(),
+                "position": idx + 1,
+            },
+            pk=["id", "position"]
+        )

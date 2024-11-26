@@ -103,6 +103,18 @@ def create_album_table(db: Database):
     )
 
 
+def create_similar_artists_table(db: Database):
+    db["similar_artists"].create(
+        {
+            "id": str,
+            "similar_id": str,
+            "position": int,
+        },
+        pk=["id", "position"],
+        if_not_exists=True,
+    )
+
+
 def create_all_tables(db: Database):
     create_scrobbles_table(db)
     create_loves_table(db)
@@ -110,3 +122,4 @@ def create_all_tables(db: Database):
     create_track_table(db)
     create_album_table(db)
     create_artist_tags_table(db)
+    create_similar_artists_table(db)

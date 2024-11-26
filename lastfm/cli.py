@@ -18,6 +18,7 @@ from lastfm import (
     save_artist_tags,
     save_love,
     save_recent_track,
+    save_similar_artists,
 )
 from lastfm.db_setup import create_indexes, create_all_tables
 
@@ -84,7 +85,14 @@ def export_playlist(api, database, user, start_date=None, end_date=None):
                 artist_details,
                 timestamp=int(datetime.datetime.now().timestamp()),
             )
-            save_artist_tags(database, artist["name"], artist_details["tags"])
+            save_artist_tags(
+                database, artist["name"],
+                artist_details["tags"]
+            )
+            save_similar_artists(
+                database, artist["name"],
+                artist_details["similar"]
+            )
             bar.update(1)
 
     albums = fetch_albums_to_update(database, limit=1000)
