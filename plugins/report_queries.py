@@ -13,6 +13,8 @@ def fetch_top_artists(datasette: Datasette):
               playlist as p
             join
               artist_details as v on lower(p.artist) = v.id
+            join
+              artist_history as h on lower(p.artist) = h.id
             where
               uts_timestamp >= :start and
               uts_timestamp < :end 
@@ -90,7 +92,8 @@ def fetch_blast_artists(datasette: Datasette):
         db = datasette.get_database()
         query = """
           select
-            *, (first_listen_this_period - previous_listen) as since
+            *, (first_listen_this_period - previous_listen) as since,
+               (first_listen_this_period - previous_listen) / 60/60/24/365 as years
           from (
             select
               v.name, v.image_id, count(1) as past_listens,
@@ -124,7 +127,7 @@ def fetch_blast_artists(datasette: Datasette):
             since >= (365 * 24 * 60 * 60 * 2)
             and past_listens > 5
           order by
-            (current_listens * since * since) desc
+            (current_listens * years * years) desc
           limit 20
         """
         return (await db.execute(
@@ -185,6 +188,36 @@ def fetch_most_loved(datasette: Datasette):
     return fetch
 
 
+def fetch_monthly_tags(datasette: Datasette):
+    async def fetch(start_timestamp: int, end_timestamp: int):
+        db = datasette.get_database()
+        query = """
+            select * from (select *, row_number() over (Partition by month order by freq desc) as rownum from (
+              select
+              t.name as tag, strftime ('%m', DATETIME(p.uts_timestamp, 'unixepoch')) month,
+              count(1) as freq
+            from
+              playlist as p
+              join artist_tags as t on t.id = lower(p.artist)
+            where
+              p.uts_timestamp >= :start
+              and
+              p.uts_timestamp < :end
+              and
+              tag not in ("seen live", "indie", "rock", "pop", "post rock", "electronic", "indie rock")
+            group by
+              t.name, month
+            order by
+              freq desc
+              )) where rownum <= 5
+        """
+        return (await db.execute(
+            query,
+            {"start": start_timestamp, "end": end_timestamp})
+        ).rows
+    return fetch
+
+
 @hookimpl
 def extra_template_vars(datasette):
     return {
@@ -194,4 +227,5 @@ def extra_template_vars(datasette):
         "fetch_blast_artists": fetch_blast_artists(datasette),
         "fetch_loves": fetch_loves(datasette),
         "fetch_most_loved": fetch_most_loved(datasette),
+        "fetch_monthly_tags": fetch_monthly_tags(datasette),
     }

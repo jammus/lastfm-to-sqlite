@@ -189,7 +189,7 @@ def save_love(db: Database, love):
 
 def save_artist_listen_date(db: Database, artist_listen):
     db.execute(
-        "insert into artist_details (id, name, discovered, last_listened)"
+        "insert into artist_history (id, name, discovered, last_listened)"
         "   values (lower(:artist), :artist, :uts_timestamp, :uts_timestamp)"
         "on conflict(id)"
         "   do update set discovered = min(:uts_timestamp, discovered),"
@@ -257,9 +257,11 @@ def save_album_details(db: Database, album_details, timestamp=0):
 
 def fetch_artists_to_update(db: Database, cutoff=99999999999, limit=None):
     query = (
-        "select * from artist_details "
-        "   where last_updated < :cutoff "
-        "   order by (last_updated - last_listened) asc"
+        "select *, ifnull(ah.name, ad.name) as name "
+        "   from artist_history as ah "
+        "   left join artist_details as ad using(id) "
+        "   where ifnull(ad.last_updated, 0) < :cutoff "
+        "   order by (ifnull(ad.last_updated, 0) - ifnull(ah.last_listened,0)) asc"
     )
 
     if limit:

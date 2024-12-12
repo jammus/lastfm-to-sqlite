@@ -36,22 +36,30 @@ def create_artist_table(db: Database):
         {
             "id": str,
             "name": str,
-            "discovered": int,
-            "last_listened": int,
-            "last_updated": int,
             "image_id": str,
             "url": str,
+            "wiki": int,
+            "summary": int,
+            "last_updated": int,
         },
         pk="id",
         not_null={"last_updated"},
         defaults={"last_updated": 0},
         if_not_exists=True,
     )
-    try:
-        db["artist_details"].add_column("wiki", str)
-        db["artist_details"].add_column("summary", str)
-    except:
-        pass  # Assume exists
+
+
+def create_artist_history_table(db: Database):
+    db["artist_history"].create(
+        {
+            "id": str,
+            "name": str,
+            "discovered": int,
+            "last_listened": int,
+        },
+        pk="id",
+        if_not_exists=True,
+    )
 
 
 def create_artist_tags_table(db: Database):
@@ -119,6 +127,7 @@ def create_all_tables(db: Database):
     create_scrobbles_table(db)
     create_loves_table(db)
     create_artist_table(db)
+    create_artist_history_table(db)
     create_track_table(db)
     create_album_table(db)
     create_artist_tags_table(db)

@@ -2,32 +2,15 @@ import pytest
 from sqlite_utils import Database
 
 from lastfm import save_artist_details, save_artist_listen_date
-from lastfm.db_setup import create_artist_table
+from lastfm.db_setup import create_artist_table, create_artist_history_table
 
 
 @pytest.fixture
 def db():
     database = Database(memory=True)
     create_artist_table(database)
+    create_artist_history_table(database)
     return database
-
-
-def test_last_updated_date_defaults_to_zero(db: Database):
-    artist_listen = {
-        "artist": "65daysofstatic",
-        "uts_timestamp": 1234567890,
-    }
-
-    save_artist_listen_date(db, artist_listen)
-
-    [artist] = list(
-        db.query(
-            "select * from artist_details where name = :artist",
-            {"artist": "65daysofstatic"},
-        )
-    )
-
-    assert artist["last_updated"] == 0
 
 
 def test_saves_artist_with_id_as_lowered_name(db: Database):

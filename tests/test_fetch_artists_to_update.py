@@ -2,13 +2,14 @@ import pytest
 from sqlite_utils import Database
 
 from lastfm import fetch_artists_to_update, save_artist_details, save_artist_listen_date
-from lastfm.db_setup import create_artist_table
+from lastfm.db_setup import create_artist_history_table, create_artist_table
 
 
 @pytest.fixture
 def db():
     database = Database(memory=True)
     create_artist_table(database)
+    create_artist_history_table(database)
     return database
 
 
@@ -37,6 +38,8 @@ def db_with_artist_listens(db):
 @pytest.mark.usefixtures("db_with_artist_listens")
 def test_orders_by_recent_listens_descending(db):
     artists = list(fetch_artists_to_update(db))
+
+    print(artists)
 
     assert len(artists) == 3
     assert artists[0]["name"] == "Tiny Moving Parts"

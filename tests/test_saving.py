@@ -2,7 +2,13 @@ import pytest
 from sqlite_utils import Database
 
 from lastfm import save_recent_track
-from lastfm.db_setup import create_album_table, create_artist_table, create_track_table
+from lastfm.db_setup import (
+    create_album_table,
+    create_artist_history_table,
+    create_artist_table,
+    create_track_table,
+    create_artist_history_table,
+)
 
 
 @pytest.fixture
@@ -11,6 +17,7 @@ def db():
     create_artist_table(database)
     create_track_table(database)
     create_album_table(database)
+    create_artist_history_table(database)
     return database
 
 
@@ -134,7 +141,7 @@ def test_artist_table_records_first_listen(db: Database, recent_tracks):
 
     [artist] = list(
         db.query(
-            "select * from artist_details where name = :artist",
+            "select * from artist_history where name = :artist",
             {"artist": "65daysofstatic"},
         )
     )
@@ -148,12 +155,25 @@ def test_artist_table_records_most_recent_listen(db: Database, recent_tracks):
 
     [artist] = list(
         db.query(
-            "select * from artist_details where name = :artist",
+            "select * from artist_history where name = :artist",
             {"artist": "65daysofstatic"},
         )
     )
 
     assert artist["last_listened"] == 1726597832
+
+
+def test_saves_artist_with_id_as_lowered_name(db: Database, recent_tracks):
+    save_recent_track(db, recent_tracks[5])
+
+    [artist] = list(
+        db.query(
+            "select * from artist_history where name = :artist",
+            {"artist": "Do Make Say Think"},
+        )
+    )
+
+    assert artist["id"] == "do make say think"
 
 
 def test_track_table_records_first_and_last_listen(db: Database, recent_tracks):
